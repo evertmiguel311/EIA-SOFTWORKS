@@ -22,7 +22,7 @@
 
   --ease-out:  cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --nav-h: 76px;
+  --nav-h: 110px;
 }
 
 /* =============================================================
@@ -118,7 +118,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 }
 .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 18px; letter-spacing: .5px; flex: none; }
 .nav-brand-sub { font-weight: 400; color: var(--ink-mute); letter-spacing: 2px; }
-.nav-mark { width: 26px; height: 26px; flex: none; object-fit: contain; }
+.nav-mark { width: 78px; height: 78px; flex: none; object-fit: contain; }
 .nav-links { display: flex; align-items: center; gap: 28px; font-size: 14px; color: var(--ink-soft); }
 .nav-link { position: relative; padding: .3rem 0; }
 .nav-link::after {
