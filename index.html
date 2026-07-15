@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EIA Softworks — Consultoría & Desarrollo de Software</title>
+<meta name="description" content="Diseñamos, arquitectamos y desarrollamos plataformas tecnológicas a medida — con procesos claros, organización rigurosa y una visión de crecimiento a largo plazo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/logos/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/logos/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/logos/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css?v=20260715b">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Saltar al contenido</a>
+
+<div class="scroll-progress" aria-hidden="true"><span data-scroll-progress></span></div>
+
+<nav class="nav" data-nav>
+  <a href="#hero" class="nav-brand">
+    <img src="assets/logos/eia-mark.webp" alt="" aria-hidden="true" class="nav-mark" width="26" height="26">
+    EIA <span class="nav-brand-sub">SOFTWORKS</span>
+  </a>
+  <div class="nav-links" data-nav-links>
+    <a href="#servicios" class="nav-link">Servicios</a>
+    <a href="#soluciones" class="nav-link">Soluciones</a>
+    <a href="#sectores" class="nav-link">Sectores</a>
+    <a href="#tecnologias" class="nav-link">Tecnología</a>
+    <a href="#proceso" class="nav-link">Proceso</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+  </div>
+  <div class="nav-actions">
+    <a href="#contacto" class="btn btn-solid nav-cta">Agendar reunión</a>
+    <button type="button" class="nav-burger" data-nav-toggle aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" data-nav-mobile aria-hidden="true">
+  <a href="#quienes-somos" class="nav-mobile-link">Quiénes somos</a>
+  <a href="#servicios" class="nav-mobile-link">Servicios</a>
+  <a href="#soluciones" class="nav-mobile-link">Soluciones</a>
+  <a href="#sectores" class="nav-mobile-link">Sectores</a>
+  <a href="#tecnologias" class="nav-mobile-link">Tecnología</a>
+  <a href="#proceso" class="nav-mobile-link">Proceso</a>
+  <a href="#faq" class="nav-mobile-link">FAQ</a>
+  <a href="#contacto" class="btn btn-solid nav-mobile-cta">Agendar reunión</a>
+</div>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-gradient" data-mouse-gradient aria-hidden="true"></div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-a" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-b" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-c" aria-hidden="true"></div>
+    <svg class="hero-network" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="150" y1="200" x2="450" y2="550" class="hero-network-line" style="animation-delay:0s"></line>
+      <line x1="450" y1="550" x2="720" y2="300" class="hero-network-line" style="animation-delay:.6s"></line>
+      <line x1="450" y1="550" x2="600" y2="780" class="hero-network-line" style="animation-delay:1.2s"></line>
+      <circle cx="150" cy="200" r="4" class="hero-network-dot"></circle>
+      <circle cx="450" cy="550" r="5" class="hero-network-dot"></circle>
+      <circle cx="720" cy="300" r="4" class="hero-network-dot"></circle>
+      <circle cx="600" cy="780" r="4" class="hero-network-dot"></circle>
+    </svg>
+
+    <div class="hero-content">
+      <p class="eyebrow" data-reveal>Consultoría & Desarrollo de Software</p>
+      <h1 class="hero-title" data-reveal data-reveal-delay="1">Entendemos el negocio<br>antes de construir el software.</h1>
+      <p class="hero-sub" data-reveal data-reveal-delay="2">Diseñamos, arquitectamos y desarrollamos plataformas tecnológicas a medida — con procesos claros, organización rigurosa y una visión de crecimiento a largo plazo.</p>
+      <div class="hero-actions" data-reveal data-reveal-delay="3">
+        <a href="#contacto" class="btn btn-solid">Solicitar una reunión</a>
+        <a href="#servicios" class="btn btn-ghost">Ver servicios</a>
+      </div>
+      <ul class="hero-pills" data-reveal data-reveal-delay="3" aria-label="Nuestro enfoque">
+        <li><span class="hero-pill-dot" style="background:var(--accent)"></span>100&nbsp;% a medida</li>
+        <li><span class="hero-pill-dot" style="background:var(--accent-2)"></span>Proceso primero, código después</li>
+        <li><span class="hero-pill-dot" style="background:var(--accent-3)"></span>Stack moderno</li>
+        <li><span class="hero-pill-dot" style="background:var(--accent)"></span>Cartagena, Colombia</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ STACK STRIP (logos a color, únicos) ============ -->
+  <section class="stack-strip" aria-label="Tecnologías con las que construimos">
+    <div class="container">
+      <p class="stack-strip-label" data-reveal>Construimos con un stack moderno y probado en producción</p>
+      <div class="stack-strip-logos" data-reveal data-reveal-delay="1">
+        <span class="stack-logo" title="React"><img src="assets/logos/react.svg" alt="React"></span>
+        <span class="stack-logo" title="Next.js"><img src="assets/logos/nextjs.svg" alt="Next.js"></span>
+        <span class="stack-logo" title="TypeScript"><img src="assets/logos/typescript.svg" alt="TypeScript"></span>
+        <span class="stack-logo" title="TailwindCSS"><img src="assets/logos/tailwindcss.svg" alt="TailwindCSS"></span>
+        <span class="stack-logo" title="Node.js"><img src="assets/logos/nodejs.svg" alt="Node.js"></span>
+        <span class="stack-logo" title="Python"><img src="assets/logos/python.svg" alt="Python"></span>
+        <span class="stack-logo" title="AWS"><img src="assets/logos/aws.svg" alt="AWS"></span>
+        <span class="stack-logo" title="Docker"><img src="assets/logos/docker.svg" alt="Docker"></span>
+        <span class="stack-logo" title="PostgreSQL"><img src="assets/logos/postgresql.svg" alt="PostgreSQL"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ QUIENES SOMOS ============ -->
+  <section class="section" id="quienes-somos" data-screen-label="Quiénes Somos">
+    <div class="section-bg-slant" aria-hidden="true"></div>
+    <div class="container split">
+      <div class="split-text-col" data-reveal>
+        <p class="eyebrow">Quiénes somos</p>
+        <h2 class="h2">Una marca personal en camino a convertirse en una empresa de software.</h2>
+        <p class="p-lead">Nacimos de la práctica directa: entender procesos de negocio, ordenar la información y traducirla en sistemas que funcionan. Hoy construimos esa misma disciplina como base de EIA Softworks.</p>
+        <p class="p-lead">Cada proyecto empieza por el mapa del negocio, no por el código. Así diseñamos plataformas que se sostienen, escalan y se integran con lo que ya existe.</p>
+      </div>
+      <div class="split-figure" data-reveal data-reveal-delay="1">
+        <div class="tilt-frame has-tilt">
+          <div class="abstract-visual" style="--m1:oklch(55% 0.19 258 / .5);--m2:oklch(72% 0.14 195 / .35)" aria-hidden="true">
+            <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+              <circle cx="26" cy="28" r="5"></circle>
+              <circle cx="18" cy="62" r="4"></circle>
+              <circle cx="48" cy="16" r="4"></circle>
+              <path d="M26 28 C 55 40, 65 55, 82 78" stroke-dasharray="1 7"></path>
+              <path d="M18 62 C 45 66, 62 72, 82 82" stroke-dasharray="1 7"></path>
+              <path d="M48 16 C 65 30, 75 50, 84 74" stroke-dasharray="1 7"></path>
+              <rect x="96" y="90" width="26" height="26" rx="6"></rect>
+              <rect x="128" y="90" width="26" height="26" rx="6" opacity=".45"></rect>
+              <rect x="96" y="122" width="26" height="26" rx="6" opacity=".45"></rect>
+              <rect x="128" y="122" width="26" height="26" rx="6" opacity=".45"></rect>
+              <circle cx="109" cy="103" r="4" fill="var(--accent-2)" stroke="none"></circle>
+            </svg>
+          </div>
+        </div>
+        <div class="floating-chip floating-chip-corner">
+          <span>Proceso → Producto</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="section" id="servicios" data-screen-label="Servicios">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Servicios</p>
+        <h2 class="h2">Lo que hacemos.</h2>
+      </div>
+      <div class="card-grid" data-services>
+        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(62% 0.2 258);--c2:oklch(70% 0.16 235)" data-reveal>
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18 4 12l5-6M15 6l5 6-5 6"/></svg>
+          </div>
+          <h3>Desarrollo a medida</h3>
+          <p>Software diseñado desde los procesos reales del negocio, no desde plantillas genéricas.</p>
+        </article>
+        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(72% 0.15 195);--c2:oklch(78% 0.12 185)" data-reveal data-reveal-delay="1">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V6l6 3 6-3v12l-6 3-6-3-6 3V6l6-3"/></svg>
+          </div>
+          <h3>Consultoría de procesos</h3>
+          <p>Mapeamos flujos de trabajo y organización interna antes de escribir una sola línea de código.</p>
+        </article>
+        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(64% 0.16 300);--c2:oklch(70% 0.14 285)" data-reveal>
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 8 9-5 9 5-9 5-9-5Zm0 8 9 5 9-5M3 12l9 5 9-5"/></svg>
+          </div>
+          <h3>UX/UI y branding digital</h3>
+          <p>Identidad visual y experiencia de producto coherentes con la estrategia de negocio.</p>
+        </article>
+        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(70% 0.15 165);--c2:oklch(76% 0.13 175)" data-reveal data-reveal-delay="1">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16.5V7.5L12 3 3 7.5v9L12 21l9-4.5ZM3.3 7.3 12 12l8.7-4.7M12 12v9"/></svg>
+          </div>
+          <h3>Arquitectura de plataformas</h3>
+          <p>Sistemas modulares, escalables y preparados para crecer junto con la organización.</p>
+        </article>
+        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(66% 0.2 20);--c2:oklch(70% 0.17 5)" data-reveal>
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 15 15 9M10 5h1a4 4 0 0 1 0 8h-1m4 6h-1a4 4 0 0 1 0-8h1"/></svg>
+          </div>
+          <h3>Integraciones y automatización</h3>
+          <p>Conectamos herramientas y automatizamos procesos operativos para reducir fricción.</p>
+        </article>
+        <article class="glass-card svc-card svc-card-cta has-tilt" style="--c1:oklch(60% 0.22 258);--c2:oklch(64% 0.16 300)" data-reveal data-reveal-delay="1">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </div>
+          <h3>¿Tienes otra necesidad?</h3>
+          <p>Si tu reto no encaja en una casilla, hablémoslo. Diseñamos la solución contigo.</p>
+          <a href="#contacto" class="svc-card-link">Cuéntanos tu caso →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOLUCIONES ============ -->
+  <section class="section" id="soluciones" data-screen-label="Soluciones">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Soluciones</p>
+        <h2 class="h2">Cómo lo entregamos.</h2>
+      </div>
+
+      <div class="solution-row" data-reveal>
+        <div class="solution-text">
+          <p class="tag-label">Plataformas</p>
+          <h3>Plataformas a medida</h3>
+          <p>Sistemas internos y productos digitales construidos alrededor de cómo opera realmente tu equipo.</p>
+        </div>
+        <div class="solution-figure has-tilt">
+          <div class="abstract-visual" style="--m1:oklch(50% 0.16 255 / .5);--m2:oklch(60% 0.1 255 / .3)" aria-hidden="true">
+            <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M40 42 L80 26 L120 42 L80 58 Z"></path>
+              <path d="M40 78 L80 62 L120 78 L80 94 Z" opacity=".7"></path>
+              <path d="M40 114 L80 98 L120 114 L80 130 Z" opacity=".45"></path>
+              <line x1="40" y1="42" x2="40" y2="114" stroke-dasharray="1 6" opacity=".5"></line>
+              <line x1="120" y1="42" x2="120" y2="114" stroke-dasharray="1 6" opacity=".5"></line>
+              <circle cx="80" cy="26" r="3" fill="var(--accent-2)" stroke="none"></circle>
+            </svg>
+          </div>
+          <span class="floating-chip solution-chip">Plataformas</span>
+        </div>
+      </div>
+
+      <div class="solution-row solution-row-rtl" data-reveal>
+        <div class="solution-text">
+          <p class="tag-label">Automatización</p>
+          <h3>Automatización de procesos</h3>
+          <p>Reducimos tareas manuales conectando sistemas y estandarizando flujos operativos.</p>
+        </div>
+        <div class="solution-figure has-tilt">
+          <div class="abstract-visual" style="--m1:oklch(55% 0.1 280 / .5);--m2:oklch(62% 0.14 300 / .3)" aria-hidden="true">
+            <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+              <circle cx="80" cy="34" r="7"></circle>
+              <circle cx="34" cy="118" r="7"></circle>
+              <circle cx="126" cy="118" r="7"></circle>
+              <path d="M74 40 C 50 58, 40 82, 36 108"></path>
+              <path d="M42 122 C 66 132, 94 132, 118 122"></path>
+              <path d="M124 110 C 118 82, 106 58, 86 40"></path>
+              <path d="M84 38 L92 44 L84 48" fill="currentColor" stroke="none"></path>
+            </svg>
+          </div>
+          <span class="floating-chip solution-chip">Automatización</span>
+        </div>
+      </div>
+
+      <div class="solution-row" data-reveal>
+        <div class="solution-text">
+          <p class="tag-label">Transformación</p>
+          <h3>Transformación digital integral</h3>
+          <p>Acompañamos la migración de procesos analógicos hacia una operación digital ordenada.</p>
+        </div>
+        <div class="solution-figure has-tilt">
+          <div class="abstract-visual" style="--m1:oklch(45% 0.05 255 / .55);--m2:oklch(55% 0.16 255 / .3)" aria-hidden="true">
+            <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="28" y="108" width="18" height="30" rx="3" opacity=".4"></rect>
+              <rect x="58" y="90" width="18" height="48" rx="3" opacity=".6"></rect>
+              <rect x="88" y="66" width="18" height="72" rx="3" opacity=".8"></rect>
+              <rect x="118" y="40" width="18" height="98" rx="3"></rect>
+              <path d="M30 96 L60 78 L90 54 L120 30" stroke-dasharray="1 7" opacity=".7"></path>
+              <path d="M108 26 L122 28 L120 42" fill="currentColor" stroke="none"></path>
+            </svg>
+          </div>
+          <span class="floating-chip solution-chip">Transformación</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTORES ============ -->
+  <section class="section" id="sectores" data-screen-label="Sectores">
+    <div class="section-bg-slant section-bg-slant-alt" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Experiencia en sectores</p>
+        <h2 class="h2">Dónde generamos valor.</h2>
+      </div>
+      <div class="sector-grid">
+        <article class="sector-card has-tilt has-halo" data-reveal>
+          <div class="abstract-visual" style="--m1:oklch(60% 0.22 258 / .5);--m2:oklch(50% 0.12 258 / .3)" aria-hidden="true">
+            <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="30" y="30" width="30" height="30" rx="5" opacity=".4"></rect>
+              <rect x="65" y="30" width="30" height="30" rx="5" opacity=".4"></rect>
+              <rect x="100" y="30" width="30" height="30" rx="5" opacity=".4"></rect>
+              <rect x="30" y="65" width="30" height="30" rx="5"></rect>
+              <rect x="65" y="65" width="30" height="30" rx="5" opacity=".4"></rect>
+              <rect x="100" y="65" width="30" height="30" rx="5" opacity=".4"></rect>
+              <rect x="30" y="100" width="30" height="30" rx="5" opacity=".4"></rect>
+              <rect x="65" y="100" width="30" height="30" rx="5" opacity=".4"></rect>
+              <rect x="100" y="100" width="30" height="30" rx="5" opacity=".4"></rect>
+              <circle cx="45" cy="80" r="4" fill="var(--accent)" stroke="none"></circle>
+            </svg>
+          </div>
+          <div class="sector-card-scrim" aria-hidden="true"></div>
+          <div class="sector-card-body">
+            <span class="sector-bars"><i style="background:var(--accent)"></i><i></i><i></i></span>
+            <h3>Retail & E-commerce</h3>
+            <p>Plataformas de venta, inventario y operación conectadas en un solo sistema.</p>
+          </div>
+        </article>
+        <article class="sector-card has-tilt has-halo" data-reveal data-reveal-delay="1">
+          <div class="abstract-visual" style="--m1:oklch(72% 0.14 195 / .45);--m2:oklch(55% 0.1 220 / .3)" aria-hidden="true">
+            <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+              <path d="M20 130 C 50 120, 55 90, 80 80 S 120 55, 140 30" stroke-dasharray="1 8"></path>
+              <circle cx="20" cy="130" r="5"></circle>
+              <circle cx="80" cy="80" r="4" opacity=".7"></circle>
+              <path d="M132 22 L142 30 L130 40"></path>
+            </svg>
+          </div>
+          <div class="sector-card-scrim" aria-hidden="true"></div>
+          <div class="sector-card-body">
+            <span class="sector-bars"><i style="background:var(--accent-2)"></i><i></i><i></i></span>
+            <h3>Logística</h3>
+            <p>Visibilidad y control sobre procesos de movimiento, distribución y cadena de suministro.</p>
+          </div>
+        </article>
+        <article class="sector-card has-tilt has-halo" data-reveal>
+          <div class="abstract-visual" style="--m1:oklch(58% 0.14 258 / .45);--m2:oklch(60% 0.12 300 / .28)" aria-hidden="true">
+            <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="80" y1="24" x2="80" y2="120"></line>
+              <line x1="34" y1="46" x2="126" y2="46"></line>
+              <path d="M34 46 L20 84 A 16 16 0 0 0 48 84 Z" opacity=".6"></path>
+              <path d="M126 46 L112 84 A 16 16 0 0 0 140 84 Z" opacity=".6"></path>
+              <line x1="56" y1="132" x2="104" y2="132"></line>
+              <line x1="80" y1="120" x2="80" y2="132"></line>
+              <circle cx="80" cy="24" r="4" fill="var(--accent-3)" stroke="none"></circle>
+            </svg>
+          </div>
+          <div class="sector-card-scrim" aria-hidden="true"></div>
+          <div class="sector-card-body">
+            <span class="sector-bars"><i style="background:var(--accent-3)"></i><i></i><i></i></span>
+            <h3>Gobierno & Sector público</h3>
+            <p>Sistemas de gestión y atención ciudadana con foco en trazabilidad y claridad.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TECNOLOGIAS ============ -->
+  <section class="section section-tech" id="tecnologias" data-screen-label="Tecnologías">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Tecnologías</p>
+        <h2 class="h2">Con qué construimos.</h2>
+        <p class="p-lead">Un stack moderno y sin relleno. Cada herramienta aparece una sola vez — elegida por una razón concreta, no por moda.</p>
+      </div>
+
+      <div class="tech-stack">
+        <article class="tech-cat" data-reveal>
+          <header class="tech-cat-head"><span class="tech-cat-dot" style="background:var(--accent)"></span>Frontend</header>
+          <div class="tech-tiles">
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/react.svg" alt="React"></span><em>React</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/nextjs.svg" alt="Next.js"></span><em>Next.js</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/typescript.svg" alt="TypeScript"></span><em>TypeScript</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/tailwindcss.svg" alt="TailwindCSS"></span><em>TailwindCSS</em></span>
+          </div>
+        </article>
+
+        <article class="tech-cat" data-reveal data-reveal-delay="1">
+          <header class="tech-cat-head"><span class="tech-cat-dot" style="background:var(--accent-2)"></span>Backend</header>
+          <div class="tech-tiles">
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/nodejs.svg" alt="Node.js"></span><em>Node.js</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/python.svg" alt="Python"></span><em>Python</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/go.svg" alt="Go"></span><em>Go</em></span>
+          </div>
+        </article>
+
+        <article class="tech-cat" data-reveal>
+          <header class="tech-cat-head"><span class="tech-cat-dot" style="background:var(--accent-3)"></span>Cloud &amp; Infra</header>
+          <div class="tech-tiles">
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/aws.svg" alt="AWS"></span><em>AWS</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/docker.svg" alt="Docker"></span><em>Docker</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/kubernetes.svg" alt="Kubernetes"></span><em>Kubernetes</em></span>
+          </div>
+        </article>
+
+        <article class="tech-cat" data-reveal data-reveal-delay="1">
+          <header class="tech-cat-head"><span class="tech-cat-dot" style="background:oklch(66% 0.2 20)"></span>Datos</header>
+          <div class="tech-tiles">
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/postgresql.svg" alt="PostgreSQL"></span><em>PostgreSQL</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/graphql.svg" alt="GraphQL"></span><em>GraphQL</em></span>
+            <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/redis.svg" alt="Redis"></span><em>Redis</em></span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESO ============ -->
+  <section class="section section-proceso" id="proceso" data-screen-label="Proceso">
+    <div class="section-bg-slant" aria-hidden="true"></div>
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Cómo trabajamos</p>
+        <h2 class="h2">Ágil, transparente y predecible.</h2>
+      </div>
+      <ol class="proceso-grid">
+        <li class="proceso-step glass-card has-tilt" data-reveal>
+          <span class="proceso-num">01</span>
+          <h3>Descubrimiento</h3>
+          <p>Entendemos tu negocio, tus procesos y tus objetivos antes de proponer nada técnico.</p>
+        </li>
+        <li class="proceso-step glass-card has-tilt" data-reveal data-reveal-delay="1">
+          <span class="proceso-num">02</span>
+          <h3>Arquitectura</h3>
+          <p>Diseñamos la estructura, el modelo de datos y el plan de entregas por iteraciones.</p>
+        </li>
+        <li class="proceso-step glass-card has-tilt" data-reveal>
+          <span class="proceso-num">03</span>
+          <h3>Desarrollo</h3>
+          <p>Construimos en ciclos cortos, con entregas visibles y comunicación constante.</p>
+        </li>
+        <li class="proceso-step glass-card has-tilt" data-reveal data-reveal-delay="1">
+          <span class="proceso-num">04</span>
+          <h3>Evolución</h3>
+          <p>Medimos, mantenemos y escalamos la plataforma a medida que tu negocio crece.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section-faq" id="faq" data-screen-label="Preguntas frecuentes">
+    <div class="container faq-wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">Preguntas frecuentes</p>
+        <h2 class="h2">Antes de escribirnos.</h2>
+      </div>
+      <div class="faq-list" data-reveal data-reveal-delay="1">
+        <details class="faq-item" open>
+          <summary>¿Cuánto tarda un proyecto de software a medida?<span class="faq-mark" aria-hidden="true"></span></summary>
+          <p>Depende del alcance, pero trabajamos por iteraciones: en pocas semanas ya hay algo funcional que puedes ver y validar, en lugar de esperar meses hasta la entrega final.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Trabajan con empresas fuera de Cartagena?<span class="faq-mark" aria-hidden="true"></span></summary>
+          <p>Sí. Trabajamos en remoto con clientes de toda Colombia y de otros países, con reuniones periódicas y entregas continuas.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Puedo empezar con un alcance pequeño?<span class="faq-mark" aria-hidden="true"></span></summary>
+          <p>Claro. Muchos proyectos arrancan con un módulo o un piloto acotado y crecen desde ahí, una vez validado el valor.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué pasa con el mantenimiento después de la entrega?<span class="faq-mark" aria-hidden="true"></span></summary>
+          <p>Ofrecemos acompañamiento continuo: correcciones, mejoras y evolución del producto. La entrega es un punto de partida, no el final.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿De quién es el código y la propiedad intelectual?<span class="faq-mark" aria-hidden="true"></span></summary>
+          <p>Tuya. El código, los datos y la propiedad intelectual del proyecto son del cliente. Lo dejamos por escrito desde el inicio.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="section" id="contacto" data-screen-label="Contacto">
+    <div class="container split split-contact">
+      <div data-reveal>
+        <p class="eyebrow">Contacto</p>
+        <h2 class="h2">Hablemos de tu próximo proyecto.</h2>
+        <p class="p-lead">Cuéntanos sobre tu negocio y tus procesos. Agendamos una primera conversación sin compromiso.</p>
+        <dl class="contact-list">
+          <div><dt>Correo</dt><dd><a href="mailto:evertmiguel311@gmail.com">evertmiguel311@gmail.com</a></dd></div>
+          <div><dt>Teléfono</dt><dd>+57 318 533 1654</dd></div>
+          <div><dt>Ciudad</dt><dd>Cartagena de Indias, Colombia</dd></div>
+        </dl>
+      </div>
+
+      <div class="contact-card glass-card has-tilt" data-reveal data-reveal-delay="1">
+        <form class="cta-form" data-contact-form novalidate>
+          <div class="field">
+            <label for="f-name">Nombre</label>
+            <input id="f-name" name="name" type="text" required placeholder="Tu nombre">
+          </div>
+          <div class="field">
+            <label for="f-email">Correo</label>
+            <input id="f-email" name="email" type="email" required placeholder="tucorreo@empresa.com">
+          </div>
+          <div class="field">
+            <label for="f-msg">Mensaje</label>
+            <textarea id="f-msg" name="message" required placeholder="Cuéntanos sobre tu proyecto"></textarea>
+          </div>
+          <button type="submit" class="btn btn-solid cta-submit">
+            <span class="cta-form-label">Enviar mensaje</span>
+            <span class="cta-form-spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+        <div class="cta-success" data-contact-success aria-hidden="true">
+          <h3>Mensaje enviado.</h3>
+          <p data-contact-success-msg>Te contactaremos pronto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div>EIA Softworks — Consultoría & Desarrollo de Software</div>
+    <div class="footer-right">
+      <span>Cartagena de Indias, Colombia</span>
+    </div>
+  </div>
+</footer>
+
+<script defer src="lib/gsap.min.js"></script>
+<script defer src="lib/ScrollTrigger.min.js"></script>
+<script defer src="lib/manifest.js"></script>
+<script defer src="main.js?v=20260715b"></script>
+</body>
+</html>
