@@ -124,7 +124,7 @@ Vocabulario de componentes ya establecido en `styles.css` — reutilizar antes d
 |---|---|
 | `.glass-card` | Superficie flotante con glassmorphism + tilt 3D + halo opcional (`.has-tilt`, `.has-halo`) |
 | `.btn` (`.btn-solid` / `.btn-ghost`) | Acción primaria / secundaria |
-| `.tech-tile` | Ficha de una tecnología: logo a color sobre chip blanco + nombre |
+| `.tech-tile` | Logo a color de una tecnología (sin chip ni tarjeta) + nombre, flotando directo sobre el fondo |
 | `.sector-card` | Tarjeta con ilustración de fondo + overlay + contenido |
 | `.abstract-visual` | Ilustración abstracta en SVG (mesh de color + grid de puntos + line-art) — reemplazo permanente de fotografía de stock, ver §17 |
 | `.faq-item` | Acordeón nativo (`<details>`), funciona sin JS |
