@@ -193,7 +193,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 /* =============================================================
    7. Sections / layout
    ============================================================= */
-.section { position: relative; padding: 120px 0; }
+.section { position: relative; padding: 96px 0; }
 .section-head { max-width: 640px; margin-bottom: 48px; }
 .section-bg-slant {
   position: absolute; inset: 0; background: var(--bg-2);
@@ -343,7 +343,6 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 /* =============================================================
    11. Tecnologías — colored logo grid (unique, no repeats)
    ============================================================= */
-.section-tech { padding-bottom: 120px; }
 .tech-stack { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .tech-cat {
   padding: 26px 26px 28px; border-radius: 18px;
@@ -548,7 +547,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 
 @media (max-width: 720px) {
   .container { padding-inline: 20px; }
-  .section { padding: 90px 0; }
+  .section { padding: 72px 0; }
   .hero { padding-top: 120px; }
   .hero-actions { flex-direction: column; width: 100%; }
   .hero-actions .btn { width: 100%; }
