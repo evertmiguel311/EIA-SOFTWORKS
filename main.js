@@ -198,7 +198,8 @@
       payload.append("access_key", WEB3FORMS_ACCESS_KEY);
       payload.append("name", form.elements.name.value);
       payload.append("email", form.elements.email.value);
-      payload.append("subject", form.elements.subject.value);
+      payload.append("phone", form.elements.phone.value || "No proporcionado");
+      payload.append("subject", "SOFTWORKS - " + form.elements.subject.value);
       payload.append("message", form.elements.message.value);
 
       fetch("https://api.web3forms.com/submit", {
