@@ -222,6 +222,13 @@
           form.classList.add("is-sent");
           success.setAttribute("aria-hidden", "false");
           success.classList.add("is-visible");
+
+          setTimeout(function () {
+            success.classList.remove("is-visible");
+            success.setAttribute("aria-hidden", "true");
+            form.classList.remove("is-sent");
+            form.reset();
+          }, 10000);
         })
         .catch(function () {
           form.classList.remove("is-sending");
