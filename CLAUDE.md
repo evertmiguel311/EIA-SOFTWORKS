@@ -40,10 +40,14 @@ El proyecto no pretende demostrar todo lo que sabemos hacer técnicamente. Prete
 | `--accent-3` | `oklch(62% 0.14 300)` | Morado — acento terciario, **muy sutil**, nunca protagonista |
 | `--ink` | `#f5f6f8` | Texto — nunca blanco puro |
 | `--glass` | `rgba(255,255,255,0.04)` | Superficie de tarjetas — glassmorphism ligero |
+| `--surface-light` | `oklch(95% 0.006 258)` | Fondo de sección clara — gris muy claro con temperatura fría, **nunca blanco puro** |
+| `--ink-on-light` | `oklch(20% 0.014 260)` | Texto sobre secciones claras — casi negro, nunca negro puro |
 
 **Tipografía:** Inter (sans, cuerpo y títulos) + JetBrains Mono (solo para kickers, etiquetas técnicas y metadatos — nunca para texto de lectura).
 
 **Regla de acentos:** el morado (`--accent-3`) es siempre un tercer color de apoyo — un ícono, un halo, un detalle — nunca la base de una sección. Si una sección "se ve morada", está mal usado.
+
+> ✅ **Actualizado (2026-07-16):** por decisión explícita del dueño de la marca, el sitio alterna algunas secciones oscuras con secciones **claras** (`--surface-light`) para dar descanso visual y separar bloques de contenido — ver [§12](#12-reglas-ui). Esto reemplaza la regla anterior de "fondo oscuro dominante en toda la navegación". El patrón de alternancia adoptado es: Hero (oscuro) → Sobre mí (oscuro) → Servicios (**claro**) → Soluciones (oscuro) → Sectores (**claro**) → Proceso (oscuro) → FAQ (oscuro) → Tecnologías (oscuro) → Contacto (**claro**) → Footer (oscuro). Las secciones claras nunca usan blanco puro ni negro puro, y los componentes (`.glass-card`, `.sector-card`, formularios) mantienen su contraste re-derivando los mismos tokens de tema (`--ink`, `--line`, `--glass`) localmente — nunca colores sueltos — para no romper §10.
 
 ## 5. Público Objetivo
 
@@ -143,7 +147,8 @@ Antes de inventar un componente nuevo, preguntar: ¿esto ya existe con otro nomb
 
 ## 12. Reglas UI
 
-- Fondo oscuro dominante, acentos de color usados con moderación (ver §4).
+- El sitio alterna secciones oscuras (mayoría) con secciones claras (`--surface-light`) para dar descanso visual — ver el patrón de alternancia en [§4](#4-identidad-visual). Nunca blanco puro ni negro puro en ninguno de los dos modos. Acentos de color usados con moderación en ambos (ver §4).
+- Cada componente (`.glass-card`, `.sector-card`, formularios) debe verse correcto en ambos fondos re-derivando los mismos tokens de tema localmente (`--ink`, `--line`, `--glass`, etc.) — nunca un color hardcodeado que asuma un solo modo.
 - Glassmorphism **ligero**: blur discreto, bordes de 1px casi invisibles, nunca cristal "pesado" que compita con el contenido.
 - Iconografía minimalista: trazo fino, un color o gradiente de dos tonos, nunca ilustraciones complejas.
 - Botones con un único estilo primario y uno secundario — no inventar variantes por sección.

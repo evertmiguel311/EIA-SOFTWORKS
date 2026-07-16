@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/logos/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/logos/apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css?v=20260716h">
+<link rel="stylesheet" href="styles.css?v=20260716l">
 </head>
 <body>
 
@@ -25,13 +25,13 @@
     EIA <span class="nav-brand-sub">SOFTWORKS</span>
   </a>
   <div class="nav-links" data-nav-links>
+    <a href="#sobre-mi" class="nav-link">Sobre mí</a>
     <a href="#servicios" class="nav-link">Servicios</a>
     <a href="#soluciones" class="nav-link">Soluciones</a>
     <a href="#sectores" class="nav-link">Sectores</a>
-    <a href="#tecnologias" class="nav-link">Tecnología</a>
     <a href="#proceso" class="nav-link">Proceso</a>
     <a href="#faq" class="nav-link">FAQ</a>
-    <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+    <a href="#tecnologias" class="nav-link">Tecnología</a>
   </div>
   <div class="nav-actions">
     <a href="#contacto" class="btn btn-solid nav-cta">Agendar reunión</a>
@@ -42,13 +42,13 @@
 </nav>
 
 <div class="nav-mobile" data-nav-mobile aria-hidden="true">
+  <a href="#sobre-mi" class="nav-mobile-link">Sobre mí</a>
   <a href="#servicios" class="nav-mobile-link">Servicios</a>
   <a href="#soluciones" class="nav-mobile-link">Soluciones</a>
   <a href="#sectores" class="nav-mobile-link">Sectores</a>
-  <a href="#tecnologias" class="nav-mobile-link">Tecnología</a>
   <a href="#proceso" class="nav-mobile-link">Proceso</a>
   <a href="#faq" class="nav-mobile-link">FAQ</a>
-  <a href="#sobre-mi" class="nav-mobile-link">Sobre mí</a>
+  <a href="#tecnologias" class="nav-mobile-link">Tecnología</a>
   <a href="#contacto" class="btn btn-solid nav-mobile-cta">Agendar reunión</a>
 </div>
 
@@ -87,22 +87,32 @@
         <li><span class="hero-pill-dot" style="background:var(--accent)"></span>Cartagena, Colombia</li>
       </ul>
     </div>
+
+    <a href="#servicios" class="hero-scroll-cue" aria-label="Desplázate para ver más">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </a>
   </section>
 
   <!-- ============ STACK STRIP (logos a color, únicos) ============ -->
   <section class="stack-strip" aria-label="Tecnologías con las que construimos">
     <div class="container">
       <p class="stack-strip-label" data-reveal>Construimos con un stack moderno y probado en producción</p>
-      <div class="stack-strip-logos" data-reveal data-reveal-delay="1">
+    </div>
+    <div class="stack-marquee-viewport" data-reveal data-reveal-delay="1">
+      <div class="stack-strip-logos" data-marquee>
         <span class="stack-logo" title="React"><img src="assets/logos/react.svg" alt="React"></span>
         <span class="stack-logo" title="Next.js"><img src="assets/logos/nextjs.svg" alt="Next.js"></span>
         <span class="stack-logo" title="TypeScript"><img src="assets/logos/typescript.svg" alt="TypeScript"></span>
         <span class="stack-logo" title="TailwindCSS"><img src="assets/logos/tailwindcss.svg" alt="TailwindCSS"></span>
         <span class="stack-logo" title="Node.js"><img src="assets/logos/nodejs.svg" alt="Node.js"></span>
         <span class="stack-logo" title="Python"><img src="assets/logos/python.svg" alt="Python"></span>
+        <span class="stack-logo" title="Go"><img src="assets/logos/go.svg" alt="Go"></span>
         <span class="stack-logo" title="Docker"><img src="assets/logos/docker.svg" alt="Docker"></span>
+        <span class="stack-logo" title="Kubernetes"><img src="assets/logos/kubernetes.svg" alt="Kubernetes"></span>
         <span class="stack-logo" title="MySQL"><img src="assets/logos/mysql.svg" alt="MySQL"></span>
         <span class="stack-logo" title="PostgreSQL"><img src="assets/logos/postgresql.svg" alt="PostgreSQL"></span>
+        <span class="stack-logo" title="GraphQL"><img src="assets/logos/graphql.svg" alt="GraphQL"></span>
+        <span class="stack-logo" title="Redis"><img src="assets/logos/redis.svg" alt="Redis"></span>
       </div>
     </div>
   </section>
@@ -111,7 +121,7 @@
   <section class="section" id="sobre-mi" data-screen-label="Sobre mí">
     <div class="section-bg-slant" aria-hidden="true"></div>
     <div class="container split">
-      <div class="split-text-col" data-reveal>
+      <div class="split-text-col" data-reveal data-reveal-x="left">
         <p class="eyebrow">Sobre mí</p>
         <h2 class="h2">Detrás de EIA Softworks</h2>
         <blockquote class="about-quote">
@@ -130,7 +140,7 @@
           </ul>
         </div>
       </div>
-      <div class="split-figure" data-reveal data-reveal-delay="1">
+      <div class="split-figure" data-reveal data-reveal-delay="1" data-reveal-x="right">
         <div class="tilt-frame has-tilt about-photo-frame">
           <div class="abstract-visual" style="--m1:oklch(55% 0.19 258 / .5);--m2:oklch(72% 0.14 195 / .35)" aria-hidden="true">
             <svg viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -147,7 +157,7 @@
   </section>
 
   <!-- ============ SERVICIOS ============ -->
-  <section class="section" id="servicios" data-screen-label="Servicios">
+  <section class="section section-light" id="servicios" data-screen-label="Servicios">
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow">Servicios</p>
@@ -156,35 +166,35 @@
       <div class="card-grid" data-services>
         <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(62% 0.2 258);--c2:oklch(70% 0.16 235)" data-reveal>
           <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18 4 12l5-6M15 6l5 6-5 6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
           </div>
           <h3>Desarrollo a medida</h3>
           <p>Software diseñado desde los procesos reales del negocio, no desde plantillas genéricas.</p>
         </article>
         <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(72% 0.15 195);--c2:oklch(78% 0.12 185)" data-reveal data-reveal-delay="1">
           <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 18V6l6 3 6-3v12l-6 3-6-3-6 3V6l6-3"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="3"/><circle cx="18" cy="5" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/></svg>
           </div>
           <h3>Consultoría de procesos</h3>
           <p>Mapeamos flujos de trabajo y organización interna antes de escribir una sola línea de código.</p>
         </article>
         <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(64% 0.16 300);--c2:oklch(70% 0.14 285)" data-reveal>
           <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m3 8 9-5 9 5-9 5-9-5Zm0 8 9 5 9-5M3 12l9 5 9-5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="M22 17.65a1 1 0 0 1-.6.91l-8.6 3.91a2 2 0 0 1-1.65 0L2.6 18.56a1 1 0 0 1-.6-.91"/><path d="M22 12.65a1 1 0 0 1-.6.91l-8.6 3.91a2 2 0 0 1-1.65 0L2.6 13.56a1 1 0 0 1-.6-.91"/></svg>
           </div>
           <h3>UX/UI y branding digital</h3>
           <p>Identidad visual y experiencia de producto coherentes con la estrategia de negocio.</p>
         </article>
         <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(70% 0.15 165);--c2:oklch(76% 0.13 175)" data-reveal data-reveal-delay="1">
           <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 16.5V7.5L12 3 3 7.5v9L12 21l9-4.5ZM3.3 7.3 12 12l8.7-4.7M12 12v9"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
           </div>
           <h3>Arquitectura de plataformas</h3>
           <p>Sistemas modulares, escalables y preparados para crecer junto con la organización.</p>
         </article>
         <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(66% 0.2 20);--c2:oklch(70% 0.17 5)" data-reveal>
           <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 15 15 9M10 5h1a4 4 0 0 1 0 8h-1m4 6h-1a4 4 0 0 1 0-8h1"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
           </div>
           <h3>Integraciones y automatización</h3>
           <p>Conectamos herramientas y automatizamos procesos operativos para reducir fricción.</p>
@@ -202,20 +212,20 @@
   </section>
 
   <!-- ============ SOLUCIONES ============ -->
-  <section class="section" id="soluciones" data-screen-label="Soluciones">
+  <section class="section section-tone-2" id="soluciones" data-screen-label="Soluciones">
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow">Soluciones</p>
         <h2 class="h2">Cómo lo entregamos</h2>
       </div>
 
-      <div class="solution-row" data-reveal>
-        <div class="solution-text">
+      <div class="solution-row">
+        <div class="solution-text" data-reveal data-reveal-x="left">
           <p class="tag-label">Plataformas</p>
           <h3>Plataformas a medida</h3>
           <p>Sistemas internos y productos digitales construidos alrededor de cómo opera realmente tu equipo.</p>
         </div>
-        <div class="solution-figure has-tilt">
+        <div class="solution-figure has-tilt" data-reveal data-reveal-delay="1" data-reveal-x="right">
           <div class="abstract-visual" style="--m1:oklch(50% 0.16 255 / .5);--m2:oklch(60% 0.1 255 / .3)" aria-hidden="true">
             <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <path d="M40 42 L80 26 L120 42 L80 58 Z"></path>
@@ -230,13 +240,13 @@
         </div>
       </div>
 
-      <div class="solution-row solution-row-rtl" data-reveal>
-        <div class="solution-text">
+      <div class="solution-row solution-row-rtl">
+        <div class="solution-text" data-reveal data-reveal-x="right">
           <p class="tag-label">Automatización</p>
           <h3>Automatización de procesos</h3>
           <p>Reducimos tareas manuales conectando sistemas y estandarizando flujos operativos.</p>
         </div>
-        <div class="solution-figure has-tilt">
+        <div class="solution-figure has-tilt" data-reveal data-reveal-delay="1" data-reveal-x="left">
           <div class="abstract-visual" style="--m1:oklch(55% 0.1 280 / .5);--m2:oklch(62% 0.14 300 / .3)" aria-hidden="true">
             <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
               <circle cx="80" cy="34" r="7"></circle>
@@ -252,13 +262,13 @@
         </div>
       </div>
 
-      <div class="solution-row" data-reveal>
-        <div class="solution-text">
+      <div class="solution-row">
+        <div class="solution-text" data-reveal data-reveal-x="left">
           <p class="tag-label">Transformación</p>
           <h3>Transformación digital integral</h3>
           <p>Acompañamos la migración de procesos analógicos hacia una operación digital ordenada.</p>
         </div>
-        <div class="solution-figure has-tilt">
+        <div class="solution-figure has-tilt" data-reveal data-reveal-delay="1" data-reveal-x="right">
           <div class="abstract-visual" style="--m1:oklch(45% 0.05 255 / .55);--m2:oklch(55% 0.16 255 / .3)" aria-hidden="true">
             <svg viewBox="0 0 160 160" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
               <rect x="28" y="108" width="18" height="30" rx="3" opacity=".4"></rect>
@@ -276,8 +286,7 @@
   </section>
 
   <!-- ============ SECTORES ============ -->
-  <section class="section" id="sectores" data-screen-label="Sectores">
-    <div class="section-bg-slant section-bg-slant-alt" aria-hidden="true"></div>
+  <section class="section section-light" id="sectores" data-screen-label="Sectores">
     <div class="container">
       <div class="section-head" data-reveal>
         <p class="eyebrow">Experiencia en sectores</p>
@@ -348,62 +357,68 @@
 
   <!-- ============ PROCESO ============ -->
   <section class="section section-proceso" id="proceso" data-screen-label="Proceso">
-    <div class="section-bg-slant" aria-hidden="true"></div>
+    <div class="section-bg-slant section-bg-slant-deep" aria-hidden="true"></div>
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Cómo trabajamos</p>
+        <p class="eyebrow">Cómo pensamos</p>
         <h2 class="h2">Ágil, transparente y predecible</h2>
+        <p class="p-lead">No se trata solo de escribir código: se trata de entender, acompañar y sostener el resultado en el tiempo.</p>
       </div>
       <ol class="proceso-grid">
         <li class="proceso-step glass-card has-tilt" data-reveal>
           <span class="proceso-num">01</span>
-          <h3>Descubrimiento</h3>
-          <p>Entendemos tu negocio, tus procesos y tus objetivos antes de proponer nada técnico.</p>
+          <h3>Comprendemos el negocio</h3>
+          <p>Entendemos tus objetivos y tu contexto antes de proponer nada técnico.</p>
         </li>
         <li class="proceso-step glass-card has-tilt" data-reveal data-reveal-delay="1">
           <span class="proceso-num">02</span>
-          <h3>Arquitectura</h3>
-          <p>Diseñamos la estructura, el modelo de datos y el plan de entregas por iteraciones.</p>
+          <h3>Analizamos los procesos</h3>
+          <p>Mapeamos cómo opera realmente tu equipo hoy, para diseñar sobre la realidad y no sobre supuestos.</p>
         </li>
         <li class="proceso-step glass-card has-tilt" data-reveal>
           <span class="proceso-num">03</span>
-          <h3>Desarrollo</h3>
-          <p>Construimos en ciclos cortos, con entregas visibles y comunicación constante.</p>
+          <h3>Diseñamos la solución</h3>
+          <p>Definimos arquitectura, modelo de datos y plan de entregas por iteraciones.</p>
         </li>
         <li class="proceso-step glass-card has-tilt" data-reveal data-reveal-delay="1">
           <span class="proceso-num">04</span>
-          <h3>Evolución</h3>
-          <p>Medimos, mantenemos y escalamos la plataforma a medida que tu negocio crece.</p>
+          <h3>Construimos</h3>
+          <p>Ciclos cortos, entregas visibles y comunicación constante durante todo el desarrollo.</p>
+        </li>
+        <li class="proceso-step glass-card has-tilt" data-reveal>
+          <span class="proceso-num">05</span>
+          <h3>Acompañamos la evolución</h3>
+          <p>Damos soporte continuo y hacemos crecer la plataforma junto a tu negocio. Construir es solo el principio.</p>
         </li>
       </ol>
     </div>
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="section section-faq" id="faq" data-screen-label="Preguntas frecuentes">
+  <section class="section section-faq section-tone-2" id="faq" data-screen-label="Preguntas frecuentes">
     <div class="container faq-wrap">
       <div class="section-head" data-reveal>
         <p class="eyebrow">Preguntas frecuentes</p>
         <h2 class="h2">Antes de escribirnos</h2>
       </div>
-      <div class="faq-list" data-reveal data-reveal-delay="1">
-        <details class="faq-item" open>
+      <div class="faq-list">
+        <details class="faq-item" data-reveal open>
           <summary>¿Cuánto tarda un proyecto de software a medida?<span class="faq-mark" aria-hidden="true"></span></summary>
           <p>Depende del alcance, pero trabajamos por iteraciones: en pocas semanas ya hay algo funcional que puedes ver y validar, en lugar de esperar meses hasta la entrega final.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item" data-reveal data-reveal-delay="1">
           <summary>¿Trabajan con empresas fuera de Cartagena?<span class="faq-mark" aria-hidden="true"></span></summary>
           <p>Sí. Trabajamos en remoto con clientes de toda Colombia y de otros países, con reuniones periódicas y entregas continuas.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item" data-reveal data-reveal-delay="2">
           <summary>¿Puedo empezar con un alcance pequeño?<span class="faq-mark" aria-hidden="true"></span></summary>
           <p>Claro. Muchos proyectos arrancan con un módulo o un piloto acotado y crecen desde ahí, una vez validado el valor.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item" data-reveal data-reveal-delay="3">
           <summary>¿Qué pasa con el mantenimiento después de la entrega?<span class="faq-mark" aria-hidden="true"></span></summary>
           <p>Ofrecemos acompañamiento continuo: correcciones, mejoras y evolución del producto. La entrega es un punto de partida, no el final.</p>
         </details>
-        <details class="faq-item">
+        <details class="faq-item" data-reveal data-reveal-delay="3">
           <summary>¿De quién es el código y la propiedad intelectual?<span class="faq-mark" aria-hidden="true"></span></summary>
           <p>Tuya. El código, los datos y la propiedad intelectual del proyecto son del cliente. Lo dejamos por escrito desde el inicio.</p>
         </details>
@@ -420,19 +435,23 @@
         <p class="p-lead">Un respaldo, no el mensaje: cada herramienta aparece una sola vez, elegida por una razón concreta.</p>
       </div>
       <div class="tech-tiles" data-reveal data-reveal-delay="1">
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/react.svg" alt="React"></span><em>React</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/nextjs.svg" alt="Next.js"></span><em>Next.js</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/typescript.svg" alt="TypeScript"></span><em>TypeScript</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/tailwindcss.svg" alt="TailwindCSS"></span><em>TailwindCSS</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/nodejs.svg" alt="Node.js"></span><em>Node.js</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/python.svg" alt="Python"></span><em>Python</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/go.svg" alt="Go"></span><em>Go</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/docker.svg" alt="Docker"></span><em>Docker</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/kubernetes.svg" alt="Kubernetes"></span><em>Kubernetes</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/mysql.svg" alt="MySQL"></span><em>MySQL</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/postgresql.svg" alt="PostgreSQL"></span><em>PostgreSQL</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/graphql.svg" alt="GraphQL"></span><em>GraphQL</em></span>
-        <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/redis.svg" alt="Redis"></span><em>Redis</em></span>
+        <div class="tech-tiles-row">
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/react.svg" alt="React"></span><em>React</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/nextjs.svg" alt="Next.js"></span><em>Next.js</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/typescript.svg" alt="TypeScript"></span><em>TypeScript</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/tailwindcss.svg" alt="TailwindCSS"></span><em>TailwindCSS</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/nodejs.svg" alt="Node.js"></span><em>Node.js</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/python.svg" alt="Python"></span><em>Python</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/go.svg" alt="Go"></span><em>Go</em></span>
+        </div>
+        <div class="tech-tiles-row">
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/docker.svg" alt="Docker"></span><em>Docker</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/kubernetes.svg" alt="Kubernetes"></span><em>Kubernetes</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/mysql.svg" alt="MySQL"></span><em>MySQL</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/postgresql.svg" alt="PostgreSQL"></span><em>PostgreSQL</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/graphql.svg" alt="GraphQL"></span><em>GraphQL</em></span>
+          <span class="tech-tile"><span class="tech-tile-logo"><img src="assets/logos/redis.svg" alt="Redis"></span><em>Redis</em></span>
+        </div>
       </div>
     </div>
   </section>
@@ -445,7 +464,7 @@
   </section>
 
   <!-- ============ CONTACTO ============ -->
-  <section class="section" id="contacto" data-screen-label="Contacto">
+  <section class="section section-light" id="contacto" data-screen-label="Contacto">
     <div class="container split split-contact">
       <div data-reveal>
         <p class="eyebrow">Contacto</p>
@@ -499,12 +518,20 @@
 <footer class="footer">
   <div class="container footer-inner">
     <div class="footer-brand">
-      <img src="assets/logos/eia-mark.webp" alt="" aria-hidden="true" class="footer-mark" width="28" height="28">
+      <img src="assets/logos/eia-mark.webp" alt="" aria-hidden="true" class="footer-mark" width="34" height="34">
       <div>
         <p class="footer-brand-name">EIA Softworks</p>
         <p class="footer-brand-sub">Consultoría &amp; Desarrollo de Software</p>
       </div>
     </div>
+    <nav class="footer-nav" aria-label="Navegación rápida">
+      <a href="#servicios">Servicios</a>
+      <a href="#soluciones">Soluciones</a>
+      <a href="#sectores">Sectores</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
     <div class="footer-right">
       <a href="mailto:evertmiguel311@gmail.com">evertmiguel311@gmail.com</a>
       <span>Cartagena de Indias, Colombia</span>
@@ -515,9 +542,72 @@
   </div>
 </footer>
 
+<div class="fab" data-fab hidden>
+  <div class="fab-panel" id="fab-panel" data-fab-panel aria-hidden="true">
+    <p class="fab-panel-title" id="fab-panel-title">¿Cómo prefieres hablar con nosotros?</p>
+    <button type="button" class="fab-option" data-fab-close data-open-modal>
+      <span class="fab-option-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+      </span>
+      <span>Agendar una reunión</span>
+    </button>
+    <a href="https://wa.me/573185331654?text=Hola%2C%20quiero%20conocer%20c%C3%B3mo%20EIA%20Softworks%20podr%C3%ADa%20ayudarme%20con%20un%20proyecto." target="_blank" rel="noopener" class="fab-option" data-fab-close>
+      <span class="fab-option-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+      </span>
+      <span>Escribir por WhatsApp</span>
+    </a>
+  </div>
+  <button type="button" class="fab-button" data-fab-toggle aria-expanded="false" aria-controls="fab-panel" aria-label="Abrir opciones de contacto">
+    <svg class="fab-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+    <svg class="fab-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+  </button>
+</div>
+
+<div class="modal" data-modal aria-hidden="true">
+  <div class="modal-backdrop" data-modal-close aria-hidden="true"></div>
+  <div class="modal-panel glass-card contact-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button type="button" class="modal-close" data-modal-close aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <p class="eyebrow">Agenda una reunión</p>
+    <h3 id="modal-title" class="modal-title">Cuéntanos brevemente sobre tu proyecto</h3>
+    <p class="modal-lead">Te contactaremos para coordinar el mejor horario.</p>
+
+    <form class="cta-form" data-contact-form novalidate>
+      <input type="hidden" name="subject" value="Solicitud de reunión">
+      <div class="field">
+        <label for="m-name">Nombre</label>
+        <input id="m-name" name="name" type="text" required placeholder="Tu nombre">
+      </div>
+      <div class="field">
+        <label for="m-email">Correo</label>
+        <input id="m-email" name="email" type="email" required placeholder="tucorreo@empresa.com">
+      </div>
+      <div class="field">
+        <label for="m-phone">Teléfono <span class="field-optional">(opcional)</span></label>
+        <input id="m-phone" name="phone" type="tel" placeholder="+57 300 123 4567">
+      </div>
+      <div class="field">
+        <label for="m-msg">Mensaje</label>
+        <textarea id="m-msg" name="message" required placeholder="Cuéntanos brevemente sobre tu proyecto"></textarea>
+      </div>
+      <button type="submit" class="btn btn-solid cta-submit">
+        <span class="cta-form-label">Solicitar reunión</span>
+        <span class="cta-form-spinner" aria-hidden="true"></span>
+      </button>
+      <p class="cta-form-error" data-contact-error role="alert" hidden>No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos a evertmiguel311@gmail.com.</p>
+    </form>
+    <div class="cta-success" data-contact-success aria-hidden="true">
+      <h3>Solicitud enviada.</h3>
+      <p data-contact-success-msg>Te contactaremos pronto para coordinar el horario.</p>
+    </div>
+  </div>
+</div>
+
 <script defer src="lib/gsap.min.js"></script>
 <script defer src="lib/ScrollTrigger.min.js"></script>
 <script defer src="lib/manifest.js"></script>
-<script defer src="main.js?v=20260716c"></script>
+<script defer src="main.js?v=20260716e"></script>
 </body>
 </html>
