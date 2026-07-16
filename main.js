@@ -171,13 +171,16 @@
     });
   }
 
-  /* ---------- Contact form: realistic simulated submit ---------- */
+  /* ---------- Contact form: real submit via Web3Forms ---------- */
+  var WEB3FORMS_ACCESS_KEY = "85cac155-12df-4d61-abc7-de891546c128";
+
   function initContactForm() {
     var form = $("[data-contact-form]");
     var success = $("[data-contact-success]");
     if (!form || !success) return;
     var submitBtn = form.querySelector('[type="submit"]');
     var msg = $("[data-contact-success-msg]");
+    var errorEl = $("[data-contact-error]", form);
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -186,20 +189,44 @@
 
       form.classList.add("is-sending");
       if (submitBtn) submitBtn.disabled = true;
+      if (errorEl) errorEl.hidden = true;
 
-      setTimeout(function () {
-        var nameField = form.elements.name;
-        var firstName = nameField && nameField.value ? nameField.value.trim().split(/\s+/)[0] : "";
-        if (msg) {
-          msg.textContent = firstName
-            ? firstName + ", hemos recibido tu mensaje. Te escribimos en breve."
-            : "Hemos recibido tu mensaje. Te escribimos en breve.";
-        }
-        form.classList.remove("is-sending");
-        form.classList.add("is-sent");
-        success.setAttribute("aria-hidden", "false");
-        success.classList.add("is-visible");
-      }, 800 + Math.random() * 500);
+      var nameField = form.elements.name;
+      var firstName = nameField && nameField.value ? nameField.value.trim().split(/\s+/)[0] : "";
+
+      var payload = new FormData();
+      payload.append("access_key", WEB3FORMS_ACCESS_KEY);
+      payload.append("name", form.elements.name.value);
+      payload.append("email", form.elements.email.value);
+      payload.append("subject", form.elements.subject.value);
+      payload.append("message", form.elements.message.value);
+
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: payload
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          form.classList.remove("is-sending");
+          if (submitBtn) submitBtn.disabled = false;
+
+          if (!data.success) throw new Error(data.message || "submit failed");
+
+          if (msg) {
+            msg.textContent = firstName
+              ? firstName + ", hemos recibido tu mensaje. Te escribimos en breve."
+              : "Hemos recibido tu mensaje. Te escribimos en breve.";
+          }
+          form.classList.add("is-sent");
+          success.setAttribute("aria-hidden", "false");
+          success.classList.add("is-visible");
+        })
+        .catch(function () {
+          form.classList.remove("is-sending");
+          if (submitBtn) submitBtn.disabled = false;
+          if (errorEl) errorEl.hidden = false;
+        });
     });
   }
 

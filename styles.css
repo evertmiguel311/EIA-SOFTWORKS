@@ -493,6 +493,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 .cta-form.is-sent { display: none; }
+.cta-form-error { font-size: 13px; color: oklch(66% 0.2 20); margin: 0; }
 
 .cta-success { display: none; flex-direction: column; gap: 8px; }
 .cta-success.is-visible { display: flex; }
