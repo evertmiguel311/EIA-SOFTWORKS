@@ -61,7 +61,7 @@
       menu.setAttribute("aria-hidden", open ? "false" : "true");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    $$("a", menu).forEach(function (a) { a.addEventListener("click", close); });
+    $$("a, button", menu).forEach(function (a) { a.addEventListener("click", close); });
   }
 
   /* ---------- Smooth anchor scroll (native) ---------- */
@@ -74,7 +74,7 @@
       var el = document.querySelector(id);
       if (!el) return;
       e.preventDefault();
-      var navOffset = 80;
+      var navOffset = 88;
       window.scrollTo({
         top: el.getBoundingClientRect().top + scrollY - navOffset,
         behavior: reducedMotion ? "auto" : "smooth"
@@ -206,7 +206,7 @@
   }
 
   /* ---------- Contact form: real submit via Web3Forms ---------- */
-  var WEB3FORMS_ACCESS_KEY = "85cac155-12df-4d61-abc7-de891546c128";
+  var WEB3FORMS_ACCESS_KEY = "b3807a32-57ad-4b65-b4ee-c1ee74117ce5";
 
   function initContactForm() {
     $$("[data-contact-form]").forEach(wireContactForm);
