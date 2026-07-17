@@ -98,6 +98,8 @@ El sitio es **HTML + CSS + JavaScript vanilla, sin build step** (sin npm, sin fr
 
 Ver [§18 Futuras Etapas](#18-futuras-etapas) para cuándo y por qué esto cambiará.
 
+> ✅ **Actualizado (2026-07-17):** el despliegue **actual** del sitio es **GitHub Pages** (`https://evertmiguel311.github.io/EIA-SOFTWORKS/`, rama `master`, sin workflow de CI/CD), no Hostinger todavía — Hostinger sigue siendo el destino planeado (por eso existe `.htaccess`), pero mientras el sitio viva en GitHub Pages ese archivo **no tiene ningún efecto**: GitHub Pages sirve HTML/CSS/JS a través de su propio CDN (Fastly) con `Cache-Control: max-age=600` fijo, ignorando por completo `.htaccess`. Esto importa para dos cosas: (1) no asumir que un `git push` publica al instante — Pages tarda en reconstruir y el CDN puede tardar hasta ~10 min en servir la versión nueva a todos los visitantes; (2) el cache-busting manual de `?v=` (ver arriba) sigue siendo necesario para CSS/JS bajo Pages, pero el HTML no tiene forma de cache-bustearse a sí mismo — así que un push reciente puede tardar unos minutos en verse para todos.
+
 ## 9. Organización del Código
 
 ```
@@ -108,7 +110,7 @@ lib/
   manifest.js            ← datos de marca: window.__BRAND__ (servicios, soluciones, sectores, stack)
   gsap.min.js / ScrollTrigger.min.js  ← únicas libs externas, vendorizadas localmente
 assets/
-  img/                   ← reservado para fotografía de contenido futura (.webp), vacío por ahora — ver §17
+  img/                   ← fotografía de contenido real (.webp) — hoy solo evert-portrait.webp (retrato de Sobre mí), ver §17
   logos/                 ← logo de marca (eia-mark.webp, favicons) + logos de tecnologías (SVG a color, sobre chip blanco)
 tools/
   webp_convert.py         ← script de conversión a .webp, no se despliega
@@ -135,6 +137,10 @@ Vocabulario de componentes ya establecido en `styles.css` — reutilizar antes d
 | `.abstract-visual` | Ilustración abstracta en SVG (mesh de color + grid de puntos + line-art) — reemplazo permanente de fotografía de stock, ver §17 |
 | `.faq-item` | Acordeón nativo (`<details>`), funciona sin JS |
 | `[data-reveal]` | Reveal on scroll — nunca ocultar contenido crítico detrás de esto sin fallback |
+| `.about-portrait` | Retrato circular con anillo en gradiente de marca (`--accent-3/--accent/--accent-2`) y relleno negro detrás — único uso de fotografía real de contenido (ver §17) |
+| `.contact-icon` / `.footer-icon` | Ícono minimalista (mono color, trazo fino) junto a un dato de contacto (correo, teléfono, ciudad) — mismo tratamiento visual en la sección Contacto y en el footer |
+| `.footer-social-link` | Ícono circular de red social en el footer — reutilizar antes de crear otro estilo de ícono social |
+| `[data-open-modal]` | Cualquier `<button>` (nunca `<a>`, para no pisarse con el scroll-to-anchor de `initSmoothAnchors`) que abre el modal de agenda (`[data-modal]`). Patrón establecido: todo CTA de "reunión" (nav, hero, footer, tarjetas de servicio) abre este modal en vez de saltar a `#contacto` — ver nota en §19. |
 
 Antes de inventar un componente nuevo, preguntar: ¿esto ya existe con otro nombre? ¿Puede resolverse variando una custom property de uno existente?
 
@@ -155,6 +161,8 @@ Antes de inventar un componente nuevo, preguntar: ¿esto ya existe con otro nomb
 - Iconografía minimalista: trazo fino, un color o gradiente de dos tonos, nunca ilustraciones complejas.
 - Botones con un único estilo primario y uno secundario — no inventar variantes por sección.
 - Bordes redondeados moderados (14–20px), consistentes entre componentes.
+
+> ✅ **Actualizado (2026-07-17):** el nav (`.nav`) pasó de "transparente arriba, glass solo al hacer scroll" a **pill flotante con glass permanente**: separado del borde superior e inferior, esquinas totalmente redondeadas (`border-radius: 999px`), visible desde el primer frame en vez de aparecer tras 60px de scroll. `.is-scrolled` ya no controla el fondo (siempre está presente) — solo intensifica opacidad/sombra al hacer scroll.
 
 ## 13. Reglas de Animaciones
 
@@ -213,6 +221,10 @@ Si no cumple una de esas tres, se elimina. Nunca debe **distraer**.
 Si en algún momento no hay un dato, cliente o cifra real que mostrar, **la sección se omite** — nunca se rellena con algo inventado "porque se ve mejor con números".
 
 > ✅ **Resuelto (2026-07-15):** el sitio usaba fotografía de stock (Openverse, CC) en Hero, Quiénes Somos, Soluciones y Sectores, incluida una foto de un brazo robótico industrial en "Automatización de procesos" — un conflicto directo con esta sección. Se reemplazó toda esa fotografía por ilustraciones abstractas propias en SVG (componente `.abstract-visual`, ver [§10](#10-componentes)), construidas solo con los tokens de color de marca y motivos geométricos sin fotografía ni iconografía de robots. `assets/img/`, `assets/photos/`, `assets/credits.json` y `creditos.html` se eliminaron por quedar sin uso.
+>
+> ✅ **Actualizado (2026-07-17):** `assets/img/` dejó de estar vacío — se agregó `evert-portrait.webp`, un retrato **real** del dueño de la marca (no stock) en la sección Sobre mí, componente `.about-portrait` (ver [§10](#10-componentes)). No contradice la nota anterior: sigue sin haber fotografía de stock ni de terceros, solo una foto real y verificable del propio fundador — coherente con §16.
+>
+> ✅ **Actualizado (2026-07-17):** el footer agregó íconos de LinkedIn/GitHub/Instagram (componente `.footer-social-link`, ver [§10](#10-componentes)) que **todavía no enlazan a ningún perfil real** — son `<span>` decorativos, no `<a href>`, a propósito, para no simular un enlace roto o falso. Confirmado explícitamente por el dueño de la marca. Cuando existan los perfiles reales, cambiar a `<a href>` con la URL real — hasta entonces, no agregar `href="#"` ni ningún destino inventado.
 
 ## 18. Futuras Etapas
 
@@ -242,3 +254,4 @@ Instrucciones para quien (persona o Claude) trabaje en este repositorio:
 6. **Respeta la arquitectura vanilla (§8)** hasta que exista una razón funcional real para migrar — no introduzcas build steps, frameworks o dependencias "por si acaso".
 7. **Todo cambio de imagen/color/animación se valida contra §4, §11, §12 y §13** antes de darse por terminado.
 8. Si un pedido del usuario entra en conflicto con este documento, dilo explícitamente y pregunta antes de proceder — este documento representa una decisión deliberada de marca, no una preferencia estética de momento.
+9. **Todo CTA nuevo relacionado con "agendar/reunión"** debe abrir el modal de agenda (`[data-open-modal]`, ver §10) en vez de enlazar a `#contacto` — es el patrón ya establecido en nav, hero, tarjetas de servicio y footer. Usar siempre `<button type="button" data-open-modal>`, nunca `<a href="#...">`, para no pisarse con el scroll-to-anchor de `initSmoothAnchors` en `main.js`.
