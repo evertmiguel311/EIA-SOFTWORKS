@@ -16,6 +16,7 @@
   --line-soft: rgba(255,255,255,0.06);
   --glass:     rgba(255,255,255,0.04);
   --glass-strong: rgba(255,255,255,0.065);
+  --danger:    oklch(66% 0.2 20);
 
   /* Secciones claras — nunca blanco puro, ver CLAUDE.md §4/§12 */
   --surface-light:   oklch(89% 0.014 258);
@@ -277,7 +278,10 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .section-light .field textarea { background: rgba(10,14,26,0.03); }
 .section-light .field input:focus,
 .section-light .field textarea:focus { background: rgba(10,14,26,0.05); }
-.section-light .cta-form-error { color: oklch(48% 0.2 20); }
+.section-light .cta-form-error,
+.section-light .required-mark { color: oklch(48% 0.2 20); }
+.section-light .link-inline { color: var(--accent-2-on-light); }
+.section-light .link-inline:hover { color: var(--accent-on-light); }
 
 .split { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 .split-contact { align-items: start; }
@@ -557,7 +561,22 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .field input:focus, .field textarea:focus { border-color: var(--accent-2); background: rgba(255,255,255,0.06); }
 .field textarea { min-height: 96px; resize: vertical; }
 
+.required-mark { color: var(--danger); }
+
+.field-consent { margin-top: 6px; }
+.consent-row { display: flex; align-items: flex-start; gap: 10px; }
+.consent-row input[type="checkbox"] {
+  width: 17px; height: 17px; margin-top: 3px; flex: none; accent-color: var(--accent);
+}
+.consent-row label { font-size: 13px; color: var(--ink-mute); line-height: 1.5; }
+.link-inline {
+  background: none; border: none; padding: 0; margin: 0; font: inherit;
+  color: var(--accent-2); text-decoration: underline; text-underline-offset: 2px; cursor: pointer;
+}
+.link-inline:hover { color: var(--accent); }
+
 .cta-submit { position: relative; margin-top: 4px; }
+.btn:disabled { opacity: .45; cursor: not-allowed; pointer-events: none; }
 .cta-form.is-sending .cta-form-label { opacity: 0; }
 .cta-form-spinner { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; }
 .cta-form.is-sending .cta-form-spinner { display: flex; }
@@ -567,7 +586,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 .cta-form.is-sent { display: none; }
-.cta-form-error { font-size: 13px; color: oklch(66% 0.2 20); margin: 0; }
+.cta-form-error { font-size: 13px; color: var(--danger); margin: 0; }
 
 .cta-success { display: none; flex-direction: column; gap: 8px; }
 .cta-success.is-visible { display: flex; }
@@ -731,7 +750,12 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
   position: relative; z-index: 1; width: 100%; max-width: 440px; max-height: 88vh; overflow-y: auto;
   opacity: 0; transform: translateY(18px) scale(.98);
   transition: opacity .3s var(--ease-out), transform .35s var(--ease-out);
+  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.16) transparent;
 }
+.modal-panel::-webkit-scrollbar { width: 7px; }
+.modal-panel::-webkit-scrollbar-track { background: transparent; }
+.modal-panel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.16); border-radius: 999px; }
+.modal-panel::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.26); }
 .modal.is-open .modal-panel { opacity: 1; transform: none; transition-delay: .05s; }
 .modal-close {
   position: absolute; top: 16px; right: 16px; width: 32px; height: 32px; border-radius: 8px; flex: none;
@@ -743,6 +767,19 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
 .modal-title { font-size: 22px; margin-top: 14px; letter-spacing: -.3px; }
 .modal-lead { font-size: 14px; color: var(--ink-mute); margin-top: 8px; }
 .modal-panel .cta-form { margin-top: 24px; }
+
+/* Modal de política — se abre encima del modal de agenda, panel más ancho para lectura */
+[data-modal="policy"] { z-index: 310; }
+.modal-panel-wide { max-width: 640px; max-height: 92vh; }
+.policy-body { margin-top: 16px; padding-right: 4px; }
+.policy-body h4 { font-size: 13.5px; margin-top: 14px; letter-spacing: -.1px; }
+.policy-body h4:first-child { margin-top: 0; }
+.policy-body p { font-size: 13px; line-height: 1.55; color: var(--ink-mute); margin-top: 5px; }
+.policy-body ul { margin: 5px 0 0; padding-left: 18px; }
+.policy-body li { font-size: 13px; line-height: 1.55; color: var(--ink-mute); }
+.policy-body a { color: var(--accent-2); text-decoration: underline; text-underline-offset: 2px; }
+.policy-body a:hover { color: var(--accent); }
+.policy-actions { display: flex; justify-content: flex-end; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
 
 /* =============================================================
    15. Responsive (mobile-first breakpoints)

@@ -11,7 +11,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/logos/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/logos/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/logos/apple-touch-icon.png">
-<link rel="stylesheet" href="styles.css?v=20260717j">
+<link rel="stylesheet" href="styles.css?v=20260718a">
 </head>
 <body>
 
@@ -374,26 +374,36 @@
       <div class="contact-card glass-card has-tilt" data-reveal data-reveal-delay="1">
         <form class="cta-form" data-contact-form novalidate>
           <div class="field">
-            <label for="f-name">Nombre</label>
+            <label for="f-name"><span class="required-mark" aria-hidden="true">*</span> Nombre completo</label>
             <input id="f-name" name="name" type="text" required placeholder="Tu nombre">
           </div>
           <div class="field">
-            <label for="f-email">Correo</label>
+            <label for="f-email"><span class="required-mark" aria-hidden="true">*</span> Correo</label>
             <input id="f-email" name="email" type="email" required placeholder="tucorreo@empresa.com">
           </div>
           <div class="field">
-            <label for="f-phone">Teléfono <span class="field-optional">(opcional)</span></label>
-            <input id="f-phone" name="phone" type="tel" placeholder="+57 300 123 4567">
+            <label for="f-phone"><span class="required-mark" aria-hidden="true">*</span> Teléfono</label>
+            <input id="f-phone" name="phone" type="tel" required placeholder="+57 300 123 4567">
           </div>
           <div class="field">
-            <label for="f-subject">Asunto</label>
+            <label for="f-company">Empresa <span class="field-optional">(opcional)</span></label>
+            <input id="f-company" name="company" type="text" placeholder="Nombre de tu empresa">
+          </div>
+          <div class="field">
+            <label for="f-subject"><span class="required-mark" aria-hidden="true">*</span> Asunto</label>
             <input id="f-subject" name="subject" type="text" required placeholder="¿En qué podemos ayudarte?">
           </div>
           <div class="field">
-            <label for="f-msg">Mensaje</label>
-            <textarea id="f-msg" name="message" required placeholder="Cuéntanos sobre tu proyecto"></textarea>
+            <label for="f-msg"><span class="required-mark" aria-hidden="true">*</span> Mensaje</label>
+            <textarea id="f-msg" name="message" required placeholder="Cuéntanos brevemente qué necesitas y nos pondremos en contacto contigo para explorar la mejor solución para tu organización."></textarea>
           </div>
-          <button type="submit" class="btn btn-solid cta-submit">
+          <div class="field field-consent">
+            <div class="consent-row">
+              <input id="f-consent" name="consent" type="checkbox" required>
+              <label for="f-consent">He leído y acepto la <button type="button" class="link-inline" data-open-modal="policy">Política de Tratamiento de Datos Personales</button> y autorizo a EIA Softworks para tratar mis datos personales conforme a la Ley 1581 de 2012, el Decreto 1074 de 2015 y demás normas aplicables en Colombia.</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-solid cta-submit" disabled>
             <span class="cta-form-label">Enviar mensaje</span>
             <span class="cta-form-spinner" aria-hidden="true"></span>
           </button>
@@ -480,7 +490,7 @@
   </button>
 </div>
 
-<div class="modal" data-modal aria-hidden="true">
+<div class="modal" data-modal="agenda" aria-hidden="true">
   <div class="modal-backdrop" data-modal-close aria-hidden="true"></div>
   <div class="modal-panel glass-card contact-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
     <button type="button" class="modal-close" data-modal-close aria-label="Cerrar">
@@ -493,22 +503,32 @@
     <form class="cta-form" data-contact-form novalidate>
       <input type="hidden" name="subject" value="Solicitud de reunión">
       <div class="field">
-        <label for="m-name">Nombre</label>
+        <label for="m-name"><span class="required-mark" aria-hidden="true">*</span> Nombre completo</label>
         <input id="m-name" name="name" type="text" required placeholder="Tu nombre">
       </div>
       <div class="field">
-        <label for="m-email">Correo</label>
+        <label for="m-email"><span class="required-mark" aria-hidden="true">*</span> Correo</label>
         <input id="m-email" name="email" type="email" required placeholder="tucorreo@empresa.com">
       </div>
       <div class="field">
-        <label for="m-phone">Teléfono <span class="field-optional">(opcional)</span></label>
-        <input id="m-phone" name="phone" type="tel" placeholder="+57 300 123 4567">
+        <label for="m-phone"><span class="required-mark" aria-hidden="true">*</span> Teléfono</label>
+        <input id="m-phone" name="phone" type="tel" required placeholder="+57 300 123 4567">
       </div>
       <div class="field">
-        <label for="m-msg">Mensaje</label>
-        <textarea id="m-msg" name="message" required placeholder="Cuéntanos brevemente sobre tu proyecto"></textarea>
+        <label for="m-company">Empresa <span class="field-optional">(opcional)</span></label>
+        <input id="m-company" name="company" type="text" placeholder="Nombre de tu empresa">
       </div>
-      <button type="submit" class="btn btn-solid cta-submit">
+      <div class="field">
+        <label for="m-msg"><span class="required-mark" aria-hidden="true">*</span> Mensaje</label>
+        <textarea id="m-msg" name="message" required placeholder="Cuéntanos brevemente qué necesitas y nos pondremos en contacto contigo para explorar la mejor solución para tu organización."></textarea>
+      </div>
+      <div class="field field-consent">
+        <div class="consent-row">
+          <input id="m-consent" name="consent" type="checkbox" required>
+          <label for="m-consent">He leído y acepto la <button type="button" class="link-inline" data-open-modal="policy">Política de Tratamiento de Datos Personales</button> y autorizo a EIA Softworks para tratar mis datos personales conforme a la Ley 1581 de 2012, el Decreto 1074 de 2015 y demás normas aplicables en Colombia.</label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-solid cta-submit" disabled>
         <span class="cta-form-label">Solicitar reunión</span>
         <span class="cta-form-spinner" aria-hidden="true"></span>
       </button>
@@ -521,9 +541,81 @@
   </div>
 </div>
 
+<div class="modal" data-modal="policy" aria-hidden="true">
+  <div class="modal-backdrop" data-modal-close aria-hidden="true"></div>
+  <div class="modal-panel modal-panel-wide glass-card policy-panel" role="dialog" aria-modal="true" aria-labelledby="policy-modal-title">
+    <button type="button" class="modal-close" data-modal-close aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+    <h3 id="policy-modal-title" class="modal-title">Política de Tratamiento de Datos Personales</h3>
+    <p class="modal-lead">Última actualización: Julio de 2026</p>
+    <div class="policy-body">
+      <h4>1. Responsable del tratamiento</h4>
+      <p>EIA Softworks es responsable del tratamiento de los datos personales suministrados por los usuarios a través de este sitio web.</p>
+      <p>El tratamiento de la información se realizará de conformidad con lo dispuesto en la Ley 1581 de 2012, el Decreto 1074 de 2015 y las demás normas que regulan la protección de datos personales en Colombia.</p>
+
+      <h4>2. Información que recopilamos</h4>
+      <p>Podemos recopilar la siguiente información cuando el usuario diligencia nuestros formularios de contacto o solicita información sobre nuestros servicios:</p>
+      <ul>
+        <li>Nombre completo</li>
+        <li>Correo electrónico</li>
+        <li>Número de teléfono</li>
+        <li>Empresa (opcional)</li>
+        <li>Información suministrada en el mensaje o descripción del proyecto</li>
+      </ul>
+      <p>Solo solicitamos la información estrictamente necesaria para atender cada solicitud.</p>
+
+      <h4>3. Finalidad del tratamiento</h4>
+      <p>Los datos personales serán utilizados exclusivamente para:</p>
+      <ul>
+        <li>Atender solicitudes de información.</li>
+        <li>Responder consultas realizadas a través del sitio web.</li>
+        <li>Agendar reuniones o demostraciones.</li>
+        <li>Elaborar propuestas comerciales cuando sean solicitadas.</li>
+        <li>Mantener comunicación relacionada con los servicios ofrecidos por EIA Softworks.</li>
+        <li>Realizar seguimiento a solicitudes previamente realizadas por el usuario.</li>
+      </ul>
+      <p>En ningún caso la información será utilizada para fines diferentes sin la autorización del titular.</p>
+
+      <h4>4. Protección de la información</h4>
+      <p>EIA Softworks adopta medidas técnicas, administrativas y organizacionales razonables para proteger la información suministrada, procurando evitar su pérdida, alteración, acceso no autorizado, uso indebido o divulgación.</p>
+      <p>Si bien ningún sistema es completamente infalible, trabajamos bajo buenas prácticas de seguridad para proteger la información de nuestros usuarios.</p>
+
+      <h4>5. Compartir información</h4>
+      <p>EIA Softworks no vende, comercializa ni cede datos personales a terceros.</p>
+      <p>La información únicamente podrá ser compartida cuando:</p>
+      <ul>
+        <li>Exista autorización expresa del titular.</li>
+        <li>Sea necesario para la prestación del servicio solicitado.</li>
+        <li>Exista obligación legal o requerimiento de una autoridad competente.</li>
+      </ul>
+
+      <h4>6. Derechos del titular</h4>
+      <p>De acuerdo con la Ley 1581 de 2012, el titular de los datos personales podrá en cualquier momento:</p>
+      <ul>
+        <li>Conocer los datos personales que reposan en nuestras bases de datos.</li>
+        <li>Solicitar la actualización o corrección de la información.</li>
+        <li>Solicitar la supresión de sus datos cuando sea procedente.</li>
+        <li>Revocar la autorización otorgada para el tratamiento de sus datos.</li>
+        <li>Presentar consultas o reclamos relacionados con el tratamiento de su información.</li>
+      </ul>
+
+      <h4>7. Autorización</h4>
+      <p>Al enviar el formulario de contacto y aceptar la presente política, el usuario autoriza de manera previa, expresa e informada a EIA Softworks para realizar el tratamiento de sus datos personales conforme a las finalidades aquí descritas y de acuerdo con la legislación colombiana vigente.</p>
+
+      <h4>8. Contacto</h4>
+      <p>Para ejercer sus derechos, realizar consultas o presentar solicitudes relacionadas con el tratamiento de datos personales, puede comunicarse a través de:</p>
+      <p>Correo electrónico: <a href="mailto:eiasoftworks@gmail.com">eiasoftworks@gmail.com</a></p>
+    </div>
+    <div class="policy-actions">
+      <button type="button" class="btn btn-ghost" data-modal-close>Cerrar y continuar</button>
+    </div>
+  </div>
+</div>
+
 <script defer src="lib/gsap.min.js"></script>
 <script defer src="lib/ScrollTrigger.min.js"></script>
 <script defer src="lib/manifest.js"></script>
-<script defer src="main.js?v=20260717d"></script>
+<script defer src="main.js?v=20260718a"></script>
 </body>
 </html>

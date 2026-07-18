@@ -220,6 +220,13 @@
     var msg = scope.querySelector("[data-contact-success-msg]");
     var errorEl = form.querySelector("[data-contact-error]");
 
+    function updateSubmitState() {
+      if (submitBtn) submitBtn.disabled = !form.checkValidity();
+    }
+    form.addEventListener("input", updateSubmitState);
+    form.addEventListener("change", updateSubmitState);
+    updateSubmitState();
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (form.classList.contains("is-sending")) return;
@@ -236,7 +243,8 @@
       payload.append("access_key", WEB3FORMS_ACCESS_KEY);
       payload.append("name", form.elements.name.value);
       payload.append("email", form.elements.email.value);
-      payload.append("phone", form.elements.phone.value || "No proporcionado");
+      payload.append("phone", form.elements.phone.value);
+      payload.append("company", form.elements.company.value || "No proporcionado");
       payload.append("subject", "SOFTWORKS - " + form.elements.subject.value);
       payload.append("message", form.elements.message.value);
 
@@ -248,7 +256,7 @@
         .then(function (res) { return res.json(); })
         .then(function (data) {
           form.classList.remove("is-sending");
-          if (submitBtn) submitBtn.disabled = false;
+          updateSubmitState();
 
           if (!data.success) throw new Error(data.message || "submit failed");
 
@@ -266,11 +274,12 @@
             success.setAttribute("aria-hidden", "true");
             form.classList.remove("is-sent");
             form.reset();
+            updateSubmitState();
           }, 10000);
         })
         .catch(function () {
           form.classList.remove("is-sending");
-          if (submitBtn) submitBtn.disabled = false;
+          updateSubmitState();
           if (errorEl) errorEl.hidden = false;
         });
     });
@@ -317,32 +326,57 @@
     $$("[data-fab-close]", panel).forEach(function (a) { a.addEventListener("click", close); });
   }
 
-  /* ---------- Modal de agenda (abierto desde el FAB) ---------- */
-  function initModal() {
-    var modal = $("[data-modal]");
-    var openers = $$("[data-open-modal]");
-    if (!modal || !openers.length) return;
-    var lastFocused = null;
+  /* ---------- Modales (agenda, política de datos...) — pueden anidarse ---------- */
+  function initModals() {
+    var modals = $$("[data-modal]");
+    if (!modals.length) return;
+    var stack = [];
 
-    function open() {
-      lastFocused = document.activeElement;
+    function getModal(id) {
+      return modals.filter(function (m) { return m.getAttribute("data-modal") === id; })[0];
+    }
+    function open(modal, trigger) {
+      if (!modal || modal.classList.contains("is-open")) return;
+      stack.push({ modal: modal, trigger: trigger || document.activeElement });
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.documentElement.classList.add("has-modal-open");
-      var firstField = modal.querySelector('input:not([type="hidden"]), textarea');
+      var firstField = modal.querySelector('input:not([type="hidden"]), textarea, .modal-close');
       if (firstField) firstField.focus();
     }
-    function close() {
+    function close(modal) {
+      if (!modal || !modal.classList.contains("is-open")) return;
       modal.classList.remove("is-open");
       modal.setAttribute("aria-hidden", "true");
-      document.documentElement.classList.remove("has-modal-open");
-      if (lastFocused && lastFocused.focus) lastFocused.focus();
-    }
+      var entry = null;
+      for (var i = stack.length - 1; i >= 0; i--) {
+        if (stack[i].modal === modal) { entry = stack.splice(i, 1)[0]; break; }
+      }
+      if (!stack.length) document.documentElement.classList.remove("has-modal-open");
+      if (entry && entry.trigger && entry.trigger.focus) entry.trigger.focus();
 
-    openers.forEach(function (btn) { btn.addEventListener("click", open); });
-    $$("[data-modal-close]", modal).forEach(function (el) { el.addEventListener("click", close); });
+      var form = modal.querySelector("[data-contact-form]");
+      if (form && !form.classList.contains("is-sending") && !form.classList.contains("is-sent")) {
+        form.reset();
+        form.dispatchEvent(new Event("change"));
+        var errorEl = form.querySelector("[data-contact-error]");
+        if (errorEl) errorEl.hidden = true;
+      }
+    }
+    function topOpenModal() { return stack.length ? stack[stack.length - 1].modal : null; }
+
+    $$("[data-open-modal]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        open(getModal(btn.getAttribute("data-open-modal") || "agenda"), btn);
+      });
+    });
+    modals.forEach(function (modal) {
+      $$("[data-modal-close]", modal).forEach(function (el) {
+        el.addEventListener("click", function () { close(modal); });
+      });
+    });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && modal.classList.contains("is-open")) close();
+      if (e.key === "Escape") close(topOpenModal());
     });
   }
 
@@ -358,7 +392,7 @@
     safe(initMarquee, "initMarquee");
     safe(initContactForm, "initContactForm");
     safe(initFab, "initFab");
-    safe(initModal, "initModal");
+    safe(initModals, "initModals");
     document.documentElement.classList.add("is-ready");
   }
 
