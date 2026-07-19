@@ -105,10 +105,7 @@ Ver [§18 Futuras Etapas](#18-futuras-etapas) para cuándo y por qué esto cambi
 ```
 index.html            ← toda la estructura y contenido hardcodeado (ver §10)
 styles.css              ← único archivo CSS, seccionado por número (Tokens, Reset, Nav, Hero...)
-main.js                 ← entry point, IIFE, cada init() envuelto en safe()
-lib/
-  manifest.js            ← datos de marca: window.__BRAND__ (servicios, soluciones, sectores, stack)
-  gsap.min.js / ScrollTrigger.min.js  ← únicas libs externas, vendorizadas localmente
+main.js                 ← entry point, IIFE, cada init() envuelto en safe() — vanilla, sin libs externas
 assets/
   img/                   ← fotografía de contenido real (.webp) — hoy solo evert-portrait.webp (retrato de Sobre mí), ver §17
   logos/                 ← logo de marca (eia-mark.webp, favicons) + logos de tecnologías (SVG a color, sobre chip blanco)
@@ -116,6 +113,8 @@ tools/
   webp_convert.py         ← script de conversión a .webp, no se despliega
 .htaccess                ← cache headers para Hostinger
 ```
+
+> ✅ **Actualizado (2026-07-18):** se eliminó la carpeta `lib/` — `gsap.min.js` y `ScrollTrigger.min.js` (115 KB combinados) estaban vendorizados pero `main.js` nunca los usa (todas las animaciones — reveal, tilt, marquee, gradiente del hero — están hechas a mano con `IntersectionObserver`/`requestAnimationFrame`, sin GSAP); `manifest.js` definía `window.__BRAND__` con datos de servicios/sectores/stack que nada leía (la arquitectura hardcodea todo en `index.html`, ver arriba) y además referenciaba imágenes de sectores (`sector-retail.webp`, etc.) que ya no existen desde que se quitó la fotografía de stock (§17). Los tres archivos eran peso muerto cargado en cada visita sin ningún efecto.
 
 **Convenciones de nombres:** archivos e imágenes en `kebab-case`; clases CSS en `kebab-case`; variables/funciones JS en `camelCase`; custom properties CSS con prefijo `--`.
 
@@ -141,8 +140,13 @@ Vocabulario de componentes ya establecido en `styles.css` — reutilizar antes d
 | `.contact-icon` / `.footer-icon` | Ícono minimalista (mono color, trazo fino) junto a un dato de contacto (correo, teléfono, ciudad) — mismo tratamiento visual en la sección Contacto y en el footer |
 | `.footer-social-link` | Ícono circular de red social en el footer — reutilizar antes de crear otro estilo de ícono social |
 | `[data-open-modal]` | Cualquier `<button>` (nunca `<a>`, para no pisarse con el scroll-to-anchor de `initSmoothAnchors`) que abre un modal (`[data-modal="id"]`). Sin valor (`data-open-modal`), abre el modal de agenda (`[data-modal="agenda"]`) — patrón establecido: todo CTA de "reunión" (nav, hero, footer, tarjetas de servicio) abre este modal en vez de saltar a `#contacto` — ver nota en §19. Con un valor (`data-open-modal="policy"`), abre ese modal específico — así se abre el modal de la Política de Tratamiento de Datos Personales desde el enlace dentro del checkbox de consentimiento de los formularios. `initModals` (`main.js`) soporta modales anidados (ej. política encima de agenda) sin cerrar el que queda debajo. |
+| `.required-mark` | Asterisco rojo (token `--danger`) antepuesto a la etiqueta de un campo obligatorio en `.field`. Es refuerzo visual, nunca el único indicador — siempre va junto al atributo HTML `required` del input/textarea real. |
+| `.field-consent` / `.consent-row` | Fila de checkbox + texto legal (aceptación de la Política de Tratamiento de Datos) antes del botón de envío de `.cta-form`. El checkbox es `required`: el botón de envío permanece `disabled` (ver `main.js`, `updateSubmitState`) hasta que todo el formulario — incluido este checkbox — sea válido. |
+| `.policy-body` / `.policy-actions` | Contenido largo de la Política de Tratamiento de Datos, dentro del modal `data-modal="policy"` (scroll propio vía `.modal-panel`, nunca fuera de ese componente). `.policy-actions` es un botón `.btn-ghost` con `data-modal-close` que cierra solo ese modal, dejando el modal de agenda (si estaba abierto debajo) intacto. |
 
 Antes de inventar un componente nuevo, preguntar: ¿esto ya existe con otro nombre? ¿Puede resolverse variando una custom property de uno existente?
+
+> ✅ **Actualizado (2026-07-18):** los formularios de Contacto y de agenda (`.cta-form`) ganaron: campo **Empresa** (opcional, después de Teléfono), la etiqueta "Nombre" pasó a "Nombre completo", **Teléfono ahora es obligatorio** (antes era opcional) y se agregó el checkbox de consentimiento de datos (`.field-consent`) antes del botón de envío, que abre el modal `data-modal="policy"` con la Política de Tratamiento de Datos Personales completa (Ley 1581 de 2012 / Decreto 1074 de 2015, ver [§16](#16-contenido)). El botón de envío queda `disabled` hasta que el formulario completo sea válido, y si el modal de agenda se cierra sin enviar, el formulario se resetea para la próxima apertura.
 
 ## 11. Reglas UX
 
@@ -186,6 +190,7 @@ Si no cumple una de esas tres, se elimina. Nunca debe **distraer**.
 - Contraste de texto mínimo 4.5:1 (cuerpo) / 3:1 (texto grande).
 - Formularios con `<label>` asociado a cada campo.
 - El sitio debe seguir siendo usable con JavaScript desactivado (contenido crítico hardcodeado en HTML, JS solo enriquece).
+- Campos obligatorios: `required` en el input/textarea real + `.required-mark` (`aria-hidden="true"`) como refuerzo visual — nunca solo el asterisco sin el atributo nativo.
 
 ## 15. Reglas SEO
 
@@ -201,6 +206,7 @@ Si no cumple una de esas tres, se elimina. Nunca debe **distraer**.
 - Español como idioma principal del sitio.
 - Todo dato mostrado debe ser real y verificable por el propio usuario/dueño de la marca. Si no hay dato real, se omite la sección — no se inventa uno "razonable".
 - Ver [§17 Restricciones](#17-restricciones) para la lista explícita de lo que nunca se escribe.
+- Excepción explícita al tono editorial: la Política de Tratamiento de Datos Personales (modal `data-modal="policy"`, ver [§10](#10-componentes)) es texto legal referido a la Ley 1581 de 2012 y el Decreto 1074 de 2015 — su redacción es deliberadamente formal/jurídica, no debe "suavizarse" para sonar más editorial.
 
 ## 17. Restricciones
 

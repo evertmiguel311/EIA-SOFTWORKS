@@ -219,6 +219,13 @@
     var submitBtn = form.querySelector('[type="submit"]');
     var msg = scope.querySelector("[data-contact-success-msg]");
     var errorEl = form.querySelector("[data-contact-error]");
+    var successMessage = success.getAttribute("data-success-message") ||
+      "hemos recibido tu mensaje. Te escribimos en breve.";
+    var eyebrowEl = scope.querySelector(".eyebrow");
+    var titleEl = scope.querySelector(".modal-title");
+    var leadEl = scope.querySelector(".modal-lead");
+    var isModalForm = !!form.closest(".modal");
+    var successTimer = null;
 
     function updateSubmitState() {
       if (submitBtn) submitBtn.disabled = !form.checkValidity();
@@ -226,6 +233,29 @@
     form.addEventListener("input", updateSubmitState);
     form.addEventListener("change", updateSubmitState);
     updateSubmitState();
+
+    var phoneField = form.elements.phone;
+    if (phoneField) {
+      phoneField.addEventListener("input", function () {
+        var cleaned = phoneField.value.replace(/[^0-9+\s-]/g, "");
+        if (cleaned !== phoneField.value) phoneField.value = cleaned;
+      });
+    }
+
+    if (isModalForm) {
+      form.addEventListener("formhardreset", function () {
+        if (successTimer) { clearTimeout(successTimer); successTimer = null; }
+        success.classList.remove("is-visible");
+        success.setAttribute("aria-hidden", "true");
+        form.classList.remove("is-sent");
+        form.reset();
+        updateSubmitState();
+        if (errorEl) errorEl.hidden = true;
+        if (eyebrowEl) eyebrowEl.hidden = false;
+        if (titleEl) titleEl.hidden = false;
+        if (leadEl) leadEl.hidden = false;
+      });
+    }
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -261,21 +291,36 @@
           if (!data.success) throw new Error(data.message || "submit failed");
 
           if (msg) {
-            msg.textContent = firstName
-              ? firstName + ", hemos recibido tu mensaje. Te escribimos en breve."
-              : "Hemos recibido tu mensaje. Te escribimos en breve.";
+            msg.textContent = "";
+            if (firstName) {
+              var strong = document.createElement("strong");
+              strong.textContent = firstName + ",";
+              msg.appendChild(strong);
+              msg.appendChild(document.createTextNode(" " + successMessage));
+            } else {
+              msg.textContent = successMessage.charAt(0).toUpperCase() + successMessage.slice(1);
+            }
           }
           form.classList.add("is-sent");
           success.setAttribute("aria-hidden", "false");
           success.classList.add("is-visible");
+          if (eyebrowEl) eyebrowEl.hidden = true;
+          if (titleEl) titleEl.hidden = true;
+          if (leadEl) leadEl.hidden = true;
 
-          setTimeout(function () {
+          if (successTimer) clearTimeout(successTimer);
+          successTimer = setTimeout(function () {
             success.classList.remove("is-visible");
             success.setAttribute("aria-hidden", "true");
-            form.classList.remove("is-sent");
-            form.reset();
-            updateSubmitState();
-          }, 10000);
+            if (!isModalForm) {
+              form.classList.remove("is-sent");
+              form.reset();
+              updateSubmitState();
+              if (eyebrowEl) eyebrowEl.hidden = false;
+              if (titleEl) titleEl.hidden = false;
+              if (leadEl) leadEl.hidden = false;
+            }
+          }, 5000);
         })
         .catch(function () {
           form.classList.remove("is-sending");
@@ -356,11 +401,8 @@
       if (entry && entry.trigger && entry.trigger.focus) entry.trigger.focus();
 
       var form = modal.querySelector("[data-contact-form]");
-      if (form && !form.classList.contains("is-sending") && !form.classList.contains("is-sent")) {
-        form.reset();
-        form.dispatchEvent(new Event("change"));
-        var errorEl = form.querySelector("[data-contact-error]");
-        if (errorEl) errorEl.hidden = true;
+      if (form && !form.classList.contains("is-sending")) {
+        form.dispatchEvent(new Event("formhardreset"));
       }
     }
     function topOpenModal() { return stack.length ? stack[stack.length - 1].modal : null; }

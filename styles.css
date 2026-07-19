@@ -20,6 +20,7 @@
 
   /* Secciones claras — nunca blanco puro, ver CLAUDE.md §4/§12 */
   --surface-light:   oklch(89% 0.014 258);
+  --surface-light-2: oklch(87% 0.03 254); /* variante azul muy suave, para alternar con --surface-light */
   --ink-on-light:      oklch(20% 0.014 260);
   --ink-on-light-soft: oklch(20% 0.014 260 / .72);
   --ink-on-light-mute: oklch(20% 0.014 260 / .68);
@@ -265,6 +266,8 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
   --glass: var(--glass-on-light);
   --glass-strong: var(--glass-on-light-strong);
 }
+/* Variante azul muy suave — misma familia de tokens que .section-light, solo cambia el fondo */
+.section-light.section-tone-blue { background: var(--surface-light-2); }
 /* Degradado en los bordes para suavizar el cambio oscuro/claro entre secciones */
 .section-light::before,
 .section-light::after {
@@ -306,33 +309,6 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
   position: relative; height: 420px; border-radius: 20px; overflow: hidden;
   box-shadow: 0 30px 60px -20px rgba(0,0,0,0.55); border: 1px solid var(--line);
 }
-/* Ilustración abstracta — reemplaza fotografía de stock (ver CLAUDE.md §17) */
-.abstract-visual {
-  --m1: oklch(55% 0.19 258 / .5); --m2: oklch(72% 0.14 195 / .35);
-  position: relative; width: 100%; height: 100%;
-  background: var(--bg-3);
-  display: flex; align-items: center; justify-content: center;
-}
-.abstract-visual::before {
-  content: ""; position: absolute; inset: 0;
-  background:
-    radial-gradient(circle 240px at 26% 24%, var(--m1), transparent 62%),
-    radial-gradient(circle 220px at 76% 74%, var(--m2), transparent 62%);
-  filter: blur(28px);
-}
-.abstract-visual::after {
-  content: ""; position: absolute; inset: 0;
-  background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
-  background-size: 24px 24px;
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 75%);
-          mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 75%);
-}
-.abstract-visual svg {
-  position: relative; width: 44%; height: 44%; color: var(--ink);
-  opacity: .88; filter: drop-shadow(0 14px 26px rgba(0,0,0,.4));
-}
-.tilt-frame .abstract-visual svg { width: 38%; height: 38%; }
-
 .floating-chip {
   padding: 14px 20px; border-radius: 14px;
   background: oklch(20% 0.015 260 / 0.88); backdrop-filter: blur(10px);
@@ -392,15 +368,6 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 }
 .glass-card.has-halo:hover::before { opacity: 1; }
 
-.glass-card-icon {
-  width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center;
-  color: #fff;
-}
-.glass-card-icon svg { width: 22px; height: 22px; }
-.glass-card-icon-a { background: linear-gradient(135deg, var(--accent), oklch(66% 0.16 235)); }
-.glass-card-icon-b { background: linear-gradient(135deg, var(--accent-2), oklch(76% 0.1 190)); }
-.glass-card-icon-c { background: linear-gradient(135deg, var(--accent-3), oklch(64% 0.1 280)); }
-
 .glass-card h3 { font-size: 19px; }
 .glass-card p { font-size: 15px; line-height: 1.6; color: var(--ink-mute); }
 
@@ -440,7 +407,6 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .hero-pill-dot { width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 10px currentColor; }
 
 .stack-strip { padding: 30px 0 12px; border-top: 1px solid var(--line-soft); margin-top: -1px; }
-.stack-strip-label { text-align: center; font-size: 13px; color: var(--ink-dim); letter-spacing: .3px; margin-bottom: 26px; }
 
 .stack-marquee-viewport {
   display: flex; width: 100%; overflow: hidden;
@@ -462,6 +428,16 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 }
 .stack-logo img { width: 40px; height: 40px; }
 .stack-logo:hover { transform: translateY(-5px) scale(1.08); }
+
+.philosophy-strip { padding: 88px 0; text-align: center; }
+.philosophy-text {
+  max-width: 46ch; margin: 0 auto; font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.55; color: var(--ink); font-weight: 500; font-style: italic; letter-spacing: -0.01em;
+}
+.philosophy-text::before,
+.philosophy-text::after { color: var(--accent-2); font-style: normal; }
+.philosophy-text::before { content: "\201C"; margin-right: 2px; }
+.philosophy-text::after { content: "\201D"; margin-left: 2px; }
 
 /* =============================================================
    11c. Service cards (colored icons)
@@ -553,12 +529,12 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field label { font-size: 13px; color: var(--ink-dim); }
 .field-optional { color: var(--ink-dim); font-weight: 400; }
-.field input, .field textarea {
+.field input:not([type="checkbox"]), .field textarea {
   padding: 12px 14px; border-radius: 10px; background: rgba(255,255,255,0.04);
   border: 1px solid var(--line); color: var(--ink); font-size: 15px; font-family: inherit;
   transition: border-color .3s, background .3s;
 }
-.field input:focus, .field textarea:focus { border-color: var(--accent-2); background: rgba(255,255,255,0.06); }
+.field input:not([type="checkbox"]):focus, .field textarea:focus { border-color: var(--accent-2); background: rgba(255,255,255,0.06); }
 .field textarea { min-height: 96px; resize: vertical; }
 
 .required-mark { color: var(--danger); }
@@ -588,20 +564,12 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .cta-form.is-sent { display: none; }
 .cta-form-error { font-size: 13px; color: var(--danger); margin: 0; }
 
-.cta-success { display: none; flex-direction: column; gap: 8px; }
+.cta-success { display: none; flex-direction: column; gap: 18px; }
 .cta-success.is-visible { display: flex; }
 .cta-success h3 { font-size: 20px; color: var(--accent-2); }
-.cta-success p { color: var(--ink-mute); font-size: 14px; }
-
-/* =============================================================
-   12b. Manifiesto — frase de marca antes del contacto
-   ============================================================= */
-.manifesto { padding: 56px 0; border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
-.manifesto-text {
-  max-width: 620px; margin: 0 auto; text-align: center;
-  font-size: clamp(18px, 2.4vw, 22px); line-height: 1.5; color: var(--ink-soft);
-  font-weight: 500; letter-spacing: -.2px;
-}
+.cta-success p { color: var(--ink-mute); font-size: 14px; line-height: 1.6; }
+.cta-success p strong { color: var(--ink); font-weight: 700; }
+.cta-success p.cta-success-note { color: var(--ink); font-weight: 700; }
 
 /* =============================================================
    13. Footer
