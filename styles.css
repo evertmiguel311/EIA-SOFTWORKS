@@ -189,6 +189,11 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
     radial-gradient(circle 480px at calc(var(--mx, 22%) - 15%) calc(var(--my, 28%) + 60%), oklch(62% 0.13 300 / 0.14), transparent 65%);
   filter: blur(30px);
   transition: background .6s ease;
+  animation: heroGradientShift 16s ease-in-out infinite;
+}
+@keyframes heroGradientShift {
+  0%, 100% { filter: blur(30px) hue-rotate(0deg) saturate(1); }
+  50% { filter: blur(30px) hue-rotate(14deg) saturate(1.15); }
 }
 .hero-orb {
   position: absolute; border-radius: 50%; filter: blur(10px); z-index: -1; pointer-events: none;
@@ -198,20 +203,30 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .hero-orb-c { width: 380px; height: 380px; background: radial-gradient(circle, oklch(58% 0.07 300 / 0.16), transparent 70%); top: 20%; right: 8%; filter: blur(14px); animation: floatA 20s ease-in-out infinite; }
 
 .hero-network { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.35; z-index: -1; pointer-events: none; }
-.hero-network-line { stroke: oklch(70% 0.12 220); stroke-width: 1.4; animation: pulseLine 7s ease-in-out infinite; }
+.hero-network-line {
+  stroke: oklch(70% 0.12 220); stroke-width: 1.4; stroke-dasharray: 6 14;
+  animation: pulseLine 7s ease-in-out infinite, heroNetworkFlow 2.4s linear infinite;
+}
 .hero-network-dot { fill: oklch(80% 0.14 210); }
+@keyframes heroNetworkFlow { to { stroke-dashoffset: -40; } }
 
 .hero-mark {
   position: absolute; top: 50%; left: 50%; z-index: -1; pointer-events: none;
   width: 420px; height: 420px; max-width: none; opacity: 0.42;
   transform: translate(-50%, -50%);
   filter: drop-shadow(0 0 50px oklch(55% 0.19 258 / 0.45));
-  animation: heroMarkFloat 20s ease-in-out infinite;
+  animation: heroMarkFloat 3s ease-in-out infinite;
   image-rendering: -webkit-optimize-contrast;
 }
 @keyframes heroMarkFloat {
-  0%, 100% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
-  50% { transform: translate(-50%, -54%) rotate(5deg) scale(1.06); }
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0) scale(1);
+    filter: drop-shadow(0 18px 36px oklch(55% 0.19 258 / 0.4));
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-26px) scale(1.05);
+    filter: drop-shadow(0 44px 64px oklch(55% 0.19 258 / 0.22));
+  }
 }
 
 .hero-content { position: relative; z-index: 2; max-width: 900px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 26px; }
@@ -784,5 +799,5 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
    16. Reduced motion — only intrusive effects
    ============================================================= */
 @media (prefers-reduced-motion: reduce) {
-  .hero-orb, .hero-network-line, .hero-mark, .floating-chip, .hero-scroll-cue { animation: none; }
+  .hero-orb, .hero-network-line, .hero-mark, .hero-gradient, .floating-chip, .hero-scroll-cue { animation: none; }
 }
