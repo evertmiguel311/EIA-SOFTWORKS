@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://evertmiguel311.github.io/EIA-SOFTWORKS/sitemap.xml
