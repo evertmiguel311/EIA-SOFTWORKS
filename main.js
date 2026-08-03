@@ -310,17 +310,20 @@
 
           if (successTimer) clearTimeout(successTimer);
           successTimer = setTimeout(function () {
+            if (isModalForm) {
+              var modalEl = form.closest(".modal");
+              var closeBtn = modalEl && modalEl.querySelector("[data-modal-close]");
+              if (closeBtn) { closeBtn.click(); return; }
+            }
             success.classList.remove("is-visible");
             success.setAttribute("aria-hidden", "true");
-            if (!isModalForm) {
-              form.classList.remove("is-sent");
-              form.reset();
-              updateSubmitState();
-              if (eyebrowEl) eyebrowEl.hidden = false;
-              if (titleEl) titleEl.hidden = false;
-              if (leadEl) leadEl.hidden = false;
-            }
-          }, 5000);
+            form.classList.remove("is-sent");
+            form.reset();
+            updateSubmitState();
+            if (eyebrowEl) eyebrowEl.hidden = false;
+            if (titleEl) titleEl.hidden = false;
+            if (leadEl) leadEl.hidden = false;
+          }, 6000);
         })
         .catch(function () {
           form.classList.remove("is-sending");
