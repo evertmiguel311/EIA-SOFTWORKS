@@ -117,7 +117,7 @@
   <div class="nav-links" data-nav-links>
     <a href="../index.html#sobre-mi" class="nav-link">Sobre mí</a>
     <div class="nav-item-dropdown">
-      <a href="../index.html#servicios" class="nav-link">Servicios</a>
+      <a href="../index.html#servicios" class="nav-link" aria-haspopup="true" aria-expanded="false">Servicios</a>
       <ul class="nav-dropdown-menu" aria-label="Servicios">
         <li><a href="../desarrollo-web/index.html" class="nav-dropdown-link">Desarrollo Web</a></li>
         <li><a href="../desarrollo-software-a-medida/index.html" class="nav-dropdown-link">Desarrollo de Software a Medida</a></li>
@@ -159,27 +159,73 @@
 
   <!-- ============ CONTACTO (página dedicada) ============ -->
   <section class="section" id="contacto-intro">
-    <div class="container">
-      <p class="eyebrow">Contacto</p>
-      <h1 class="h2">Hablemos de tu próximo proyecto</h1>
-      <p class="p-lead">Cuéntanos sobre tu negocio y tus procesos. Agendamos una primera conversación sin compromiso.</p>
-      <dl class="contact-list">
-        <div>
-          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span>
-          <div><dt>Correo</dt><dd><a href="mailto:eiasoftworks@gmail.com">eiasoftworks@gmail.com</a></dd></div>
+    <div class="container split split-contact">
+      <div data-reveal>
+        <p class="eyebrow">Contacto</p>
+        <h1 class="h2">Hablemos de tu próximo proyecto</h1>
+        <p class="p-lead">Cuéntanos sobre tu negocio y tus procesos. Agendamos una primera conversación sin compromiso.</p>
+        <dl class="contact-list">
+          <div>
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span>
+            <div><dt>Correo</dt><dd><a href="mailto:eiasoftworks@gmail.com">eiasoftworks@gmail.com</a></dd></div>
+          </div>
+          <div>
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"></path></svg></span>
+            <div><dt>Teléfono</dt><dd>+57 318 533 1654</dd></div>
+          </div>
+          <div>
+            <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
+            <div><dt>Ciudad</dt><dd>Cartagena de Indias, Colombia</dd></div>
+          </div>
+        </dl>
+        <div class="hero-actions" style="margin-top:32px">
+          <button type="button" class="btn btn-solid" data-open-modal>Agendar reunión</button>
+          <a href="../index.html" class="btn btn-ghost">Volver al inicio</a>
         </div>
-        <div>
-          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"></path></svg></span>
-          <div><dt>Teléfono</dt><dd>+57 318 533 1654</dd></div>
+      </div>
+
+      <div class="contact-card glass-card has-tilt" data-reveal data-reveal-delay="1">
+        <form class="cta-form" data-contact-form novalidate>
+          <div class="field">
+            <label for="f-name"><span class="required-mark" aria-hidden="true">*</span> Nombre completo</label>
+            <input id="f-name" name="name" type="text" required placeholder="Tu nombre">
+          </div>
+          <div class="field">
+            <label for="f-email"><span class="required-mark" aria-hidden="true">*</span> Correo</label>
+            <input id="f-email" name="email" type="email" required placeholder="tucorreo@empresa.com">
+          </div>
+          <div class="field">
+            <label for="f-phone"><span class="required-mark" aria-hidden="true">*</span> Teléfono</label>
+            <input id="f-phone" name="phone" type="tel" required inputmode="tel" pattern="[0-9+\s\-]{7,20}" title="Solo números (puede incluir +, espacios o guiones)" placeholder="+57 300 123 4567">
+          </div>
+          <div class="field">
+            <label for="f-company">Empresa <span class="field-optional">(opcional)</span></label>
+            <input id="f-company" name="company" type="text" placeholder="Nombre de tu empresa">
+          </div>
+          <div class="field">
+            <label for="f-subject"><span class="required-mark" aria-hidden="true">*</span> Asunto</label>
+            <input id="f-subject" name="subject" type="text" required placeholder="¿En qué podemos ayudarte?">
+          </div>
+          <div class="field">
+            <label for="f-msg"><span class="required-mark" aria-hidden="true">*</span> Mensaje</label>
+            <textarea id="f-msg" name="message" required placeholder="Cuéntanos brevemente qué necesitas y nos pondremos en contacto contigo para explorar la mejor solución para tu organización."></textarea>
+          </div>
+          <div class="field field-consent">
+            <div class="consent-row">
+              <input id="f-consent" name="consent" type="checkbox" required>
+              <label for="f-consent">He leído y acepto la <button type="button" class="link-inline" data-open-modal="policy">Política de Tratamiento de Datos Personales</button> y autorizo a EIA Softworks para tratar mis datos personales conforme a la Ley 1581 de 2012, el Decreto 1074 de 2015 y demás normas aplicables en Colombia.</label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-solid cta-submit" disabled>
+            <span class="cta-form-label">Enviar mensaje</span>
+            <span class="cta-form-spinner" aria-hidden="true"></span>
+          </button>
+          <p class="cta-form-error" data-contact-error role="alert" hidden>No pudimos enviar tu mensaje. Intenta de nuevo o escríbenos directamente a eiasoftworks@gmail.com.</p>
+        </form>
+        <div class="cta-success" data-contact-success role="status" aria-hidden="true">
+          <h3>Mensaje enviado.</h3>
+          <p data-contact-success-msg>Te contactaremos pronto.</p>
         </div>
-        <div>
-          <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg></span>
-          <div><dt>Ciudad</dt><dd>Cartagena de Indias, Colombia</dd></div>
-        </div>
-      </dl>
-      <div class="hero-actions" style="margin-top:32px">
-        <button type="button" class="btn btn-solid" data-open-modal>Agendar reunión</button>
-        <a href="../index.html" class="btn btn-ghost">Volver al inicio</a>
       </div>
     </div>
   </section>

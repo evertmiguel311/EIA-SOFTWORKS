@@ -144,7 +144,7 @@
   <div class="nav-links" data-nav-links>
     <a href="#sobre-mi" class="nav-link">Sobre mí</a>
     <div class="nav-item-dropdown">
-      <a href="#servicios" class="nav-link">Servicios</a>
+      <a href="#servicios" class="nav-link" aria-haspopup="true" aria-expanded="false">Servicios</a>
       <ul class="nav-dropdown-menu" aria-label="Servicios">
         <li><a href="desarrollo-web/index.html" class="nav-dropdown-link">Desarrollo Web</a></li>
         <li><a href="desarrollo-software-a-medida/index.html" class="nav-dropdown-link">Desarrollo de Software a Medida</a></li>
@@ -469,11 +469,15 @@
 
   <!-- ============ CONTACTO (resumen) ============ -->
   <section class="section section-light" id="contacto" data-screen-label="Contacto">
-    <div class="container">
+    <div class="container split split-contact">
       <div data-reveal>
         <p class="eyebrow">Contacto</p>
         <h2 class="h2">Hablemos de tu próximo proyecto</h2>
         <p class="p-lead">Cuéntanos sobre tu negocio y tus procesos. Agendamos una primera conversación sin compromiso.</p>
+        <a href="contacto/index.html" class="btn btn-ghost" style="margin-top:28px">Ir a contacto →</a>
+      </div>
+
+      <div class="contact-card glass-card has-tilt" data-reveal data-reveal-delay="1">
         <dl class="contact-list">
           <div>
             <span class="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span>
@@ -488,7 +492,6 @@
             <div><dt>Ciudad</dt><dd>Cartagena de Indias, Colombia</dd></div>
           </div>
         </dl>
-        <a href="contacto/index.html" class="btn btn-ghost" style="margin-top:28px">Ir a contacto →</a>
       </div>
     </div>
   </section>

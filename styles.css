@@ -184,13 +184,17 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   box-shadow: 0 24px 50px -20px rgba(0,0,0,0.65);
   display: flex; flex-direction: column; gap: 2px;
-  opacity: 0; visibility: hidden; pointer-events: none;
+  /* opacity + pointer-events (nunca visibility) para que los enlaces sigan
+     siendo enfocables por Tab mientras el menú está "cerrado" — con
+     visibility:hidden un elemento no puede recibir foco, así que
+     :focus-within nunca llegaría a dispararse (ver docs/audits). */
+  opacity: 0; pointer-events: none;
   transform: translate(-50%, 6px);
-  transition: opacity .25s var(--ease-soft), transform .25s var(--ease-soft), visibility .25s;
+  transition: opacity .25s var(--ease-soft), transform .25s var(--ease-soft);
 }
 .nav-item-dropdown:hover .nav-dropdown-menu,
 .nav-item-dropdown:focus-within .nav-dropdown-menu {
-  opacity: 1; visibility: visible; pointer-events: auto; transform: translate(-50%, 0);
+  opacity: 1; pointer-events: auto; transform: translate(-50%, 0);
 }
 .nav-dropdown-link {
   display: block; padding: 10px 14px; border-radius: 9px;
@@ -396,6 +400,16 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
    8. Glass floating cards — signature effect
    ============================================================= */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+
+/* Composición deliberada 3+2 cuando un grid tiene exactamente 5 tarjetas —
+   con auto-fit a 4 columnas la quinta queda huérfana en su propia fila
+   (ver docs/audits/2026-08-10-visual-ux.md §3/§11). Solo se activa con
+   exactamente 5 hijos directos, así que no afecta a los grids de 3/4/6
+   tarjetas del resto del sitio. */
+.card-grid:has(> :nth-child(5):last-child) { grid-template-columns: repeat(6, 1fr); }
+.card-grid:has(> :nth-child(5):last-child) > :nth-child(-n+3) { grid-column: span 2; }
+.card-grid:has(> :nth-child(5):last-child) > :nth-child(4) { grid-column: 2 / span 2; }
+.card-grid:has(> :nth-child(5):last-child) > :nth-child(5) { grid-column: 4 / span 2; }
 
 .glass-card {
   --rx: 0deg; --ry: 0deg;
@@ -818,6 +832,16 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
     grid-template-columns: 1fr; order: initial;
   }
   .split { gap: 48px; }
+  /* La composición 3+2 de §8 es de escritorio; por debajo de 1024px vuelve
+     a apilarse en una sola columna como cualquier otro card-grid. El reset
+     de grid-column repite los mismos selectores nth-child (misma
+     especificidad que la regla de escritorio) para poder ganarle por
+     orden de aparición — un simple ">*" tiene menor especificidad y no
+     alcanzaba a sobreescribir los spans. */
+  .card-grid:has(> :nth-child(5):last-child) { grid-template-columns: 1fr; }
+  .card-grid:has(> :nth-child(5):last-child) > :nth-child(-n+3),
+  .card-grid:has(> :nth-child(5):last-child) > :nth-child(4),
+  .card-grid:has(> :nth-child(5):last-child) > :nth-child(5) { grid-column: auto; }
   .tilt-frame { height: 320px; }
   .about-portrait { width: min(68%, 300px); }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px 24px; }

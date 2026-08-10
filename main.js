@@ -46,6 +46,25 @@
     sections.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------- Nav: dropdown "Servicios" — abre por CSS (:hover/:focus-within),
+     este solo sincroniza aria-expanded con ese mismo estado para lectores
+     de pantalla; el acceso real por teclado ya lo resuelve el CSS. ---------- */
+  function initNavDropdown() {
+    $$(".nav-item-dropdown").forEach(function (item) {
+      var trigger = item.querySelector(".nav-link");
+      if (!trigger) return;
+      trigger.setAttribute("aria-haspopup", "true");
+      trigger.setAttribute("aria-expanded", "false");
+      var setExpanded = function (val) { trigger.setAttribute("aria-expanded", val ? "true" : "false"); };
+      item.addEventListener("mouseenter", function () { setExpanded(true); });
+      item.addEventListener("mouseleave", function () { setExpanded(false); });
+      item.addEventListener("focusin", function () { setExpanded(true); });
+      item.addEventListener("focusout", function (e) {
+        if (!item.contains(e.relatedTarget)) setExpanded(false);
+      });
+    });
+  }
+
   /* ---------- Mobile menu ---------- */
   function initMobileNav() {
     var toggle = $("[data-nav-toggle]");
@@ -461,6 +480,7 @@
   function boot() {
     safe(initNav, "initNav");
     safe(initSectionSpy, "initSectionSpy");
+    safe(initNavDropdown, "initNavDropdown");
     safe(initMobileNav, "initMobileNav");
     safe(initSmoothAnchors, "initSmoothAnchors");
     safe(initScrollProgress, "initScrollProgress");
