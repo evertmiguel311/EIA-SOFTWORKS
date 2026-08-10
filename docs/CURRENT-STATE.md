@@ -36,6 +36,18 @@ Objetivo: resolver duplicidad de contenido/keywords entre Home y las páginas de
 - Redistribuir las FAQ de las tres páginas pilar (`desarrollo-software-a-medida/`, `software-empresas/`, `software-entidades-publicas/`) para que dejen de solaparse entre sí, y actualizar su `FAQPage` JSON-LD en consecuencia.
 - Ajustar `<title>` de `software-empresas/` y `software-entidades-publicas/` para diferenciarlos de "a medida" (no tocar `<title>` ni `<h1>` de `desarrollo-software-a-medida/`, que es el pilar central).
 
+## Auditorías realizadas el 2026-08-10 (posteriores a la publicación, solo lectura)
+
+Después de publicar el checkpoint de consolidación se hicieron dos auditorías de solo lectura sobre el repositorio local (nunca contra producción, sin commits): una de SEO estratégico y otra visual/UX. Informes completos en [`docs/audits/`](audits/). Hallazgos que importan para el trabajo siguiente:
+
+- **P0 de accesibilidad, nuevo:** el dropdown "Servicios" del nav de escritorio (`.nav-item-dropdown`, activo desde 1024px) es inalcanzable por teclado — los enlaces del submenú quedan `visibility:hidden` hasta recibir foco, y un elemento así nunca puede recibir foco por Tab. Verificado empíricamente (prueba real de navegación por teclado con Playwright). Un usuario de teclado no puede llegar a 5 de las 7 páginas desde el nav de escritorio. Ver [`docs/audits/2026-08-10-visual-ux.md`](audits/2026-08-10-visual-ux.md) §7.
+- **Tarjetas huérfanas:** 7 instancias en las páginas pilar donde una sección tiene exactamente 5 tarjetas en un grid de 4 columnas, dejando una sola en la última fila (2 en el pilar, 2 en Empresas, 2 en Entidades Públicas, 1 en Power BI). No es un bug, es un problema de conteo/diseño. Ver mismo informe §3/§11.
+- **`/contacto/` sin formulario embebido:** la página dedicada de contacto no tiene un formulario visible en la página — el botón "Agendar reunión" abre el mismo modal que cualquier otro botón del sitio. Sin decidir si es el diseño deliberado o algo a resolver. Ver mismo informe §8/§13.
+- **`#contacto` del Home desbalanceado:** tras el resumen de B.9, la sección queda con mucho espacio vacío a la derecha en escritorio ancho (1440px). Ver mismo informe §8.
+- **SEO — confirma B.9 sin cambios de alcance:** la auditoría SEO estratégica confirma que la redistribución de FAQ y el ajuste de títulos ya planeados en B.9 siguen siendo correctos, y agrega que el sitio entero solo tiene **una frase** (en `desarrollo-web/`) que menciona servir clientes fuera de Colombia — relevante para cualquier decisión futura de alcance Hispanoamérica/Venezuela, que sigue sin resolverse y no debe mezclarse con B.9. Ver [`docs/audits/2026-08-10-seo-estrategico.md`](audits/2026-08-10-seo-estrategico.md).
+
+Ninguno de estos hallazgos se ha corregido todavía — están documentados para decidir prioridad, no ejecutados.
+
 ## Riesgo conocido: sincronización JSON-LD / FAQ
 
 En `index.html` y en las seis páginas de servicio, el bloque JSON-LD `FAQPage` es un espejo 1:1 del texto visible de `.faq-item`. **Verificado programáticamente antes de publicar y de nuevo contra el contenido servido en producción: las 7 páginas están sincronizadas ahora mismo.** El riesgo sigue siendo hacia adelante: cuando se retome B.9 y se redistribuyan las FAQ de las páginas pilar, cada cambio de pregunta/respuesta visible debe ir acompañado del mismo cambio en su JSON-LD — de lo contrario los datos estructurados quedan describiendo preguntas que ya no están en la página, ya en producción.
@@ -46,6 +58,8 @@ En `index.html` y en las seis páginas de servicio, el bloque JSON-LD `FAQPage` 
 
 ## Próximos pasos sugeridos
 
-1. Retomar la redistribución de FAQ de las páginas pilar + ajuste de títulos (SEO B.9).
-2. Resolver la decisión pendiente sobre `Informe_EIA_Softworks.docx` (ver arriba).
-3. Mantener este archivo al día en cada sesión de trabajo relevante.
+1. Corregir el acceso por teclado al dropdown "Servicios" (P0 de accesibilidad, ver arriba) — bloquea navegación real para usuarios de teclado.
+2. Retomar la redistribución de FAQ de las páginas pilar + ajuste de títulos (SEO B.9).
+3. Decidir sobre las tarjetas huérfanas, el balance de `#contacto` del Home y el rol de `/contacto/` (ver auditoría visual/UX) — requieren decisión de producto antes de implementar.
+4. Resolver la decisión pendiente sobre `Informe_EIA_Softworks.docx` (ver arriba).
+5. Mantener este archivo al día en cada sesión de trabajo relevante.
