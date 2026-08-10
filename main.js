@@ -375,6 +375,8 @@
   }
 
   /* ---------- Modales (agenda, política de datos...) — pueden anidarse ---------- */
+  var FOCUSABLE_SEL = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
   function initModals() {
     var modals = $$("[data-modal]");
     if (!modals.length) return;
@@ -383,12 +385,40 @@
     function getModal(id) {
       return modals.filter(function (m) { return m.getAttribute("data-modal") === id; })[0];
     }
+    function topOpenModal() { return stack.length ? stack[stack.length - 1].modal : null; }
+
+    // Solo el modal en el tope de la pila queda interactivo; todo lo demás
+    // (contenido de fondo y modales por debajo, si hay anidados) se vuelve inert.
+    function refreshInert() {
+      var top = topOpenModal();
+      $$("body > *").forEach(function (el) {
+        el.inert = !!top && el !== top;
+      });
+    }
+
+    function focusablesIn(modal) {
+      return $$(FOCUSABLE_SEL, modal).filter(function (el) { return el.offsetParent !== null; });
+    }
+
+    function trapTab(e, modal) {
+      var items = focusablesIn(modal);
+      if (!items.length) { e.preventDefault(); return; }
+      var first = items[0], last = items[items.length - 1];
+      var active = document.activeElement;
+      if (e.shiftKey) {
+        if (active === first || !modal.contains(active)) { e.preventDefault(); last.focus(); }
+      } else {
+        if (active === last || !modal.contains(active)) { e.preventDefault(); first.focus(); }
+      }
+    }
+
     function open(modal, trigger) {
       if (!modal || modal.classList.contains("is-open")) return;
       stack.push({ modal: modal, trigger: trigger || document.activeElement });
       modal.classList.add("is-open");
       modal.setAttribute("aria-hidden", "false");
       document.documentElement.classList.add("has-modal-open");
+      refreshInert();
       var firstField = modal.querySelector('input:not([type="hidden"]), textarea, .modal-close');
       if (firstField) firstField.focus();
     }
@@ -401,6 +431,7 @@
         if (stack[i].modal === modal) { entry = stack.splice(i, 1)[0]; break; }
       }
       if (!stack.length) document.documentElement.classList.remove("has-modal-open");
+      refreshInert();
       if (entry && entry.trigger && entry.trigger.focus) entry.trigger.focus();
 
       var form = modal.querySelector("[data-contact-form]");
@@ -408,7 +439,6 @@
         form.dispatchEvent(new Event("formhardreset"));
       }
     }
-    function topOpenModal() { return stack.length ? stack[stack.length - 1].modal : null; }
 
     $$("[data-open-modal]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -421,7 +451,10 @@
       });
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") close(topOpenModal());
+      var top = topOpenModal();
+      if (!top) return;
+      if (e.key === "Escape") { close(top); return; }
+      if (e.key === "Tab") trapTab(e, top);
     });
   }
 
