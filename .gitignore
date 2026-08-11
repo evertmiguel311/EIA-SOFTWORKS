@@ -1,1 +1,5 @@
 .claude/settings.local.json
+
+# Auditorías internas de solo lectura (SEO, visual/UX, etc.): informes de trabajo,
+# no documentación pública. Ver docs/README.md.
+docs/audits/
