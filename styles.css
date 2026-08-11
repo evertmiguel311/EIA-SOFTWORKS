@@ -8,7 +8,7 @@
   --ink:       #f5f6f8;
   --ink-soft:  rgba(245,246,248,0.72);
   --ink-mute:  rgba(245,246,248,0.55);
-  --ink-dim:   rgba(245,246,248,0.4);
+  --ink-dim:   rgba(245,246,248,0.5); /* subido de .4 -- medía 3.47:1 en .contact-list dt sobre --bg, por debajo de AA (4.5:1); hallazgo nuevo durante validación, ver auditoría UI/UX */
   --accent:    oklch(60% 0.22 258);
   --accent-2:  oklch(72% 0.14 195);
   --accent-3:  oklch(62% 0.14 300);
@@ -24,7 +24,7 @@
   --ink-on-light:      oklch(20% 0.014 260);
   --ink-on-light-soft: oklch(20% 0.014 260 / .72);
   --ink-on-light-mute: oklch(20% 0.014 260 / .68);
-  --ink-on-light-dim:  oklch(20% 0.014 260 / .62);
+  --ink-on-light-dim:  oklch(20% 0.014 260 / .7); /* subido de .62 -- medía 4.32:1 sobre --surface-light, por debajo de AA (4.5:1); ver auditoría UI/UX */
   --line-on-light:      rgba(10,14,26,0.12);
   --line-on-light-soft: rgba(10,14,26,0.08);
   --glass-on-light:        rgba(10,14,26,0.035);
@@ -174,6 +174,18 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
    5b. Nav — menú "Servicios" desplegable (Fase SEO A)
    ============================================================= */
 .nav-item-dropdown { position: relative; }
+/* Puente invisible entre el trigger y el submenú: sin esto, el "margin-top"
+   de .nav-dropdown-menu deja una franja de 14px que no pertenece a ninguna
+   caja hoverable. Al cruzarla con el mouse en movimiento (no con un salto
+   instantáneo), pointer-events pasa a "none" de inmediato -- antes de que
+   termine el fade -- y el menú nunca puede recuperar el :hover del padre.
+   Siempre presente (no depende de :hover/:focus-within) y sin estilo
+   visual, así que no cambia nada del diseño. */
+.nav-item-dropdown::before {
+  content: "";
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  width: 268px; height: 14px;
+}
 .nav-dropdown-menu {
   list-style: none;
   position: absolute; top: 100%; left: 50%; margin-top: 14px;
@@ -291,6 +303,12 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
    7. Sections / layout
    ============================================================= */
 .section { position: relative; padding: 96px 0; }
+/* Secciones de una sola columna de texto (sin cards/lista/imagen) — menos
+   padding porque su contenido pesa menos, y texto más grande ya que no
+   hay ningún elemento visual que ocupe el espacio restante. */
+.section-compact { padding: 64px 0; }
+.section-compact .h2 { font-size: clamp(32px, 4.2vw, 44px); }
+.section-compact .p-lead { font-size: 19px; max-width: 68ch; }
 .section-head { max-width: 640px; margin-bottom: 48px; }
 .section-bg-slant {
   position: absolute; inset: 0; background: var(--bg-2);
@@ -410,6 +428,17 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .card-grid:has(> :nth-child(5):last-child) > :nth-child(-n+3) { grid-column: span 2; }
 .card-grid:has(> :nth-child(5):last-child) > :nth-child(4) { grid-column: 2 / span 2; }
 .card-grid:has(> :nth-child(5):last-child) > :nth-child(5) { grid-column: 4 / span 2; }
+
+/* Composición explícita 3×2 para los tres grids del sitio que tienen
+   exactamente 6 tarjetas (Home "Lo que hacemos", Desarrollo Web "Qué
+   incluye este servicio", Power BI "Casos de uso") — con auto-fit a 4
+   columnas la fila final quedaba 4+2 con hueco vacío a la derecha
+   (ver auditoría UI/UX). A diferencia del fix de 5 tarjetas, esta no
+   depende de contar hijos con :has()/:nth-child(): es una clase
+   modificadora que se agrega a mano en el HTML de esos tres grids,
+   así que nunca se activa "por accidente" en un grid futuro que
+   casualmente tenga 6 tarjetas. */
+.card-grid-3x2 { grid-template-columns: repeat(3, 1fr); }
 
 .glass-card {
   --rx: 0deg; --ry: 0deg;
@@ -540,6 +569,37 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .svc-card-cta:hover .svc-card-link { color: #fff; }
 
 /* =============================================================
+   11c-bis. Hero de página de servicio — visual lateral con ícono
+   (reemplaza fotografía de stock, ver CLAUDE.md §17 — solo ícono
+   de línea + grid de puntos, sin ilustraciones complejas)
+   ============================================================= */
+/* Más aire que el resto de las secciones (se acerca al hero del Home sin
+   repetir su efecto de pantalla completa, ver conversación con el PO) */
+#hero-servicio { padding: 148px 0 120px; }
+#hero-servicio .h2 { font-size: clamp(34px, 4.6vw, 50px); }
+#hero-servicio .p-lead { font-size: 18.5px; }
+.hero-visual-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 22px; min-height: 380px; text-align: center;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+.hero-visual-icon {
+  width: 92px; height: 92px; border-radius: 26px; display: flex; align-items: center; justify-content: center;
+  color: #fff; background: linear-gradient(135deg, var(--c1), var(--c2));
+  box-shadow: 0 24px 50px -18px var(--c1);
+}
+.hero-visual-icon svg { width: 44px; height: 44px; }
+.hero-visual-tags {
+  list-style: none; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
+  max-width: 300px; margin: 0; padding: 0;
+}
+.hero-visual-tags li {
+  padding: 7px 14px; border-radius: 999px; font-family: var(--mono); font-size: 12.5px; font-weight: 600;
+  color: var(--ink-soft); background: var(--glass); border: 1px solid var(--line);
+}
+
+/* =============================================================
    11d. Proceso
    ============================================================= */
 .section-proceso { position: relative; }
@@ -598,6 +658,13 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .contact-list dd a:hover { color: var(--accent-2); }
 
 .contact-card { padding: 36px; }
+/* /contacto/: el formulario es la acción principal (columna del split);
+   este bloque es la alternativa secundaria ("Agendar reunión"), separada
+   visualmente debajo de ambas columnas para que en mobile aparezca
+   después del formulario, no antes. */
+.contact-secondary { grid-column: 1 / -1; text-align: center; margin-top: 12px; }
+.contact-alt-hint { font-size: 13px; color: var(--ink-dim); margin: 0 0 14px; }
+
 .cta-form { display: flex; flex-direction: column; gap: 18px; }
 .field { display: flex; flex-direction: column; gap: 8px; }
 .field label { font-size: 13px; color: var(--ink-dim); }
@@ -699,6 +766,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 [data-reveal][data-reveal-delay="1"] { transition-delay: .14s; }
 [data-reveal][data-reveal-delay="2"] { transition-delay: .28s; }
 [data-reveal][data-reveal-delay="3"] { transition-delay: .42s; }
+[data-reveal][data-reveal-delay="4"] { transition-delay: .56s; }
 
 /* Pares texto/imagen — convergen desde lados opuestos en vez de solo aparecer (Sobre mí, Soluciones) */
 [data-reveal-x="left"] { transform: translateY(30px) translateX(-70px) scale(.96); }
@@ -842,7 +910,9 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
   .card-grid:has(> :nth-child(5):last-child) > :nth-child(-n+3),
   .card-grid:has(> :nth-child(5):last-child) > :nth-child(4),
   .card-grid:has(> :nth-child(5):last-child) > :nth-child(5) { grid-column: auto; }
+  .card-grid-3x2 { grid-template-columns: 1fr; }
   .tilt-frame { height: 320px; }
+  .hero-visual-card { min-height: 260px; }
   .about-portrait { width: min(68%, 300px); }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
   .footer-col-brand { grid-column: 1 / -1; }
@@ -855,7 +925,9 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
 @media (max-width: 720px) {
   .container { padding-inline: 20px; }
   .section { padding: 72px 0; }
+  .section-compact { padding: 48px 0; }
   .hero { padding-top: 120px; }
+  #hero-servicio { padding: 120px 0 64px; }
   .hero-actions { flex-direction: column; width: 100%; }
   .hero-actions .btn { width: 100%; }
   .hero-mark { width: 260px; height: 260px; }
