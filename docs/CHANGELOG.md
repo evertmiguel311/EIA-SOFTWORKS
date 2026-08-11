@@ -4,6 +4,13 @@ Generado a partir del historial real de `git log` de la rama `master`. Formato: 
 
 ## 2026-08
 
+- `02a4a0f` — 2026-08-11 — Cerrar SEO "B.9" y preparar publicación: enlace contextual Home → página pilar, excluir auditorías internas del repositorio público. Ver [DEC-010](decisions/DEC-010.md).
+- `796937e` — 2026-08-11 — Cerrar B.9: diferenciar títulos y FAQ de Software para Empresas y Software para Entidades Públicas frente al pilar, actualizar `sitemap.xml`. Ver [DEC-010](decisions/DEC-010.md).
+- `bd57ff1` — 2026-08-11 — Añadir enlace de Contacto al nav, corregir jerarquía de conversión (`#contacto` de Home) y balance visual (grid de 6 tarjetas) en páginas de servicio.
+- `904e0cd` — 2026-08-10 — Corregir accesibilidad por teclado del dropdown "Servicios" del nav y otras mejoras de UX visual.
+- `3981c41` — 2026-08-10 — Registrar hallazgos de las auditorías SEO estratégica y visual/UX en `docs/audits/` (carpeta excluida del repositorio público desde `02a4a0f`, ver [DEC-010](decisions/DEC-010.md)).
+- `89ea49f` — 2026-08-10 — Actualizar `CURRENT-STATE.md` tras publicar el checkpoint `2c09e4d`.
+- `2c09e4d` — 2026-08-10 — Consolidar estado del proyecto: publicar seis páginas de servicio, documentación técnica (`docs/`) y corregir cache-busting de `main.js`/`styles.css`.
 - `354b48d` — 2026-08-03 — Corregir patrón de validación del teléfono inválido en Chrome reciente.
 - `42c7fd6` — 2026-08-03 — Cerrar el modal de agenda automáticamente tras enviar el formulario.
 
@@ -36,6 +43,4 @@ Generado a partir del historial real de `git log` de la rama `master`. Formato: 
 
 > Ver [CURRENT-STATE.md](CURRENT-STATE.md) para el detalle completo y actualizado.
 
-- Seis páginas de servicio nuevas (`contacto/`, `desarrollo-web/`, `desarrollo-software-a-medida/`, `software-empresas/`, `software-entidades-publicas/`, `power-bi-dashboard/`) existen en disco pero nunca se han commiteado.
-- `index.html`, `main.js`, `styles.css`, `sitemap.xml` tienen cambios locales sin commitear (accesibilidad B.8 y SEO B.9 en curso).
-- `Informe_EIA_Softworks.docx` está en stage (`git add`) sin commitear.
+Nada pendiente de publicar — working tree limpio, `HEAD` sincronizado con `origin/master` en `02a4a0f` (2026-08-11).

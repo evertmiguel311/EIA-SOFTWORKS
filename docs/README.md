@@ -9,7 +9,7 @@
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Cómo está construido: stack, estructura de archivos, páginas, integraciones, despliegue. |
 | [CHANGELOG.md](CHANGELOG.md) | Historia de cambios reales, generada a partir del historial de git. |
 | [decisions/](decisions/README.md) | Registro de decisiones de arquitectura/producto (ADR), con contexto y consecuencias. |
-| [audits/](audits/) | Informes de auditoría (SEO, visual/UX, etc.): hallazgos, riesgos y decisiones pendientes de una revisión puntual — no son estado ni decisiones tomadas, son insumo para decidir. |
+| `audits/` (local, no publicado) | Informes de auditoría (SEO, visual/UX, etc.): hallazgos, riesgos y decisiones pendientes de una revisión puntual — no son estado ni decisiones tomadas, son insumo para decidir. Carpeta excluida del repositorio público vía `.gitignore` (`docs/audits/`) desde el 2026-08-11 — existe en el disco de quien trabaja en el repo, no en `origin/master`. Sus hallazgos, una vez resueltos, se reflejan en `CURRENT-STATE.md`/`decisions/`. |
 
 ## Convención de actualización
 
@@ -17,4 +17,4 @@
 - **CHANGELOG.md** se agrega al final de cada release/commit significativo relevante.
 - **decisions/** solo crece: una decisión ya tomada no se borra ni se edita en retrospectiva; si se revierte, se documenta como una decisión nueva que referencia a la anterior.
 - **REQUIREMENTS.md** y **ARCHITECTURE.md** se actualizan cuando el requisito o la arquitectura realmente cambian, no en cada sesión.
-- **audits/** solo crece: cada auditoría es un archivo nuevo fechado (`YYYY-MM-DD-tema.md`), nunca se edita retroactivamente. Si sus hallazgos se resuelven, se refleja en `CURRENT-STATE.md`/`decisions/`, no borrando el informe.
+- **audits/** solo crece localmente: cada auditoría es un archivo nuevo fechado (`YYYY-MM-DD-tema.md`), nunca se edita retroactivamente. No se publica en el repositorio remoto (ver arriba). Si sus hallazgos se resuelven, se refleja en `CURRENT-STATE.md`/`decisions/`, no borrando el informe local.
