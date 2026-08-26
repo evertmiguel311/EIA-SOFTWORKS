@@ -85,6 +85,7 @@
 
   /* ---------- Smooth anchor scroll (native) ---------- */
   function initSmoothAnchors() {
+    var navOffset = 88;
     document.addEventListener("click", function (e) {
       var a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
       if (!a) return;
@@ -93,12 +94,27 @@
       var el = document.querySelector(id);
       if (!el) return;
       e.preventDefault();
-      var navOffset = 88;
       window.scrollTo({
         top: el.getBoundingClientRect().top + scrollY - navOffset,
         behavior: reducedMotion ? "auto" : "smooth"
       });
     });
+
+    /* Corrige el salto nativo del navegador cuando la página carga con un
+       hash en la URL (ej. enlace de otra página a ../index.html#planes),
+       que de otro modo deja la sección tapada detrás del nav flotante. */
+    if (location.hash) {
+      var target = document.querySelector(location.hash);
+      if (target) {
+        if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+        window.requestAnimationFrame(function () {
+          window.scrollTo({
+            top: target.getBoundingClientRect().top + scrollY - navOffset,
+            behavior: "auto"
+          });
+        });
+      }
+    }
   }
 
   /* ---------- Scroll progress bar ---------- */

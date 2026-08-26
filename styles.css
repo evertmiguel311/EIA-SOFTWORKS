@@ -569,6 +569,43 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .svc-card-cta:hover .svc-card-link { color: #fff; }
 
 /* =============================================================
+   11c-bis. Tarjetas de plan (Planes de sitio web / Niveles de plataforma)
+   Reutiliza .glass-card + .svc-card como base; solo añade la tipografía
+   del precio, que no existía en ningún otro componente del sitio.
+   ============================================================= */
+.plan-price { display: flex; align-items: baseline; gap: 8px; font-family: var(--mono); }
+.plan-price .amount { font-size: 28px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.plan-price .unit { font-size: 13px; font-weight: 500; color: var(--ink-mute); }
+.plan-meta { font-size: 13px; color: var(--ink-mute); border-top: 1px solid var(--line-soft); padding-top: 14px; margin-top: auto; }
+.plan-meta strong { color: var(--ink-soft); font-weight: 600; }
+.svc-card-cta .plan-meta { border-top-color: rgba(255,255,255,0.14); }
+
+/* Disclosure "ver más detalles" dentro de una tarjeta de plan — reutiliza
+   el lenguaje visual del marcador +/− de .faq-item (misma interacción,
+   misma marca, distinto contexto). */
+.plan-details { border-top: 1px solid var(--line-soft); padding-top: 14px; }
+.svc-card-cta .plan-details { border-top-color: rgba(255,255,255,0.14); }
+.plan-details summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  font-size: 14px; font-weight: 600; color: var(--accent-2);
+}
+.plan-details summary::-webkit-details-marker { display: none; }
+.plan-details[open] .faq-mark::after { transform: translate(-50%,-50%) scaleY(0); }
+.plan-details-body { margin-top: 16px; display: flex; flex-direction: column; gap: 14px; }
+.plan-details-group h4 {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-mute); margin-bottom: 8px; font-weight: 600;
+}
+.plan-details-group .about-specialty-list li { font-size: 14px; }
+
+.section-inline-cta {
+  margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--line-soft);
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.section-inline-cta p { margin: 0; font-size: 16px; font-weight: 500; color: var(--ink); }
+
+/* =============================================================
    11c-bis. Hero de página de servicio — visual lateral con ícono
    (reemplaza fotografía de stock, ver CLAUDE.md §17 — solo ícono
    de línea + grid de puntos, sin ilustraciones complejas)
@@ -590,6 +627,13 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
   box-shadow: 0 24px 50px -18px var(--c1);
 }
 .hero-visual-icon svg { width: 44px; height: 44px; }
+.hero-visual-illustration {
+  width: min(100%, 320px); aspect-ratio: 1 / 1; object-fit: cover;
+  border-radius: 16px; box-shadow: 0 24px 50px -18px var(--c1);
+}
+.tilt-frame > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fincontrol-icon-card { display: flex; align-items: center; justify-content: center; min-height: 320px; }
+.fincontrol-mark { width: min(55%, 220px); height: auto; filter: drop-shadow(0 20px 40px oklch(60% 0.22 258 / 0.35)); }
 .hero-visual-tags {
   list-style: none; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
   max-width: 300px; margin: 0; padding: 0;
@@ -930,6 +974,8 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
   #hero-servicio { padding: 120px 0 64px; }
   .hero-actions { flex-direction: column; width: 100%; }
   .hero-actions .btn { width: 100%; }
+  .section-inline-cta { flex-direction: column; align-items: stretch; text-align: center; }
+  .section-inline-cta .btn { width: 100%; }
   .hero-mark { width: 260px; height: 260px; }
   .floating-chip-corner { left: 0; bottom: -16px; }
   .stack-logo img { width: 26px; height: 26px; }
