@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Detalle de precios — La Fabrika Aluminio</title>
+<meta name="description" content="Qué incluye cada opción de sitio web propuesta a La Fabrika Aluminio, y qué añade cada complemento sobre el plan base.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --bg: oklch(8% 0.007 262);
+  --bg-2: oklch(10.5% 0.01 262);
+  --bg-3: oklch(14% 0.012 264);
+  --ink: #f5f6f8;
+  --ink-soft: rgba(245,246,248,0.72);
+  --ink-mute: rgba(245,246,248,0.55);
+  --accent: oklch(60% 0.22 258);
+  --accent-2: oklch(72% 0.14 195);
+  --line: rgba(255,255,255,0.1);
+  --glass: rgba(255,255,255,0.04);
+  --ok-bg: rgba(0,191,192,0.16);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono','IBM Plex Mono',ui-monospace,monospace;}
+a{color:var(--accent-2);}
+a:hover{color:var(--accent);}
+
+.topbar{
+  border-bottom:1px solid var(--line);
+  padding:20px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+.brand .mark{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,var(--accent),var(--accent-2));}
+.brand .name{font-weight:700;font-size:14.5px;}
+.topbar a.back{font-size:13px;color:var(--ink-mute);text-decoration:none;font-family:'JetBrains Mono',monospace;}
+.topbar a.back:hover{color:var(--ink);}
+
+.wrap{max-width:920px;margin:0 auto;padding:56px 28px 100px;}
+
+.kicker{
+  font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;letter-spacing:0.07em;
+  text-transform:uppercase;color:var(--accent-2);margin:0 0 12px;
+}
+h1{font-size:clamp(26px,4vw,36px);font-weight:800;line-height:1.15;margin:0 0 16px;text-wrap:balance;}
+.lede{font-size:16.5px;line-height:1.65;color:var(--ink-soft);max-width:66ch;margin:0 0 48px;}
+
+section{margin-bottom:52px;}
+h2{
+  font-size:17px;font-weight:700;letter-spacing:0.01em;
+  font-family:'Inter',sans-serif;color:var(--accent-2);
+  margin:0 0 20px;padding-bottom:12px;border-bottom:1px solid var(--line);
+}
+
+.table-scroll{overflow-x:auto;border-radius:14px;border:1px solid var(--line);background:var(--bg-2);}
+table{width:100%;border-collapse:collapse;min-width:760px;}
+thead th{
+  text-align:left;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;
+  text-transform:uppercase;color:var(--ink-mute);font-weight:600;
+  padding:16px 18px;border-bottom:1px solid var(--line);white-space:nowrap;
+}
+tbody td{padding:16px 18px;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.5;vertical-align:top;}
+tbody tr:last-child td{border-bottom:none;}
+.plan-name{font-weight:700;font-size:15px;}
+.plan-price{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap;}
+.mut{color:var(--ink-mute);}
+.plus-tag{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--accent-2);font-weight:600;}
+
+.compare{display:flex;flex-direction:column;gap:16px;margin-bottom:24px;}
+.compare-item{border:1px solid var(--line);border-radius:14px;background:var(--bg-2);overflow:hidden;}
+.compare-head{padding:14px 20px;background:var(--bg-3);border-bottom:1px solid var(--line);font-weight:700;font-size:15px;}
+.compare-body{display:grid;grid-template-columns:1fr 1fr;}
+.compare-col{padding:18px 20px;}
+.compare-col + .compare-col{border-left:1px solid var(--line);}
+.compare-col .lbl{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;display:block;}
+.compare-col.base .lbl{color:var(--ink-mute);}
+.compare-col.plus .lbl{color:var(--accent-2);}
+.compare-col p{margin:0;font-size:14px;line-height:1.55;color:var(--ink-soft);}
+.compare-why{
+  padding:14px 20px 14px 17px;border-top:1px solid var(--line);border-left:3px solid var(--accent-2);
+  background:var(--ok-bg);font-size:13.5px;line-height:1.5;
+}
+.compare-why b{font-weight:700;color:var(--accent-2);}
+
+.row-toggle{
+  display:inline-flex;align-items:center;gap:5px;margin-top:6px;
+  background:none;border:none;padding:0;cursor:pointer;font-style:normal;
+  font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--accent-2);
+}
+.row-toggle:hover{color:var(--accent);}
+.row-toggle .chev{transition:transform .18s ease;font-size:10px;}
+.row-toggle.open .chev{transform:rotate(180deg);}
+.detail-row td{background:var(--bg-3);padding:0;}
+.detail-row-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:20px 18px;}
+
+.plan-detail-group{margin-bottom:0;}
+.plan-detail-group .glbl{
+  font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--accent-2);margin-bottom:8px;display:block;
+}
+.plan-detail-group.no .glbl{color:var(--ink-mute);}
+.plan-detail-group ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.75;color:var(--ink-soft);}
+.plan-detail-group.no ul{color:var(--ink-mute);}
+
+.tip{border-bottom:1px dotted var(--ink-mute);cursor:help;position:relative;}
+.tip::after{
+  content:attr(data-tip);position:absolute;left:0;bottom:calc(100% + 8px);
+  background:var(--bg-3);color:var(--ink);border:1px solid var(--line);
+  padding:9px 11px;border-radius:8px;font-size:12.5px;line-height:1.45;font-weight:400;
+  width:230px;max-width:60vw;opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .15s ease;box-shadow:0 10px 26px rgba(0,0,0,.45);z-index:20;
+}
+.tip:hover::after,.tip:focus::after{opacity:1;visibility:visible;}
+
+.included-box{border:1px dashed var(--line);border-radius:12px;padding:16px 20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.included-box .lbl{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-mute);margin-right:6px;}
+.pill{font-size:12.5px;padding:4px 11px;border-radius:999px;background:var(--bg-3);border:1px solid var(--line);white-space:nowrap;}
+
+.decision{
+  border:1px solid var(--line);border-radius:16px;background:var(--bg-2);padding:28px 30px;
+}
+.decision h3{margin:0 0 10px;font-size:18px;font-weight:700;}
+.decision p{margin:0 0 14px;font-size:14.5px;line-height:1.65;color:var(--ink-soft);}
+.decision ul{margin:0;padding-left:20px;font-size:14.5px;line-height:1.8;color:var(--ink-soft);}
+.closing-note{font-size:14.5px;line-height:1.6;color:var(--ink-soft);margin:22px 0 0;}
+
+.unused-row td{color:var(--ink-mute);font-style:italic;}
+
+.map-flow{display:grid;grid-template-columns:1fr 40px 1fr;column-gap:14px;align-items:start;}
+.map-col-wrap{display:flex;flex-direction:column;min-width:0;}
+.map-col-title{
+  font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.05em;text-transform:uppercase;
+  color:var(--ink-mute);margin-bottom:14px;
+}
+.map-col{display:grid;grid-template-rows:repeat(5,84px);row-gap:14px;}
+.map-card{
+  background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  display:flex;flex-direction:column;justify-content:center;min-width:0;
+}
+.map-card .name{font-weight:700;font-size:14.5px;}
+.map-card .sub{font-size:12.5px;color:var(--ink-mute);margin-top:2px;}
+.map-arrows-wrap{align-items:center;}
+.map-arrow-cell,.map-fork-cell{display:flex;align-items:center;justify-content:center;color:var(--ink-mute);}
+
+footer{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:var(--accent-2);border-top:1px solid var(--line);padding-top:20px;margin-top:60px;}
+
+@media (max-width:640px){
+  .compare-body{grid-template-columns:1fr;}
+  .compare-col + .compare-col{border-left:none;border-top:1px solid var(--line);}
+  .map-flow{grid-template-columns:1fr;}
+  .map-arrows-wrap{display:none;}
+  .map-col{grid-template-rows:none;display:flex;flex-direction:column;gap:14px;}
+  .map-card{grid-row:auto !important;align-self:stretch !important;}
+  .detail-row-inner{grid-template-columns:1fr;gap:16px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="https://evertmiguel311.github.io/EIA-SOFTWORKS/">
+    <span class="mark"></span><span class="name">EIA SOFTWORKS</span>
+  </a>
+  <a class="back" href="https://evertmiguel311.github.io/EIA-SOFTWORKS/">← eiasoftworks.com</a>
+</div>
+
+<div class="wrap">
+
+  <p class="kicker">Preparado para La Fabrika Aluminio</p>
+  <h1>Qué incluye exactamente cada precio de la propuesta</h1>
+  <p class="lede">Queremos que tengan toda la información clara, sin letra pequeña. Aquí explicamos, precio por precio, qué es el plan base de cada opción (el mismo que está publicado en nuestra página) y qué le suma cada complemento que les propusimos, pensando en cómo funciona su negocio. Con esto claro, deciden ustedes con toda calma.</p>
+
+  <section>
+    <h2>Tabla de equivalencia: el plan real detrás de cada precio</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Plan</th><th>En página web (precio base)</th><th>Complemento agregado</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+          <tr class="unused-row">
+            <td>
+              <span class="plan-name">Landing Esencial</span><br><span class="mut">1 página · 10–15 días · 15 días de soporte</span><br>
+              <button class="row-toggle" data-target="det-landing">Ver más detalles <span class="chev">⌄</span></button>
+            </td>
+            <td class="plan-price">$1.800.000</td>
+            <td colspan="2">No incluida en esta propuesta.</td>
+          </tr>
+          <tr id="det-landing" class="detail-row" hidden>
+            <td colspan="4">
+              <div class="detail-row-inner">
+                <div class="plan-detail-group">
+                  <span class="glbl">Incluye (1 página, por secciones)</span>
+                  <ul>
+                    <li><span class="tip" data-tip="La primera pantalla que ve cualquiera que entra a la página.">Inicio</span></li>
+                    <li><span class="tip" data-tip="Dónde explican qué venden o qué hacen.">Servicios</span></li>
+                    <li><span class="tip" data-tip="Quiénes son ustedes, un poco de la historia del negocio.">Sobre el negocio</span></li>
+                    <li><span class="tip" data-tip="Cómo escribirles: formulario, WhatsApp, redes sociales.">Contacto</span></li>
+                  </ul>
+                </div>
+                <div class="plan-detail-group">
+                  <span class="glbl">También incluye</span>
+                  <ul>
+                    <li><span class="tip" data-tip="Antes de entregar probamos todo: que se vea bien en el celular, que el formulario llegue, que el WhatsApp abra, que el correo funcione, que el candado de seguridad esté activo y que el dominio cargue bien.">Batería de pruebas completa antes de publicar</span></li>
+                    <li><span class="tip" data-tip="Un video o guía corta de cómo usar y administrar lo que reciben.">Instrucciones de entrega</span></li>
+                  </ul>
+                </div>
+                <div class="plan-detail-group no">
+                  <span class="glbl">No incluye</span>
+                  <ul>
+                    <li><span class="tip" data-tip="No incluye que alguien les escriba los textos desde cero como una agencia de publicidad — nosotros ordenamos y redactamos a partir de lo que ustedes ya nos cuentan.">Redacción completa de textos por copywriter</span></li>
+                    <li><span class="tip" data-tip="Que ustedes mismos puedan cambiar fotos o textos sin pedírnoslo — eso se puede sumar aparte, como complemento.">Editar el sitio por su cuenta</span></li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <span class="plan-name">Sitio Corporativo</span><br><span class="mut">Hasta 5 páginas · 3–4 semanas · 30 días de soporte</span><br>
+              <button class="row-toggle" data-target="det-corporativo">Ver más detalles <span class="chev">⌄</span></button>
+            </td>
+            <td class="plan-price">$2.900.000</td>
+            <td><span class="plus-tag">Formulario de cotización guiado</span><br><span class="mut">$450.000</span></td>
+            <td class="plan-price">$3.350.000</td>
+          </tr>
+          <tr id="det-corporativo" class="detail-row" hidden>
+            <td colspan="4">
+              <div class="detail-row-inner">
+                <div class="plan-detail-group">
+                  <span class="glbl">Incluye (hasta 5 páginas)</span>
+                  <ul>
+                    <li><span class="tip" data-tip="La primera pantalla que ve cualquiera que entra a la página.">Inicio</span></li>
+                    <li><span class="tip" data-tip="Página para contar más sobre la empresa: historia, experiencia, equipo.">Nosotros</span></li>
+                    <li><span class="tip" data-tip="Dónde explican qué venden o qué hacen.">Servicios</span></li>
+                    <li><span class="tip" data-tip="Galería para mostrar trabajos que ya entregaron.">Proyectos / Portafolio</span></li>
+                    <li><span class="tip" data-tip="Cómo escribirles: formulario, WhatsApp, mapa, redes sociales.">Contacto</span></li>
+                  </ul>
+                </div>
+                <div class="plan-detail-group">
+                  <span class="glbl">También incluye</span>
+                  <ul>
+                    <li><span class="tip" data-tip="Espacios destacados para promociones o fotos, y una galería de imágenes o un video que ustedes nos compartan.">Banners y galería (si aplican a su negocio)</span></li>
+                    <li><span class="tip" data-tip="Una reunión presencial o videollamada donde les mostramos cómo administrar y usar lo que reciben, además de probar que todo funcione antes de publicar.">Batería de pruebas + capacitación de entrega</span></li>
+                  </ul>
+                </div>
+                <div class="plan-detail-group no">
+                  <span class="glbl">No incluye</span>
+                  <ul>
+                    <li><span class="tip" data-tip="Un espacio para ir publicando novedades o proyectos con el tiempo — no viene en este plan, sí en el Corporativo Avanzado.">Blog o sección de noticias</span></li>
+                    <li><span class="tip" data-tip="No incluye que alguien les escriba los textos desde cero como una agencia de publicidad — nosotros ordenamos y redactamos a partir de lo que ustedes ya nos cuentan.">Redacción completa de textos por copywriter</span></li>
+                    <li><span class="tip" data-tip="Que ustedes mismos puedan cambiar fotos o textos sin pedírnoslo — eso se puede sumar aparte, como complemento.">Editar el sitio por su cuenta</span></li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td rowspan="2">
+              <span class="plan-name">Corporativo Avanzado</span><br><span class="mut">Hasta 9 páginas + blog · 4–6 semanas · 45 días de soporte</span><br>
+              <button class="row-toggle" data-target="det-avanzado">Ver más detalles <span class="chev">⌄</span></button>
+            </td>
+            <td class="plan-price" rowspan="2">$4.300.000</td>
+            <td><span class="plus-tag">Formulario de cotización guiado</span><br><span class="mut">$450.000</span></td>
+            <td class="plan-price">$4.750.000</td>
+          </tr>
+          <tr>
+            <td><span class="plus-tag">Formulario guiado + CRM y seguimiento GA4</span><br><span class="mut">$2.850.000</span></td>
+            <td class="plan-price">$7.150.000</td>
+          </tr>
+          <tr id="det-avanzado" class="detail-row" hidden>
+            <td colspan="4">
+              <div class="detail-row-inner">
+                <div class="plan-detail-group">
+                  <span class="glbl">Incluye (hasta 9 páginas)</span>
+                  <ul>
+                    <li><span class="tip" data-tip="La primera pantalla que ve cualquiera que entra a la página.">Inicio</span></li>
+                    <li><span class="tip" data-tip="Página para contar más sobre la empresa: historia, experiencia, equipo.">Nosotros</span></li>
+                    <li><span class="tip" data-tip="Cada línea de producto puede tener su propia página, con más detalle que en el plan Corporativo.">Servicios (con página propia por línea)</span></li>
+                    <li><span class="tip" data-tip="Galería para mostrar trabajos que ya entregaron.">Proyectos</span></li>
+                    <li><span class="tip" data-tip="Panel para que ustedes mismos publiquen entradas nuevas, sin costo extra.">Blog / Noticias</span></li>
+                    <li><span class="tip" data-tip="Cómo escribirles: formulario, WhatsApp, mapa, redes sociales.">Contacto</span></li>
+                  </ul>
+                </div>
+                <div class="plan-detail-group">
+                  <span class="glbl">También incluye</span>
+                  <ul>
+                    <li><span class="tip" data-tip="Espacios destacados para promociones o fotos, y una galería de imágenes o un video que ustedes nos compartan.">Todo lo del plan Corporativo (banners y galería)</span></li>
+                    <li><span class="tip" data-tip="Si más adelante quieren enlazar el sitio con un sistema para organizar clientes o citas, revisamos qué tan complejo es — la integración en sí se cotiza aparte.">Evaluación de integración con CRM o agenda</span></li>
+                    <li><span class="tip" data-tip="Una reunión presencial o videollamada donde les mostramos cómo administrar y usar lo que reciben, además de probar que todo funcione antes de publicar.">Batería de pruebas + capacitación de entrega</span></li>
+                  </ul>
+                </div>
+                <div class="plan-detail-group no">
+                  <span class="glbl">No incluye</span>
+                  <ul>
+                    <li><span class="tip" data-tip="Eso es el plan Tienda Virtual — vender productos con carrito y pago en línea.">Carrito de compras o pasarela de pago</span></li>
+                    <li><span class="tip" data-tip="Sistemas con usuarios, permisos y lógica propia — eso ya no es una página web, es un desarrollo a la medida.">Paneles administrativos complejos</span></li>
+                    <li><span class="tip" data-tip="Que ustedes mismos puedan cambiar fotos o textos sin pedírnoslo — eso se puede sumar aparte, como complemento.">Editar el sitio por su cuenta</span></li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr class="unused-row">
+            <td>
+              <span class="plan-name">Tienda Virtual</span><br><span class="mut">Catálogo + carrito · 60 días de soporte</span><br>
+              <button class="row-toggle" data-target="det-tienda">Ver más detalles <span class="chev">⌄</span></button>
+            </td>
+            <td class="plan-price">desde $5.800.000</td>
+            <td colspan="2">No incluida — no vendemos con carrito de compras ni pago en línea.</td>
+          </tr>
+          <tr id="det-tienda" class="detail-row" hidden>
+            <td colspan="4">
+              <div class="detail-row-inner">
+                <div class="plan-detail-group">
+                  <span class="glbl">Incluye</span>
+                  <ul>
+                    <li>Catálogo de productos y carrito de compras</li>
+                    <li><span class="tip" data-tip="Wompi, ePayco, PayU o Mercado Pago — las opciones para cobrar en línea en Colombia.">Pasarela de pago colombiana</span></li>
+                    <li><span class="tip" data-tip="Una pantalla donde ustedes suben y editan sus propios productos y ven los pedidos que van llegando.">Panel de gestión de productos y pedidos</span></li>
+                  </ul>
+                </div>
+                <div class="plan-detail-group">
+                  <span class="glbl">También incluye</span>
+                  <ul>
+                    <li><span class="tip" data-tip="Que cada producto esté bien preparado para aparecer en búsquedas de Google.">SEO técnico avanzado orientado a producto</span></li>
+                    <li><span class="tip" data-tip="Una reunión presencial o videollamada donde les mostramos cómo administrar y usar lo que reciben, además de probar que todo funcione antes de publicar.">Batería de pruebas + capacitación de entrega</span></li>
+                  </ul>
+                </div>
+                <div class="plan-detail-group no">
+                  <span class="glbl">No incluye</span>
+                  <ul>
+                    <li><span class="tip" data-tip="No incluye controlar el stock físico ni coordinar los envíos — solo la tienda en línea.">Gestión de inventario físico o logística de envíos</span></li>
+                    <li><span class="tip" data-tip="Ni tomar las fotos de producto, ni escribir sus descripciones, ni el documento fiscal que exige la DIAN por cada venta — eso se maneja aparte.">Fotografía/redacción de producto, facturación electrónica DIAN</span></li>
+                    <li><span class="tip" data-tip="Wompi, PayU o quien procese el pago cobra un pequeño porcentaje por cada transacción — eso lo asume el negocio, no nosotros.">Comisión de la pasarela</span></li>
+                  </ul>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>De dónde sale cada nombre</h2>
+    <p style="font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:66ch;margin:0 0 24px;">En la presentación que revisamos juntos usamos nombres cortos (Básica, Recomendada, Avanzada) para no repetir el nombre completo del plan en cada lámina. Este es el mapa exacto entre esos nombres y los planes reales de nuestra página, para que quede sin ninguna duda.</p>
+    <div class="map-flow">
+      <div class="map-col-wrap">
+        <div class="map-col-title">En nuestra página web</div>
+        <div class="map-col">
+          <div class="map-card" style="grid-row:1"><div class="name">Landing Esencial</div><div class="sub">$1.800.000 · no ofrecida</div></div>
+          <div class="map-card" style="grid-row:2"><div class="name">Sitio Corporativo</div><div class="sub">$2.900.000</div></div>
+          <div class="map-card" style="grid-row:3 / span 2;align-self:center;"><div class="name">Corporativo Avanzado</div><div class="sub">$4.300.000</div></div>
+          <div class="map-card" style="grid-row:5"><div class="name">Tienda Virtual</div><div class="sub">desde $5.800.000 · no ofrecida</div></div>
+        </div>
+      </div>
+
+      <div class="map-col-wrap map-arrows-wrap">
+        <div class="map-col-title" style="visibility:hidden">·</div>
+        <div class="map-col">
+          <div class="map-arrow-cell" style="grid-row:1">
+            <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8 H26 M20 3 L26 8 L20 13"/></svg>
+          </div>
+          <div class="map-arrow-cell" style="grid-row:2">
+            <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8 H26 M20 3 L26 8 L20 13"/></svg>
+          </div>
+          <div class="map-fork-cell" style="grid-row:3 / span 2">
+            <svg width="32" height="182" viewBox="0 0 32 182" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 91 H12"/>
+              <path d="M12 91 L26 42 L30 42"/>
+              <path d="M24 37 L30 42 L24 47"/>
+              <path d="M12 91 L26 140 L30 140"/>
+              <path d="M24 135 L30 140 L24 145"/>
+            </svg>
+          </div>
+          <div class="map-arrow-cell" style="grid-row:5">
+            <svg width="32" height="16" viewBox="0 0 32 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8 H26 M20 3 L26 8 L20 13"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-col-wrap">
+        <div class="map-col-title">Como se las presentamos a ustedes</div>
+        <div class="map-col">
+          <div class="map-card" style="grid-row:1;opacity:.45"><div class="name">— (no aparece)</div></div>
+          <div class="map-card" style="grid-row:2"><div class="name">BÁSICA</div><div class="sub">Sitio Corporativo + formulario guiado</div></div>
+          <div class="map-card" style="grid-row:3"><div class="name">RECOMENDADA ★</div><div class="sub">Corporativo Avanzado + formulario guiado</div></div>
+          <div class="map-card" style="grid-row:4"><div class="name">AVANZADA</div><div class="sub">Corporativo Avanzado + formulario + CRM/GA4</div></div>
+          <div class="map-card" style="grid-row:5;opacity:.45"><div class="name">— (no aparece)</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Qué añade realmente cada complemento</h2>
+    <p style="font-size:14.5px;line-height:1.6;color:var(--ink-soft);max-width:66ch;margin:0 0 24px;">Esto no es para convencerlos de nada — es para que sepan exactamente qué cambia entre tener el plan solo y sumarle algo.</p>
+
+    <div class="compare">
+      <div class="compare-item">
+        <div class="compare-head">Formulario de contacto → Formulario de cotización guiado</div>
+        <div class="compare-body">
+          <div class="compare-col base">
+            <span class="lbl">Ya incluido en el plan base</span>
+            <p>Un formulario de una sola pantalla (nombre, correo, mensaje) y un botón de WhatsApp fijo que abre un chat vacío.</p>
+          </div>
+          <div class="compare-col plus">
+            <span class="lbl">Añade el complemento ($450.000)</span>
+            <p>El formulario se divide en 3 pasos que piden justo lo necesario para cotizar (producto, medidas/cantidad/acabado, cómo prefieren que los contacten), y al final abre WhatsApp con el mensaje ya redactado con esos datos.</p>
+          </div>
+        </div>
+        <div class="compare-why"><b>En la práctica:</b> sin el complemento, cada mensaje llega como "hola, necesito información" y hay que preguntar todo desde cero por WhatsApp. Con el complemento, la cotización llega con el producto y las medidas ya especificados.</div>
+      </div>
+
+      <div class="compare-item">
+        <div class="compare-head">Analytics básico → Seguimiento de conversiones (GA4)</div>
+        <div class="compare-body">
+          <div class="compare-col base">
+            <span class="lbl">Ya incluido en el plan base</span>
+            <p>Google Analytics instalado: cuántas visitas llegan, de dónde vienen, qué páginas ven.</p>
+          </div>
+          <div class="compare-col plus">
+            <span class="lbl">Añade el complemento</span>
+            <p>Configura eventos específicos: quién llenó el formulario, quién dio clic en "llamar", quién escribió por WhatsApp — convierte tráfico en acciones medibles.</p>
+          </div>
+        </div>
+        <div class="compare-why"><b>En la práctica:</b> solo tiene sentido si ya hay o va a haber tráfico real que analizar (por ejemplo, si piensan invertir en publicidad más adelante).</div>
+      </div>
+
+      <div class="compare-item">
+        <div class="compare-head">Nada → CRM básico de cotizaciones</div>
+        <div class="compare-body">
+          <div class="compare-col base">
+            <span class="lbl">Ya incluido en el plan base</span>
+            <p>Nada — ningún plan trae un sistema de registro de clientes potenciales.</p>
+          </div>
+          <div class="compare-col plus">
+            <span class="lbl">Añade el complemento</span>
+            <p>Una base de datos propia que guarda cada cotización con su estado: Por contactar, Presupuesto enviado, En negociación, Cerrado.</p>
+          </div>
+        </div>
+        <div class="compare-why"><b>En la práctica:</b> sin esto, cada cotización vive solo en el correo o en WhatsApp — nada evita que una se pierda o se le olvide a alguien responder.</div>
+      </div>
+    </div>
+
+    <div class="included-box">
+      <span class="lbl">YA EN EL PRECIO BASE, SIN COSTO APARTE:</span>
+      <span class="pill">Galería y banners</span>
+      <span class="pill">Blog (solo Corporativo Avanzado)</span>
+      <span class="pill">Mapa de ubicación</span>
+      <span class="pill">Enlaces a redes sociales</span>
+      <span class="pill">SEO técnico</span>
+      <span class="pill">Analytics (tráfico)</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Ustedes deciden</h2>
+    <div class="decision">
+      <h3>No hay una opción mejor — hay la que les sirve a ustedes</h3>
+      <p>El plan base ya es una página completa y profesional, no le falta nada. Pensamos los complementos porque, por cómo cotizan (a la medida, con detalles que cambian en cada trabajo), pueden ahorrarles tiempo real — no porque el plan base se quede corto. Lo que más nos importa es que el resultado les sirva, no venderles lo más caro.</p>
+      <ul>
+        <li>Empezar con el plan base tal como está en nuestra página es una opción tan buena como cualquier otra.</li>
+        <li>Si ya reciben bastantes cotizaciones por WhatsApp, el formulario guiado casi siempre se paga solo en el tiempo que ahorra.</li>
+        <li>El CRM y el seguimiento de conversiones probablemente rindan más adelante, cuando ya haya un flujo de cotizaciones que valga la pena ordenar — no hay ningún afán en sumarlos desde ya.</li>
+      </ul>
+      <p class="closing-note">Esto lo deciden ustedes, con calma. Cualquier duda, nos escriben — para eso estamos.</p>
+    </div>
+  </section>
+
+  <footer>EIA SOFTWORKS · Preparado para La Fabrika Aluminio · eiasoftworks@gmail.com · 318 533 1654</footer>
+
+</div>
+
+<script>
+document.querySelectorAll('.row-toggle').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var row = document.getElementById(btn.dataset.target);
+    if (!row) return;
+    var isHidden = row.hasAttribute('hidden');
+    if (isHidden) { row.removeAttribute('hidden'); btn.classList.add('open'); }
+    else { row.setAttribute('hidden', ''); btn.classList.remove('open'); }
+  });
+});
+</script>
+</body>
+</html>
