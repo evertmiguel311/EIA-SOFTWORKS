@@ -10,6 +10,33 @@
     try { fn(); } catch (e) { console.warn("[" + name + "]", e); }
   }
 
+  /* ---------- Analytics: eventos de conversión (gtag ya cargado en <head>) ---------- */
+  function track(name, params) {
+    if (typeof gtag === "function") gtag("event", name, params || {});
+  }
+
+  function initAnalyticsEvents() {
+    document.addEventListener("click", function (e) {
+      var el = e.target.closest ? e.target.closest("[data-gtag-event]") : null;
+      if (!el) return;
+      track(el.getAttribute("data-gtag-event"), {
+        event_category: el.getAttribute("data-gtag-category") || "engagement",
+        event_label: el.getAttribute("data-gtag-label") || el.textContent.trim().slice(0, 80)
+      });
+    });
+
+    $$(".plan-details").forEach(function (details) {
+      details.addEventListener("toggle", function () {
+        var card = details.closest("[data-plan]");
+        track("plan_details_toggle", {
+          event_category: "planes",
+          plan: card ? card.getAttribute("data-plan") : "desconocido",
+          open: details.open
+        });
+      });
+    });
+  }
+
   /* ---------- Nav: solidify on scroll ---------- */
   function initNav() {
     var nav = $("[data-nav]");
@@ -102,8 +129,11 @@
 
     /* Corrige el salto nativo del navegador cuando la página carga con un
        hash en la URL (ej. enlace de otra página a ../index.html#planes),
-       que de otro modo deja la sección tapada detrás del nav flotante. */
-    if (location.hash) {
+       que de otro modo deja la sección tapada detrás del nav flotante.
+       Los hash #plan-* los resuelve initPlanDeepLink (necesita scrollear
+       al nivel de la categoría, no al plan puntual, después de colapsar
+       las demás categorías). */
+    if (location.hash && !/^#plan-/.test(location.hash)) {
       var target = document.querySelector(location.hash);
       if (target) {
         if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -115,6 +145,47 @@
         });
       }
     }
+  }
+
+  /* ---------- Deep link a un plan (ej. planes/index.html#plan-tienda-virtual):
+     abre su <details> de más detalles para verlo completo sin un clic extra,
+     y contrae las demás categorías de planes para no abrumar con las otras
+     6 tarjetas — la categoría del plan enlazado queda como única expandida.
+     El scroll apunta al encabezado de la categoría (no a la tarjeta puntual):
+     aterrizar justo en la tarjeta la corta contra el nav flotante y no deja
+     ver a qué categoría pertenece — se resalta la tarjeta en su lugar. ---------- */
+  function initPlanDeepLink() {
+    if (!/^#plan-/.test(location.hash)) return;
+    var target = document.querySelector(location.hash);
+    if (!target) return;
+    var details = target.querySelector(".plan-details");
+    if (details) details.open = true;
+    var ownCategory = target.closest(".plan-category-toggle");
+    if (ownCategory) {
+      $$(".plan-category-toggle").forEach(function (d) {
+        d.open = (d === ownCategory);
+      });
+    }
+    var navOffset = 88;
+    var scrollTarget = (ownCategory && ownCategory.querySelector(".plan-category-header")) || ownCategory || target;
+    if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+    /* Espera a que las fuentes web terminen de cargar antes de medir: con
+       font-display:swap el texto se pinta primero con la fuente de reserva
+       y re-envuelve líneas al llegar Inter, lo que corre el objetivo varias
+       decenas de píxeles si se mide demasiado pronto. */
+    var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+    fontsReady.then(function () {
+      window.requestAnimationFrame(function () {
+        window.scrollTo({
+          top: scrollTarget.getBoundingClientRect().top + scrollY - navOffset,
+          behavior: "auto"
+        });
+      });
+    });
+    target.classList.add("plan-highlight");
+    window.setTimeout(function () {
+      target.classList.remove("plan-highlight");
+    }, 2200);
   }
 
   /* ---------- Scroll progress bar ---------- */
@@ -339,6 +410,7 @@
           form.classList.add("is-sent");
           success.setAttribute("aria-hidden", "false");
           success.classList.add("is-visible");
+          track("form_submit_success", { event_category: "contacto", event_label: form.elements.subject.value });
           if (eyebrowEl) eyebrowEl.hidden = true;
           if (titleEl) titleEl.hidden = true;
           if (leadEl) leadEl.hidden = true;
@@ -477,7 +549,13 @@
 
     $$("[data-open-modal]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        open(getModal(btn.getAttribute("data-open-modal") || "agenda"), btn);
+        var modal = getModal(btn.getAttribute("data-open-modal") || "agenda");
+        var subject = btn.getAttribute("data-subject");
+        if (subject && modal) {
+          var subjectField = modal.querySelector('input[name="subject"]');
+          if (subjectField) subjectField.value = subject;
+        }
+        open(modal, btn);
       });
     });
     modals.forEach(function (modal) {
@@ -499,6 +577,7 @@
     safe(initNavDropdown, "initNavDropdown");
     safe(initMobileNav, "initMobileNav");
     safe(initSmoothAnchors, "initSmoothAnchors");
+    safe(initPlanDeepLink, "initPlanDeepLink");
     safe(initScrollProgress, "initScrollProgress");
     safe(initReveals, "initReveals");
     safe(initHeroGradient, "initHeroGradient");
@@ -507,6 +586,7 @@
     safe(initContactForm, "initContactForm");
     safe(initFab, "initFab");
     safe(initModals, "initModals");
+    safe(initAnalyticsEvents, "initAnalyticsEvents");
     document.documentElement.classList.add("is-ready");
   }
 

@@ -84,7 +84,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
    3. Typography helpers
    ============================================================= */
 .eyebrow {
-  font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  font-size: 16px; font-weight: 600; letter-spacing: 1.6px; text-transform: uppercase;
   color: var(--accent-2); font-family: var(--mono);
 }
 .h2 { font-size: clamp(30px, 4vw, 42px); margin-top: 14px; letter-spacing: -0.5px; }
@@ -276,10 +276,13 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
   }
 }
 
-.hero-content { position: relative; z-index: 2; max-width: 900px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+.hero-content { position: relative; z-index: 2; max-width: 1180px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 26px; }
 .hero-title { font-size: clamp(36px, 5.2vw, 60px); font-weight: 700; letter-spacing: -1px; }
-.hero-sub { font-size: 19px; line-height: 1.6; color: var(--ink-soft); max-width: 620px; }
-.hero-actions { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; justify-content: center; }
+.hero-sub { font-size: 19px; line-height: 1.6; color: var(--ink-soft); max-width: 720px; }
+.hero-actions { display: flex; gap: 16px; margin-top: 34px; flex-wrap: wrap; justify-content: center; }
+/* Mismo alto que el botón "Agendar reunión" del nav (.nav-cta) — los
+   botones del hero se veían desproporcionados frente al resto de la UI. */
+.hero-actions .btn { padding: 10px 20px; font-size: 14px; }
 
 @keyframes floatA { 0%,100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(18px,-24px) rotate(4deg); } }
 @keyframes floatB { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-22px,19px); } }
@@ -474,11 +477,6 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .glass-card p { font-size: 15px; line-height: 1.6; color: var(--ink-mute); }
 
 /* =============================================================
-   9. Sectores — reutiliza el componente de tarjeta de Servicios (glass-card + svc-card, ver §11c)
-   ============================================================= */
-.sector-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-
-/* =============================================================
    11. Tecnologías — fila compacta de logos (respaldo, no protagonista)
    ============================================================= */
 .tech-tiles { display: flex; flex-direction: column; align-items: center; gap: 30px; }
@@ -499,14 +497,16 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
    11b. Hero pills + stack strip
    ============================================================= */
 .hero-pills {
-  list-style: none; display: flex; flex-wrap: wrap; gap: 10px 18px; justify-content: center;
-  margin: 26px 0 0; padding: 0; max-width: 640px;
+  list-style: none; display: flex; flex-wrap: wrap; gap: 12px 14px; justify-content: center;
+  margin: 30px 0 0; padding: 0; max-width: 720px;
 }
 .hero-pills li {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-size: 13px; color: var(--ink-mute); font-weight: 500;
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 9px 16px; border-radius: 999px;
+  background: var(--glass); border: 1px solid var(--line);
+  font-size: 14.5px; color: var(--ink-soft); font-weight: 600;
 }
-.hero-pill-dot { width: 7px; height: 7px; border-radius: 50%; box-shadow: 0 0 10px currentColor; }
+.hero-pill-dot { font-weight: 700; font-size: 15px; text-shadow: 0 0 10px currentColor; }
 
 .stack-strip { padding: 30px 0 12px; border-top: 1px solid var(--line-soft); margin-top: -1px; }
 
@@ -544,7 +544,7 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 /* =============================================================
    11c. Service cards (colored icons)
    ============================================================= */
-.svc-card { position: relative; overflow: hidden; }
+.svc-card { position: relative; }
 .svc-card::after {
   content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; border-radius: 18px 18px 0 0;
   background: linear-gradient(90deg, var(--c1), var(--c2));
@@ -568,17 +568,93 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .svc-card-link { display: block; margin-top: auto; font-size: 14px; font-weight: 600; color: var(--accent-2); text-align: left; }
 .svc-card-cta:hover .svc-card-link { color: #fff; }
 
+/* Acento circular estático (no interactivo, no sigue el mouse) para las tarjetas
+   de Servicios — mismo lenguaje de color por tarjeta (--c1), sin animación. */
+.svc-feature-card {
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.svc-feature-card::before {
+  content: ""; position: absolute; top: -60px; right: -60px; width: 220px; height: 220px;
+  border-radius: 50%; background: radial-gradient(circle, var(--c1) 0%, transparent 70%);
+  opacity: .16; pointer-events: none; z-index: 0;
+}
+.svc-feature-card > * { position: relative; z-index: 1; }
+.svc-feature-card .svc-icon { margin-inline: auto; width: 60px; height: 60px; }
+.svc-feature-card .svc-icon svg { width: 28px; height: 28px; }
+/* Link de texto (no botón) al final de cada tarjeta, centrado, con el mismo
+   acento cian ya usado por .svc-card-link — distinto del azul del CTA final. */
+.svc-feature-card .svc-card-link { text-align: center; margin-inline: auto; margin-top: auto; }
+
+/* Servicios (Home) y Servicios incluidos (Desarrollo Web): versión compacta
+   para que el título de sección, las tarjetas y el CTA de cierre quepan en
+   una sola pantalla de escritorio, sin obligar a hacer scroll dentro de la
+   sección. Solo estas dos secciones — el resto de tarjetas del sitio
+   conserva su tamaño. */
+#servicios.section, #servicios-incluidos.section { padding: 44px 0 48px; }
+#servicios .section-head, #servicios-incluidos .section-head { margin-bottom: 22px; }
+#servicios .card-grid, #servicios-incluidos .card-grid { gap: 14px; }
+#servicios .glass-card, #servicios-incluidos .glass-card { padding: 18px 16px; gap: 8px; }
+#servicios .svc-icon, #servicios-incluidos .svc-icon { width: 38px; height: 38px; margin-bottom: 0; }
+#servicios .svc-icon svg, #servicios-incluidos .svc-icon svg { width: 18px; height: 18px; }
+#servicios .svc-card h3, #servicios-incluidos .svc-card h3 { font-size: 15.5px; }
+#servicios .svc-card p, #servicios-incluidos .svc-card p { font-size: 13px; line-height: 1.45; }
+#servicios .svc-card-link, #servicios-incluidos .svc-card-link { font-size: 13px; }
+/* Cápsula de cierre: texto + botón fundidos en una sola pieza (en vez de una
+   línea con borde superior + botón suelto) para que la pregunta funcione
+   como el gancho del botón, no como un párrafo aparte. Degradado de marca
+   puntual (violeta/índigo) — únicamente aquí, no se convierte en un color
+   base de sección (ver CLAUDE.md §4 sobre --accent-3 como acento nunca
+   protagonista: esta cápsula es la excepción deliberada, pedida con estos
+   hex exactos). El hover eleva la cápsula completa, igual que el resto de
+   superficies interactivas del sitio (glass-card, botones): invita al clic
+   sin animación en loop. */
+#servicios .section-inline-cta, #servicios-incluidos .section-inline-cta {
+  margin-top: 20px; padding: 13px 32px; border-top: none;
+  border-radius: 999px; gap: 20px; justify-content: center;
+  background: linear-gradient(135deg, #121037, #23164a, #431865, #5b4b90);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 22px 46px -20px rgba(35,22,74,0.55);
+  transition: transform .4s var(--ease-soft), box-shadow .4s var(--ease-soft);
+}
+#servicios .section-inline-cta:hover, #servicios-incluidos .section-inline-cta:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -18px rgba(35,22,74,0.7); }
+/* Resalta la pregunta de cierre como el gancho de la cápsula — más grande,
+   con más peso, en blanco sobre el degradado. */
+#servicios .section-inline-cta p, #servicios-incluidos .section-inline-cta p { font-size: 19px; font-weight: 700; color: #fff; }
+#servicios .section-inline-cta .btn-solid, #servicios-incluidos .section-inline-cta .btn-solid {
+  background: #fff; color: #23164a; box-shadow: 0 10px 24px -10px rgba(0,0,0,0.4);
+}
+#servicios .section-inline-cta .btn-solid:hover, #servicios-incluidos .section-inline-cta .btn-solid:hover { background: #f1edff; color: #23164a; }
+
 /* =============================================================
    11c-bis. Tarjetas de plan (Planes de sitio web / Niveles de plataforma)
    Reutiliza .glass-card + .svc-card como base; solo añade la tipografía
    del precio, que no existía en ningún otro componente del sitio.
    ============================================================= */
-.plan-price { display: flex; align-items: baseline; gap: 8px; font-family: var(--mono); }
-.plan-price .amount { font-size: 28px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
-.plan-price .unit { font-size: 13px; font-weight: 500; color: var(--ink-mute); }
+.plan-price { display: flex; align-items: baseline; gap: 8px; font-family: var(--mono); white-space: nowrap; }
+.plan-price .amount { font-size: 25px; font-weight: 700; color: var(--ink); letter-spacing: -0.01em; }
+.plan-price .unit { font-size: 12px; font-weight: 500; color: var(--ink-mute); }
+.plan-price-prefix { display: block; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 2px; }
+/* Descripción del plan a una altura consistente entre las 4 tarjetas, para
+   que el precio quede alineado sin importar cuánto ocupe cada texto. */
+.svc-card:has(.plan-price) h3 + p { min-height: 48px; }
 .plan-meta { font-size: 13px; color: var(--ink-mute); border-top: 1px solid var(--line-soft); padding-top: 14px; margin-top: auto; }
 .plan-meta strong { color: var(--ink-soft); font-weight: 600; }
 .svc-card-cta .plan-meta { border-top-color: rgba(255,255,255,0.14); }
+
+/* Viñeta de flecha para la lista visible de un plan (primer nivel de lectura,
+   ver referencia de precios) — solo el listado directo de la tarjeta, no los
+   sub-listados dentro de .plan-details (esos conservan el punto original). */
+.svc-card:has(.plan-price) > .about-specialty-list li {
+  padding-left: 22px;
+}
+.svc-card:has(.plan-price) > .about-specialty-list li::before {
+  content: "→"; background: none; box-shadow: none; border-radius: 0;
+  width: auto; height: auto; top: -1px; color: var(--accent-2); font-size: 14px; line-height: 1;
+}
+/* Línea "No incluye" siempre visible (segundo nivel = .plan-details sigue existiendo aparte) */
+.plan-exclude { font-size: 12.5px; color: var(--ink-dim); line-height: 1.5; }
+.plan-exclude strong { color: var(--ink-mute); font-weight: 600; }
 
 /* Disclosure "ver más detalles" dentro de una tarjeta de plan — reutiliza
    el lenguaje visual del marcador +/− de .faq-item (misma interacción,
@@ -603,7 +679,167 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
   margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--line-soft);
   display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
 }
-.section-inline-cta p { margin: 0; font-size: 16px; font-weight: 500; color: var(--ink); }
+.section-inline-cta p { margin: 0; font-size: 16px; font-weight: 500; color: var(--ink); text-align: left; }
+
+/* =============================================================
+   11c-ter. Planes: grid único (los 4 caben en una pantalla) + tip técnico
+   ============================================================= */
+/* Los 4 planes en una sola fila en desktop — evita que un grupo con una sola
+   tarjeta se estire a todo el ancho, como pasaba agrupando por categoría. */
+.card-grid-4x1 { grid-template-columns: repeat(4, 1fr); }
+.plan-category-tag {
+  font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: -4px;
+}
+/* Especificidad extra: sin esto, ".glass-card p" (una clase + un selector de
+   tipo, más específico que la única clase de ".plan-category-tag") gana la
+   cascada y deja la etiqueta en gris silenciado en vez del color --c1. */
+.glass-card .plan-category-tag { color: var(--c1); }
+/* Título de cada plan (ej. "Landing Página Básica") con el color de su
+   categoría (--c1, ya usado por .plan-category-tag) para diferenciarlo del
+   resto del texto de la tarjeta — aplica tanto a la vista resumida del Home
+   (.plan-preview-card) como a la tarjeta completa (identificada por tener
+   .plan-price, para no afectar otras .svc-card ajenas a Planes). */
+.plan-preview-card h4, .svc-card:has(.plan-price) h3 { color: var(--c1); }
+
+/* Section-head centrado — solo donde se aplica explícitamente (Planes), el
+   resto de secciones conserva su alineación a la izquierda por defecto. */
+.section-head-center { margin-inline: auto; text-align: center; }
+.section-head-center .p-lead { margin-inline: auto; }
+/* Cabecera más ancha para un h2 largo que si no se parte en 3 líneas dentro
+   del max-width de 640px por defecto (ver Planes en Desarrollo Web). */
+.section-head-wide { max-width: 900px; }
+
+/* Bloques de categoría de Planes (Home): <details> por categoría — el
+   <summary> ES el encabezado completo (ilustración + intro + CTA "Ver
+   planes"), así que la fila entera es la superficie clickeable que despliega
+   las tarjetas-resumen. Colapsado por defecto: evita mostrar de entrada 7
+   tarjetas seguidas bajo el mismo título. La página de detalle completo vive
+   en planes/index.html — ver CLAUDE.md §10. */
+.plan-category-toggle { margin-top: 48px; }
+.plan-category-toggle:first-of-type { margin-top: 32px; }
+.plan-category-header {
+  display: flex; gap: 28px; align-items: center;
+  list-style: none; cursor: pointer;
+}
+.plan-category-header::-webkit-details-marker { display: none; }
+.plan-category-illustration {
+  flex: none; width: 120px; height: 120px; border-radius: 18px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  background: var(--glass); border: 1px dashed var(--line); overflow: hidden;
+}
+.plan-category-illustration:has(img) { border-style: solid; }
+.plan-category-illustration img { width: 100%; height: 100%; object-fit: contain; }
+.plan-category-intro { flex: 1; min-width: 0; }
+.plan-category-title { font-size: 20px; margin-bottom: 8px; }
+.plan-category-intro p { color: var(--ink-mute); font-size: 15px; line-height: 1.6; text-align: left; }
+.plan-category-toggle-cta {
+  flex: none; display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 22px; border-radius: 999px; border: 1px solid var(--line);
+  font-size: 14px; font-weight: 600; color: var(--ink);
+  transition: background .3s, border-color .3s;
+}
+.plan-category-header:hover .plan-category-toggle-cta { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
+.plan-category-toggle[open] .plan-category-toggle-cta .faq-mark::after { transform: translate(-50%,-50%) scaleY(0); }
+/* Etiqueta del toggle según estado — "Ver planes" cerrado, "Contraer" abierto,
+   sin JS: el <details> ya expone [open], solo cambiamos el contenido generado. */
+.plan-category-toggle-label::before { content: "Ver planes"; }
+.plan-category-toggle[open] .plan-category-toggle-label::before { content: "Contraer"; }
+.plan-category-toggle .card-grid { margin-top: 24px; }
+/* En planes/index.html cada categoría vive en su propia <section>, ya con su
+   propio padding — el margin-top de arriba es para el caso del Home (varias
+   categorías dentro de una misma sección) y aquí solo sumaba espacio de más. */
+#landing .plan-category-toggle, #corporativo .plan-category-toggle, #tienda-virtual .plan-category-toggle {
+  margin-top: 0;
+}
+.plan-preview-tagline { display: block; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.plan-preview-cta { margin-top: auto; padding-top: 8px; }
+
+/* Resalta la tarjeta enlazada desde un deep link (ej. Home → "Ver plan y precio")
+   por unos segundos — el scroll aterriza al nivel de la categoría (ver
+   initPlanDeepLink en main.js), así que esto es lo que le indica al visitante
+   cuál de las tarjetas de la categoría es la que vino a ver. */
+.plan-highlight {
+  box-shadow: 0 0 0 2px var(--accent-2), 0 0 32px -6px var(--accent-2);
+  transition: box-shadow 1.2s ease-out;
+}
+@media (max-width: 720px) {
+  .plan-category-header { flex-direction: column; align-items: flex-start; }
+  .plan-category-illustration { width: 100%; height: 84px; flex-direction: row; }
+  .plan-category-toggle-cta { align-self: stretch; justify-content: center; }
+}
+
+/* Tip técnico (detalle amigable al pasar el mouse o al enfocar por teclado).
+   Promovido desde clientes/la-fabrika-aluminio/index.html, mismo componente,
+   ahora reutilizable en cualquier término técnico del sitio (ver CLAUDE.md §10). */
+.tip { border-bottom: 1px dotted var(--ink-mute); cursor: help; position: relative; }
+.tip::after {
+  content: attr(data-tip); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translateX(-50%);
+  background: var(--bg-3); color: var(--ink); border: 1px solid var(--line);
+  padding: 9px 11px; border-radius: 8px; font-size: 12.5px; line-height: 1.45; font-weight: 400;
+  width: 210px; max-width: 68vw; opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .15s ease; box-shadow: 0 10px 26px rgba(0,0,0,.45); z-index: 200;
+}
+.tip:hover::after, .tip:focus::after, .tip:focus-visible::after { opacity: 1; visibility: visible; }
+
+/* "¿Por qué elegirnos?" — imagen a la izquierda con una franja numerada
+   (01-04) superpuesta a su borde derecho, y a la derecha el título/texto de
+   cada punto alineado a su número. Grid de 3 columnas [imagen | franja |
+   texto] con 4 filas — imagen y franja ocupan todas las filas (así el
+   fondo de la franja queda como una sola pieza continua), y cada número
+   comparte fila con su texto correspondiente (data-row 1-4) para que
+   ambos quedan alineados sin importar cuánto ocupe el texto. */
+.why-showcase {
+  display: grid;
+  grid-template-columns: minmax(240px, 380px) 84px 1fr;
+  grid-template-rows: repeat(4, auto);
+  align-items: stretch; row-gap: 30px;
+}
+.why-visual {
+  grid-column: 1; grid-row: 1 / -1;
+  position: relative; border-radius: 24px; overflow: hidden;
+  aspect-ratio: 4 / 5; box-shadow: 0 30px 60px -24px rgba(10,14,30,0.45);
+}
+.why-visual-art { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center 32%; }
+.why-num-strip {
+  grid-column: 2; grid-row: 1 / -1; margin-left: -42px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  box-shadow: 0 24px 44px -18px rgba(60,110,255,0.45);
+}
+/* Los números y su texto se anclan arriba de su celda (no al centro): con
+   justify-content:center cualquier diferencia de alto entre celdas (ej. el
+   borde/padding-bottom del divisor) descuadraba el número frente a su
+   título. Ambos empiezan en el mismo punto y ya no se desalinean. */
+.why-num {
+  grid-column: 2; margin-left: -42px;
+  display: flex; align-items: flex-start; justify-content: center; padding-top: 4px;
+  font-family: var(--mono); font-weight: 700; font-size: 32px; color: #fff;
+  position: relative;
+}
+.why-num:not(:last-of-type)::after {
+  content: ""; position: absolute; left: 26%; right: 26%; bottom: -15px;
+  border-bottom: 2px dashed rgba(255,255,255,0.45);
+}
+.why-row {
+  grid-column: 3; padding-left: 36px;
+  display: flex; flex-direction: column; justify-content: flex-start; gap: 8px;
+}
+.why-row h3 { font-size: 25px; }
+.why-row p { font-size: 15px; line-height: 1.6; color: var(--ink-mute); }
+.section-light .why-row p { color: var(--ink-mute); }
+/* Línea divisoria entre cada punto (no entre su propio título y párrafo) —
+   azul oscuro, re-derivado del tema para verse bien sobre el fondo claro de
+   la sección (--accent-on-light, el mismo azul ya usado en enlaces sobre
+   fondo claro), a un tercio de opacidad para que quede sutil. */
+.why-row:not(:last-of-type) {
+  border-bottom: 1px solid color-mix(in oklch, var(--accent-on-light) 35%, transparent);
+  padding-bottom: 18px;
+}
+.why-num[data-row="1"], .why-row[data-row="1"] { grid-row: 1; }
+.why-num[data-row="2"], .why-row[data-row="2"] { grid-row: 2; }
+.why-num[data-row="3"], .why-row[data-row="3"] { grid-row: 3; }
+.why-num[data-row="4"], .why-row[data-row="4"] { grid-row: 4; }
 
 /* =============================================================
    11c-bis. Hero de página de servicio — visual lateral con ícono
@@ -615,6 +851,61 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 #hero-servicio { padding: 148px 0 120px; }
 #hero-servicio .h2 { font-size: clamp(34px, 4.6vw, 50px); }
 #hero-servicio .p-lead { font-size: 18.5px; }
+
+/* Hero de Desarrollo Web con imagen de fondo propia (no banco de fotos
+   genérico) — pedido explícito del dueño de la marca, distinto del resto de
+   heros de servicio de arriba (que siguen siendo solo ícono + grid de
+   puntos). Se compone con .hero-photo sobre el mismo #hero-servicio para
+   subir la especificidad y no afectar las otras páginas que comparten ese
+   id con el hero split de siempre. */
+#hero-servicio.hero-photo {
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: 560px; display: flex; align-items: flex-start;
+  padding: 150px 0 90px;
+}
+/* <img> con object-fit en vez de background-image: permite ajustar
+   exactamente qué parte de la foto queda visible (object-position) sin
+   adivinar con background-position, y evita el corte raro del lado derecho
+   de la imagen original al recortarla contra el ancho completo del hero. */
+.hero-photo-img {
+  position: absolute; inset: 0; z-index: -2;
+  width: 100%; height: 100%; object-fit: cover; object-position: 30% center;
+}
+.hero-photo-scrim {
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, oklch(8% 0.01 262 / 0.4), oklch(8% 0.01 262 / 0.62));
+}
+/* Ancho igual al de la píldora del nav (1360px + 32px de padding + su
+   margen fijo de 16px) para que el texto quede alineado, borde a borde,
+   con el botón "Agendar reunión" del nav. */
+#hero-servicio.hero-photo .container { width: 100%; max-width: 1392px; padding-inline: 32px; }
+.hero-photo-content { margin-left: auto; max-width: 560px; text-align: right; }
+.hero-photo-actions { display: flex; justify-content: flex-end; gap: 16px; margin-top: 28px; }
+@media (max-width: 720px) {
+  #hero-servicio.hero-photo { min-height: 460px; padding-top: 120px; }
+  #hero-servicio.hero-photo .container { max-width: none; padding-inline: 20px; }
+  .hero-photo-img { object-position: 65% center; }
+  .hero-photo-content { margin-left: 0; max-width: 100%; text-align: left; }
+  .hero-photo-actions { justify-content: flex-start; }
+}
+
+/* "Tus desafíos tienen solución" (Desarrollo Web) — 4 puntos en fila
+   (ícono + título + texto), sin caja de tarjeta: sin .glass-card, así que
+   sin borde, sin fondo ni sombra de hover — solo el contenido, para que no
+   se lean como .glass-card comunes. Ícono el doble del tamaño habitual de
+   .svc-feature-card (60px → 120px) para que pese como una imagen, no como
+   un simple ícono de apoyo. */
+#desafios.section { padding: 56px 0 64px; }
+#desafios .section-head { margin-bottom: 28px; }
+.challenge-card {
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  padding: 0 8px;
+}
+.challenge-card::after { display: none; }
+.challenge-card .svc-icon { width: 120px; height: 120px; border-radius: 24px; }
+.challenge-card .svc-icon svg { width: 56px; height: 56px; }
+.challenge-card h3 { font-size: 17px; }
+.challenge-card p { font-size: 14px; }
 .hero-visual-card {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: 22px; min-height: 380px; text-align: center;
@@ -816,9 +1107,9 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 [data-reveal-x="left"] { transform: translateY(30px) translateX(-70px) scale(.96); }
 [data-reveal-x="right"] { transform: translateY(30px) translateX(70px) scale(.96); }
 [data-reveal-x].is-revealed { transform: none; }
-.card-grid [data-reveal], .sector-grid [data-reveal] { transition-delay: 0s; }
-.card-grid [data-reveal]:nth-child(2), .sector-grid [data-reveal]:nth-child(2) { transition-delay: .08s; }
-.card-grid [data-reveal]:nth-child(3), .sector-grid [data-reveal]:nth-child(3) { transition-delay: .16s; }
+.card-grid [data-reveal] { transition-delay: 0s; }
+.card-grid [data-reveal]:nth-child(2) { transition-delay: .08s; }
+.card-grid [data-reveal]:nth-child(3) { transition-delay: .16s; }
 .card-grid [data-reveal]:nth-child(4) { transition-delay: .24s; }
 .card-grid [data-reveal]:nth-child(5) { transition-delay: .32s; }
 .card-grid [data-reveal]:nth-child(6) { transition-delay: .4s; }
@@ -941,7 +1232,11 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
   .nav-links, .nav-cta { display: none; }
   .nav-burger { display: flex; }
   .split {
-    grid-template-columns: 1fr; order: initial;
+    /* minmax(0, 1fr) en vez de 1fr: sin el 0 explícito, el track de grid
+       adopta un mínimo "auto" (= min-content) y un botón con texto largo y
+       white-space:nowrap (ej. "Cuéntanos tu proyecto →" en #contacto) fuerza
+       el track — y con él toda la sección — más ancho que el viewport. */
+    grid-template-columns: minmax(0, 1fr); order: initial;
   }
   .split { gap: 48px; }
   /* La composición 3+2 de §8 es de escritorio; por debajo de 1024px vuelve
@@ -955,11 +1250,35 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
   .card-grid:has(> :nth-child(5):last-child) > :nth-child(4),
   .card-grid:has(> :nth-child(5):last-child) > :nth-child(5) { grid-column: auto; }
   .card-grid-3x2 { grid-template-columns: 1fr; }
+  .card-grid-4x1 { grid-template-columns: 1fr; }
+  /* "¿Por qué elegirnos?" apilado: imagen arriba a todo el ancho, franja
+     numerada angosta a la izquierda sin superponerse (no hay borde de
+     imagen del que colgar) y el texto a la derecha de cada número. */
+  .why-showcase { grid-template-columns: 52px 1fr; grid-template-rows: auto repeat(4, auto); row-gap: 20px; }
+  .why-visual { grid-column: 1 / -1; grid-row: 1; aspect-ratio: 16 / 9; }
+  .why-num-strip { grid-column: 1; grid-row: 2 / -1; margin-left: 0; }
+  .why-num { grid-column: 1; margin-left: 0; font-size: 18px; }
+  .why-row { grid-column: 2; padding-left: 18px; }
+  .why-num[data-row="1"], .why-row[data-row="1"] { grid-row: 2; }
+  .why-num[data-row="2"], .why-row[data-row="2"] { grid-row: 3; }
+  .why-num[data-row="3"], .why-row[data-row="3"] { grid-row: 4; }
+  .why-num[data-row="4"], .why-row[data-row="4"] { grid-row: 5; }
   .tilt-frame { height: 320px; }
   .hero-visual-card { min-height: 260px; }
   .about-portrait { width: min(68%, 300px); }
   .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px 24px; }
   .footer-col-brand { grid-column: 1 / -1; }
+}
+
+/* Por debajo de ~400px (iPhone SE y similares) el nav-brand completo (logo +
+   wordmark) más el botón de menú no caben en el padding-inline de 32px del
+   nav — el burger terminaba sobresaliendo hasta 6px fuera de la píldora.
+   Ajuste puntual, no un rediseño: reduce el padding del nav y el tamaño del
+   wordmark solo en este rango. */
+@media (max-width: 400px) {
+  .nav { padding-inline: 16px; }
+  .nav-brand { font-size: 15px; gap: 8px; }
+  .nav-mark { width: 40px; height: 40px; }
 }
 
 @media (max-width: 639px) {
@@ -973,9 +1292,12 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
   .hero { padding-top: 120px; }
   #hero-servicio { padding: 120px 0 64px; }
   .hero-actions { flex-direction: column; width: 100%; }
-  .hero-actions .btn { width: 100%; }
+  .hero-actions .btn { width: 100%; white-space: normal; text-align: center; }
   .section-inline-cta { flex-direction: column; align-items: stretch; text-align: center; }
   .section-inline-cta .btn { width: 100%; }
+  /* La cápsula de Servicios pierde el radio 999px en columna — con el botón
+     a todo el ancho, una píldora completa se ve rota, no como cápsula. */
+  #servicios .section-inline-cta, #servicios-incluidos .section-inline-cta { border-radius: 28px; padding: 24px; text-align: center; }
   .hero-mark { width: 260px; height: 260px; }
   .floating-chip-corner { left: 0; bottom: -16px; }
   .stack-logo img { width: 26px; height: 26px; }
