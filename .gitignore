@@ -3,3 +3,9 @@
 # Auditorías internas de solo lectura (SEO, visual/UX, etc.): informes de trabajo,
 # no documentación pública. Ver docs/README.md.
 docs/audits/
+
+# Informe técnico interno, no destinado a distribución pública — vivía en la
+# raíz del repo, que GitHub Pages sirve tal cual, quedando descargable por URL
+# directa sin estar referenciado desde ningún HTML. Se conserva en disco para
+# quien trabaje en el repo, pero deja de trackearse (ver docs/CURRENT-STATE.md).
+Informe_EIA_Softworks.docx

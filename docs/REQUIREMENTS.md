@@ -16,13 +16,13 @@ Dueños de negocio y equipos directivos en Colombia (y potencialmente LatAm) eva
 
 | Página | Ruta | Función |
 |---|---|---|
-| Home | `/` | Presentación general: hero, sobre mí, servicios, sectores, proceso, FAQ generales, tecnologías, contacto resumido |
+| Home | `/` | Presentación general: hero, servicios, planes (4), por qué elegirnos, sobre mí, sectores, proceso, FAQ generales, tecnologías, contacto resumido |
 | Contacto | `/contacto/` | Única página con el formulario completo de contacto |
-| Desarrollo Web | `/desarrollo-web/` | Página de servicio (pilar) |
-| Desarrollo de Software a Medida | `/desarrollo-software-a-medida/` | Página de servicio (pilar central) |
-| Software para Empresas | `/software-empresas/` | Página de servicio (pilar, sector privado) |
-| Software para Entidades Públicas | `/software-entidades-publicas/` | Página de servicio (pilar, sector público) |
-| Dashboards y Power BI | `/power-bi-dashboard/` | Página de servicio |
+| Diseño y optimización de páginas web | `/desarrollo-web/` | Página de servicio — catálogo completo de 6 planes (ver `ARCHITECTURE.md` y [DEC-011](decisions/DEC-011.md)) |
+| Desarrollo de Software a Medida | `/desarrollo-software-a-medida/` | Página de servicio (pilar central), 3 planes de referencia |
+| Desarrollo de Aplicaciones Móviles | `/software-empresas/` | Página de servicio, sin planes — URL histórica conservada tras reconvertir el servicio, ver [DEC-011](decisions/DEC-011.md) |
+| Integraciones y Dashboards de Datos | `/power-bi-dashboard/` | Página de servicio, sin planes — nombre actualizado, URL histórica conservada, ver [DEC-011](decisions/DEC-011.md) |
+| Software para Entidades Públicas | `/software-entidades-publicas/` | Página de servicio, sin planes — nombre y URL sin cambios |
 
 Cada página de servicio debe tener: hero propio, contenido diferenciado (sin solapamiento de `<title>`/FAQ con otras páginas del mismo nivel), FAQ contextualizada a su tema, y CTA hacia el modal de agenda o hacia `/contacto/`.
 

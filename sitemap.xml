@@ -2,43 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://evertmiguel311.github.io/EIA-SOFTWORKS/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://evertmiguel311.github.io/EIA-SOFTWORKS/planes/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://evertmiguel311.github.io/EIA-SOFTWORKS/desarrollo-web/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://evertmiguel311.github.io/EIA-SOFTWORKS/desarrollo-software-a-medida/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://evertmiguel311.github.io/EIA-SOFTWORKS/software-entidades-publicas/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://evertmiguel311.github.io/EIA-SOFTWORKS/software-empresas/</loc>
-    <lastmod>2026-08-11</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://evertmiguel311.github.io/EIA-SOFTWORKS/power-bi-dashboard/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://evertmiguel311.github.io/EIA-SOFTWORKS/contacto/</loc>
-    <lastmod>2026-08-06</lastmod>
+    <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

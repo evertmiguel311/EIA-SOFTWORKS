@@ -13,11 +13,11 @@ HTML + CSS + JavaScript vanilla, **sin build step** (sin npm, sin framework, sin
 ```
 index.html                          ← home
 contacto/index.html                 ← página de contacto (formulario completo)
-desarrollo-web/index.html           ← servicio: desarrollo web
-desarrollo-software-a-medida/index.html   ← servicio: software a medida (pilar central)
-software-empresas/index.html        ← servicio: software para empresas
+desarrollo-web/index.html           ← servicio: diseño y optimización de páginas web (catálogo de 6 planes)
+software-empresas/index.html        ← servicio: desarrollo de aplicaciones móviles (URL histórica, ver nota)
+desarrollo-software-a-medida/index.html   ← servicio: desarrollo de software a medida (pilar central, 3 planes)
+power-bi-dashboard/index.html       ← servicio: integraciones y dashboards de datos (URL histórica, ver nota)
 software-entidades-publicas/index.html    ← servicio: software para entidades públicas
-power-bi-dashboard/index.html       ← servicio: dashboards y Power BI
 main.js                             ← entry point único, IIFE
 styles.css                          ← único archivo CSS
 sitemap.xml / robots.txt            ← SEO técnico
@@ -31,6 +31,8 @@ docs/                                ← esta documentación
 ```
 
 Cada página de servicio replica la misma estructura de `<head>` (meta, Open Graph, Twitter Card, JSON-LD) y el mismo nav/footer/modales que `index.html`, adaptando solo el contenido de `<main>` y las rutas relativas (`../` en vez de raíz).
+
+> ✅ **Actualizado (2026-09-02) — relanzamiento comercial:** "Software para Empresas" dejó de existir como servicio. Su contenido se reescribió por completo para representar **"Desarrollo de Aplicaciones Móviles"**, pero la URL/carpeta `software-empresas/` se **conservó deliberadamente** (no se creó `desarrollo-aplicaciones-moviles/` ni se migró) — decisión tomada porque el sitio es estático en GitHub Pages sin mecanismo de redirección server-side (`.htaccess` es inerte ahí, ver §4), así que cambiar la URL solo podía introducir un 404 sin ningún beneficio real, dado el bajo tráfico histórico de la página. De igual forma, `power-bi-dashboard/` conservó su URL al reposicionarse como **"Integraciones y Dashboards de Datos"** (Power BI sigue siendo la herramienta principal mencionada en el contenido, pero el servicio ya no está limitado a ella). **"Software para Entidades Públicas" no cambió de nombre ni de URL.** Ver [DEC-011](decisions/DEC-011.md) para el detalle completo de esta decisión.
 
 ## 3. Componentes
 

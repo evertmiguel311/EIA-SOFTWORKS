@@ -675,6 +675,25 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 }
 .plan-details-group .about-specialty-list li { font-size: 14px; }
 
+/* Botón de WhatsApp junto al CTA principal de cada plan — mensaje
+   pre-llenado con el nombre y precio del plan (ver href por tarjeta),
+   directo sin pasos intermedios. Mismo ancho que "Quiero este plan" para
+   que ninguno de los dos domine visualmente sobre el otro. */
+.plan-actions { display: flex; gap: 10px; margin-top: 4px; }
+.plan-actions > .btn { flex: 1; }
+/* Verde de marca de WhatsApp — única excepción de color puntual del sitio
+   (igual criterio que la cápsula de Servicios): un botón de acción externa
+   reconocible se beneficia de su propio color de marca en vez de heredar
+   el azul genérico de .btn-solid, que aquí competiría por el mismo
+   protagonismo y confundiría cuál de los dos botones es "el" CTA. */
+.plan-cta-whatsapp {
+  gap: 8px; border-color: transparent; color: #fff;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  box-shadow: 0 10px 24px -12px rgba(37,211,102,0.5);
+}
+.plan-cta-whatsapp:hover { background: linear-gradient(135deg, #2be374, #14a389); box-shadow: 0 16px 32px -12px rgba(37,211,102,0.65); }
+.plan-cta-whatsapp svg { width: 18px; height: 18px; flex: none; }
+
 .section-inline-cta {
   margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--line-soft);
   display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
@@ -1293,6 +1312,7 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
   #hero-servicio { padding: 120px 0 64px; }
   .hero-actions { flex-direction: column; width: 100%; }
   .hero-actions .btn { width: 100%; white-space: normal; text-align: center; }
+  .plan-actions { flex-direction: column; }
   .section-inline-cta { flex-direction: column; align-items: stretch; text-align: center; }
   .section-inline-cta .btn { width: 100%; }
   /* La cápsula de Servicios pierde el radio 999px en columna — con el botón

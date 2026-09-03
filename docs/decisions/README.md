@@ -14,5 +14,7 @@ Decisiones de arquitectura y producto relevantes, con su contexto y consecuencia
 | [DEC-008](DEC-008.md) | 2026-07-18 | Consentimiento de datos y campos obligatorios en formularios | Vigente |
 | [DEC-009](DEC-009.md) | 2026-07-18 | Eliminación de `lib/` y `manifest.js` por código muerto | Vigente |
 | [DEC-010](DEC-010.md) | 2026-08-11 | Diferenciación SEO de páginas satélite y progresión geográfica ("B.9") | Vigente |
+| [DEC-011](DEC-011.md) | 2026-09-02 | Relanzamiento comercial: "Software para Empresas" → "Desarrollo de Aplicaciones Móviles"; "Dashboards y Power BI" → "Integraciones y Dashboards de Datos" | Vigente (no publicado) |
+| [DEC-012](DEC-012.md) | 2026-09-02 | Rediseño CGO/UX de las 4 páginas de servicio restantes: patrón hero-photo + precios adelantados | Aprobada (pendiente de implementación) |
 
 Las decisiones DEC-001 a DEC-009 se reconstruyeron a partir de las notas fechadas ya existentes en [`CLAUDE.md`](../../CLAUDE.md) al momento de crear este registro (2026-08-10); desde esa fecha, toda decisión nueva se documenta primero aquí.
