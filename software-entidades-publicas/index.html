@@ -29,7 +29,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/logos/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/logos/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/logos/apple-touch-icon.png">
-<link rel="stylesheet" href="../styles.css?v=20260901">
+<link rel="stylesheet" href="../styles.css?v=20260903">
 
 <script type="application/ld+json">
 {
@@ -103,8 +103,8 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "¿Pueden desarrollar software para entidades públicas?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sí. Diseñamos y desarrollamos software pensado específicamente para el contexto institucional: procesos con múltiples usuarios, necesidad de trazabilidad y atención ciudadana. Cada proyecto empieza por entender cómo funciona la entidad, no por aplicar una plantilla genérica." }
+          "name": "¿Cuánto cuesta un proyecto de software para una entidad pública?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Depende del alcance: cuántos tipos de usuario tiene el proceso, cuántos niveles de aprobación requiere y qué información hay que integrar. Por eso el primer paso siempre es un levantamiento de necesidades antes de dar un estimado, en una primera conversación sin compromiso." }
         },
         {
           "@type": "Question",
@@ -157,21 +157,18 @@
   </a>
   <div class="nav-links" data-nav-links>
     <a href="../index.html" class="nav-link">Inicio</a>
-    <a href="../index.html#sobre-mi" class="nav-link">Sobre mí</a>
+    <a href="#desafios" class="nav-link">Desafíos</a>
     <div class="nav-item-dropdown">
-      <a href="../index.html#servicios" class="nav-link" aria-haspopup="true" aria-expanded="false">Servicios</a>
+      <a href="#que-hacemos" class="nav-link" aria-haspopup="true" aria-expanded="false">Servicios</a>
       <ul class="nav-dropdown-menu" aria-label="Servicios">
         <li><a href="../desarrollo-web/index.html" class="nav-dropdown-link">Desarrollo Web</a></li>
-        <li><a href="../software-empresas/index.html" class="nav-dropdown-link">Desarrollo de Aplicaciones Móviles</a></li>
+        <li><a href="../aplicaciones-moviles/index.html" class="nav-dropdown-link">Desarrollo de Aplicaciones Móviles</a></li>
         <li><a href="../desarrollo-software-a-medida/index.html" class="nav-dropdown-link">Desarrollo de Software a Medida</a></li>
         <li><a href="../power-bi-dashboard/index.html" class="nav-dropdown-link">Integraciones y Dashboards de Datos</a></li>
         <li><a href="../software-entidades-publicas/index.html" class="nav-dropdown-link">Software para Entidades Públicas</a></li>
       </ul>
     </div>
-    <a href="../planes/index.html" class="nav-link">Planes</a>
-    <a href="../index.html#proceso" class="nav-link">Proceso</a>
-    <a href="../index.html#faq" class="nav-link">FAQ</a>
-    <a href="../index.html#tecnologias" class="nav-link">Tecnología</a>
+    <a href="#faq-servicio" class="nav-link">FAQ</a>
     <a href="../contacto/index.html" class="nav-link">Contacto</a>
   </div>
   <div class="nav-actions">
@@ -184,17 +181,15 @@
 
 <div class="nav-mobile" data-nav-mobile aria-hidden="true">
   <a href="../index.html" class="nav-mobile-link">Inicio</a>
-  <a href="../index.html#sobre-mi" class="nav-mobile-link">Sobre mí</a>
-  <a href="../index.html#servicios" class="nav-mobile-link">Servicios</a>
+  <a href="#desafios" class="nav-mobile-link">Desafíos</a>
+  <a href="#que-hacemos" class="nav-mobile-link">Servicios</a>
   <a href="../desarrollo-web/index.html" class="nav-mobile-link nav-mobile-sublink">Desarrollo Web</a>
-  <a href="../software-empresas/index.html" class="nav-mobile-link nav-mobile-sublink">Desarrollo de Aplicaciones Móviles</a>
+  <a href="../aplicaciones-moviles/index.html" class="nav-mobile-link nav-mobile-sublink">Desarrollo de Aplicaciones Móviles</a>
   <a href="../desarrollo-software-a-medida/index.html" class="nav-mobile-link nav-mobile-sublink">Desarrollo de Software a Medida</a>
   <a href="../power-bi-dashboard/index.html" class="nav-mobile-link nav-mobile-sublink">Integraciones y Dashboards de Datos</a>
   <a href="../software-entidades-publicas/index.html" class="nav-mobile-link nav-mobile-sublink">Software para Entidades Públicas</a>
-  <a href="../planes/index.html" class="nav-mobile-link">Planes</a>
-  <a href="../index.html#proceso" class="nav-mobile-link">Proceso</a>
-  <a href="../index.html#faq" class="nav-mobile-link">FAQ</a>
-  <a href="../index.html#tecnologias" class="nav-mobile-link">Tecnología</a>
+  <a href="#faq-servicio" class="nav-mobile-link">FAQ</a>
+  <a href="../index.html#sobre-mi" class="nav-mobile-link">Sobre mí</a>
   <a href="../contacto/index.html" class="nav-mobile-link">Contacto</a>
   <button type="button" class="btn btn-solid nav-mobile-cta" data-open-modal data-gtag-event="cta_click" data-gtag-category="nav" data-gtag-label="Agendar reunión (nav móvil)">Agendar reunión</button>
 </div>
@@ -203,46 +198,63 @@
 <main id="main">
 
   <!-- ============ HERO DEL SERVICIO ============ -->
-  <section class="section" id="hero-servicio">
-    <div class="container split">
-      <div class="split-text-col">
+  <section class="hero-photo" id="hero-servicio">
+    <img class="hero-photo-img" src="../assets/img/hero-entidades-publicas.webp" alt="" aria-hidden="true" width="1408" height="768" loading="eager" decoding="async">
+    <div class="hero-photo-scrim" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-photo-content">
         <p class="eyebrow" data-reveal>Software para Entidades Públicas</p>
         <h1 class="h2" data-reveal data-reveal-delay="1">Software para entidades públicas que entiende sus procesos institucionales</h1>
         <p class="p-lead" data-reveal data-reveal-delay="2">Diseñamos y desarrollamos software pensado para el contexto público —procesos con múltiples usuarios, necesidad de trazabilidad y atención a la ciudadanía—, disponible para instituciones en Cartagena y el resto de Colombia.</p>
-      </div>
-      <div class="split-figure" data-reveal data-reveal-delay="1" data-reveal-x="right">
-        <div class="glass-card has-tilt has-halo hero-visual-card" style="--c1:oklch(60% 0.22 258);--c2:oklch(64% 0.16 300)">
-          <div class="hero-visual-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"></line><line x1="6" y1="18" x2="6" y2="11"></line><line x1="10" y1="18" x2="10" y2="11"></line><line x1="14" y1="18" x2="14" y2="11"></line><line x1="18" y1="18" x2="18" y2="11"></line><polygon points="12 2 21 7 3 7"></polygon></svg>
-          </div>
-          <ul class="hero-visual-tags" aria-hidden="true">
-            <li>Plataformas de gestión</li>
-            <li>Herramientas de atención</li>
-          </ul>
+        <div class="hero-photo-actions" data-reveal data-reveal-delay="3">
+          <a href="#desafios" class="btn btn-solid" data-gtag-event="cta_click" data-gtag-category="hero-servicio" data-gtag-label="Ver desafíos (entidades públicas)">Ver desafíos →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ RETOS DEL SECTOR PÚBLICO ============ -->
-  <section class="section section-light" id="retos" data-screen-label="Retos del sector público">
+  <!-- ============ DESAFÍOS COMUNES ============ -->
+  <section class="section section-light" id="desafios" data-screen-label="Desafíos">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">Retos del sector público</p>
-        <h2 class="h2">Los retos que enfrentan las instituciones al digitalizarse</h2>
+        <p class="eyebrow">Desafíos comunes</p>
+        <h2 class="h2">Tus desafíos tienen solución</h2>
         <p class="p-lead">No son retos exclusivos de una entidad en particular: se repiten en distintos tipos de instituciones.</p>
       </div>
-      <ul class="about-specialty-list" data-reveal data-reveal-delay="1">
-        <li>Procesos manuales que dependen de una persona específica, sin registro digital ni respaldo.</li>
-        <li>Información dispersa entre oficinas, hojas de cálculo y sistemas que no se comunican entre sí.</li>
-        <li>Falta de trazabilidad sobre quién hizo qué y cuándo, algo especialmente sensible en el sector público.</li>
-        <li>Múltiples tipos de usuario —funcionarios, equipos administrativos, ciudadanos— con necesidades distintas sobre un mismo proceso.</li>
-        <li>Gestión documental que sigue dependiendo de papel o de archivos sueltos, difíciles de auditar.</li>
-      </ul>
+      <div class="card-grid card-grid-4x1 challenge-grid">
+        <article class="svc-card svc-feature-card challenge-card" style="--c1:oklch(62% 0.2 258);--c2:oklch(70% 0.16 235)" data-reveal>
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Todo depende de que una persona específica esté disponible</h3>
+          <p>Diseñamos sistemas que registran el proceso, no solo a la persona que lo ejecuta — con respaldo digital desde el primer paso.</p>
+        </article>
+        <article class="svc-card svc-feature-card challenge-card" style="--c1:oklch(72% 0.15 195);--c2:oklch(78% 0.12 185)" data-reveal data-reveal-delay="1">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <h3>No hay forma de saber quién hizo qué y cuándo</h3>
+          <p>Cada acción queda registrada, con trazabilidad completa para poder sustentar cualquier proceso ante una auditoría.</p>
+        </article>
+        <article class="svc-card svc-feature-card challenge-card" style="--c1:oklch(64% 0.16 300);--c2:oklch(70% 0.14 285)" data-reveal>
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <h3>La información vive repartida entre oficinas que no se hablan</h3>
+          <p>Conectamos los datos que hoy están dispersos entre áreas, para que exista una sola versión confiable de cada proceso.</p>
+        </article>
+        <article class="svc-card svc-feature-card challenge-card" style="--c1:oklch(70% 0.15 165);--c2:oklch(76% 0.13 175)" data-reveal data-reveal-delay="1">
+          <div class="svc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 6h6"/><path d="M9 10h6"/><path d="M9 14h4"/></svg>
+          </div>
+          <h3>Seguimos dependiendo de papel para procesos que deberían ser digitales</h3>
+          <p>Digitalizamos la gestión documental para que sea fácil de auditar, en vez de depender de archivos físicos o sueltos.</p>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ============ SOFTWARE PARA ENTIDADES PÚBLICAS ============ -->
+  <!-- ============ QUÉ HACEMOS ============ -->
   <section class="section" id="que-hacemos" data-screen-label="Qué hacemos">
     <div class="container">
       <div class="section-head" data-reveal>
@@ -286,98 +298,14 @@
           <p>Conectamos datos que hoy están repartidos entre sistemas u oficinas que no se comunican entre sí.</p>
         </article>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ RELACIÓN CON DESARROLLO DE SOFTWARE A MEDIDA ============ -->
-  <section class="section section-compact" id="relacionados" data-screen-label="Un enfoque adaptado">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow">Un enfoque adaptado</p>
-        <h2 class="h2">La misma base, aplicada al contexto institucional</h2>
-        <p class="p-lead">Las entidades públicas tienen necesidades particulares —niveles de aprobación, trazabilidad, atención ciudadana— que no resuelve un software genérico. Por eso este servicio aplica nuestro enfoque general de <a href="../desarrollo-software-a-medida/index.html">desarrollo de software a medida</a>, ajustado a cómo funciona una institución.</p>
+      <div class="section-inline-cta" data-reveal>
+        <p>Pensado para los distintos tipos de usuario de una institución —funcionarios, equipos administrativos y ciudadanos— y no solo para uno. El software público no es una versión distinta del software empresarial: requiere entender procesos institucionales, trazabilidad y niveles de aprobación antes de proponer una solución, por eso aplica nuestro enfoque general de <a href="../desarrollo-software-a-medida/index.html">desarrollo de software a medida</a>, ajustado al contexto institucional.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ CAPACIDADES TECNOLÓGICAS ============ -->
-  <section class="section section-tone-2" id="capacidades" data-screen-label="Capacidades tecnológicas">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow">Capacidades tecnológicas</p>
-        <h2 class="h2">Con qué capacidades construimos</h2>
-      </div>
-      <div class="card-grid">
-        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(62% 0.2 258);--c2:oklch(70% 0.16 235)" data-reveal>
-          <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          </div>
-          <h3>Plataformas web</h3>
-          <p>Interfaces accesibles desde cualquier equipo, sin depender de software instalado localmente.</p>
-        </article>
-        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(72% 0.15 195);--c2:oklch(78% 0.12 185)" data-reveal data-reveal-delay="1">
-          <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          </div>
-          <h3>Bases de datos</h3>
-          <p>Estructuras de datos ordenadas y consultables, pensadas para auditoría y trazabilidad.</p>
-        </article>
-        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(64% 0.16 300);--c2:oklch(70% 0.14 285)" data-reveal>
-          <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-          </div>
-          <h3>Integración</h3>
-          <p>Conexión con sistemas ya existentes en la entidad, en vez de reemplazarlos por completo.</p>
-        </article>
-        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(70% 0.15 165);--c2:oklch(76% 0.13 175)" data-reveal data-reveal-delay="1">
-          <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>Seguridad</h3>
-          <p>Manejo de usuarios, roles y niveles de aprobación, con trazabilidad sobre quién accede a cada proceso.</p>
-        </article>
-        <article class="glass-card svc-card has-tilt has-halo" style="--c1:oklch(66% 0.2 20);--c2:oklch(70% 0.17 5)" data-reveal>
-          <div class="svc-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
-          <h3>Análisis de información</h3>
-          <p>Reportes y tableros que ayudan a entender el estado general de un proceso, no solo casos individuales. Cuando el proyecto lo requiere, esta capacidad se conecta con nuestro servicio de <a href="../power-bi-dashboard/index.html">integraciones y dashboards de datos</a>.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SECTORES Y USUARIOS ============ -->
-  <section class="section section-light" id="usuarios" data-screen-label="Quién usa este software">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow">Quién usa este software</p>
-        <h2 class="h2">Pensado para distintos tipos de usuario dentro de una institución</h2>
-        <p class="p-lead">Un sistema institucional bien diseñado no piensa en un solo tipo de usuario, sino en cómo interactúa cada uno con el mismo proceso.</p>
-      </div>
-      <ul class="about-specialty-list" data-reveal data-reveal-delay="1">
-        <li>Funcionarios que ejecutan el proceso día a día y necesitan herramientas simples y confiables.</li>
-        <li>Equipos administrativos que necesitan visibilidad y control sobre el estado general de los procesos.</li>
-        <li>Ciudadanos que interactúan con la entidad y esperan claridad, rapidez y trazabilidad en sus solicitudes.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ DIFERENCIAL EIA ============ -->
-  <section class="section section-compact" id="diferencial" data-screen-label="Diferencial">
-    <div class="container">
-      <div class="section-head" data-reveal>
-        <p class="eyebrow">Nuestro diferencial</p>
-        <h2 class="h2">Entender antes de construir, también en el sector público</h2>
-      </div>
-      <blockquote class="about-quote" data-reveal data-reveal-delay="1">
-        <p class="p-lead">El software público no es solo una versión distinta del software empresarial: requiere entender procesos institucionales, trazabilidad, tipos de usuario y necesidades ciudadanas antes de proponer una solución. Por eso el primer paso siempre es el levantamiento de necesidades, seguido de análisis, diseño y una evolución continua junto a la institución.</p>
-      </blockquote>
     </div>
   </section>
 
   <!-- ============ FAQ ============ -->
-  <section class="section section-faq section-light section-tone-blue" id="faq-servicio" data-screen-label="Preguntas frecuentes">
+  <section class="section section-faq section-tone-2" id="faq-servicio" data-screen-label="Preguntas frecuentes">
     <div class="container faq-wrap">
       <div class="section-head" data-reveal>
         <p class="eyebrow">Preguntas frecuentes</p>
@@ -385,8 +313,8 @@
       </div>
       <div class="faq-list">
         <details class="faq-item" data-reveal open>
-          <summary>¿Pueden desarrollar software para entidades públicas?<span class="faq-mark" aria-hidden="true"></span></summary>
-          <p>Sí. Diseñamos y desarrollamos software pensado específicamente para el contexto institucional: procesos con múltiples usuarios, necesidad de trazabilidad y atención ciudadana. Cada proyecto empieza por entender cómo funciona la entidad, no por aplicar una plantilla genérica.</p>
+          <summary>¿Cuánto cuesta un proyecto de software para una entidad pública?<span class="faq-mark" aria-hidden="true"></span></summary>
+          <p>Depende del alcance: cuántos tipos de usuario tiene el proceso, cuántos niveles de aprobación requiere y qué información hay que integrar. Por eso el primer paso siempre es un levantamiento de necesidades antes de dar un estimado, en una primera conversación sin compromiso.</p>
         </details>
         <details class="faq-item" data-reveal data-reveal-delay="1">
           <summary>¿Qué tipo de soluciones digitales pueden implementarse?<span class="faq-mark" aria-hidden="true"></span></summary>
@@ -417,7 +345,7 @@
         <p class="p-lead">Cuéntanos qué proceso quieres digitalizar. Agendamos una primera conversación sin compromiso, estés en Cartagena o en cualquier otra parte de Colombia.</p>
       </div>
       <div class="hero-actions" data-reveal data-reveal-delay="1">
-        <button type="button" class="btn btn-solid" data-open-modal data-gtag-event="cta_click" data-gtag-category="cta-servicio" data-gtag-label="Agendar reunión (entidades públicas)">Agendar reunión</button>
+        <button type="button" class="btn btn-solid" data-open-modal data-subject="Quiero conocer más sobre software para entidades públicas" data-gtag-event="cta_click" data-gtag-category="cta-servicio" data-gtag-label="Agendar reunión (entidades públicas)">Agendar reunión</button>
         <a href="../contacto/index.html" class="btn btn-ghost" data-gtag-event="cta_click" data-gtag-category="cta-servicio" data-gtag-label="Ir a contacto (entidades públicas)">Ir a contacto</a>
       </div>
     </div>
@@ -626,6 +554,6 @@
 </div>
 
 
-<script defer src="../main.js?v=20260901"></script>
+<script defer src="../main.js?v=20260903"></script>
 </body>
 </html>

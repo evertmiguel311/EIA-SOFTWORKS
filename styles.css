@@ -908,6 +908,16 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
   .hero-photo-actions { justify-content: flex-start; }
 }
 
+/* Variante de .hero-photo alineada a la izquierda: para cuando la imagen del
+   hero deja despejado el lado izquierdo en vez del derecho (ej. Software a
+   Medida, cuyo mockup de panel queda centrado/a la derecha) — mismo
+   componente y mismas reglas base, solo se invierte a qué lado va el texto.
+   En mobile no hace falta nada aparte: la regla general de arriba ya deja
+   todo alineado a la izquierda. */
+.hero-photo-left .hero-photo-content { margin-left: 0; margin-right: auto; text-align: left; }
+.hero-photo-left .hero-photo-actions { justify-content: flex-start; }
+.hero-photo-left .hero-photo-img { object-position: 68% center; }
+
 /* "Tus desafíos tienen solución" (Desarrollo Web) — 4 puntos en fila
    (ícono + título + texto), sin caja de tarjeta: sin .glass-card, así que
    sin borde, sin fondo ni sombra de hover — solo el contenido, para que no
