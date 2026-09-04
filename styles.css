@@ -2,9 +2,13 @@
    1. Tokens
    ============================================================= */
 :root {
-  --bg:        oklch(8% 0.007 262);
-  --bg-2:      oklch(10.5% 0.01 262);
-  --bg-3:      oklch(14% 0.012 264);
+  /* Ajustado 2026-09-04: más croma y hue alineado a --accent (258) — antes
+     era casi neutro (0.007-0.012), leía como negro plano en vez del azul
+     profundo del hero. Mismo nivel de luminosidad (8/10.5/14%), así que no
+     cambia el contraste con --ink en ningún lado. */
+  --bg:        oklch(9% 0.05 258);
+  --bg-2:      oklch(12% 0.055 259);
+  --bg-3:      oklch(16% 0.06 260);
   --ink:       #f5f6f8;
   --ink-soft:  rgba(245,246,248,0.72);
   --ink-mute:  rgba(245,246,248,0.55);
@@ -339,13 +343,17 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 }
 /* Variante azul muy suave — misma familia de tokens que .section-light, solo cambia el fondo */
 .section-light.section-tone-blue { background: var(--surface-light-2); }
-/* Degradado en los bordes para suavizar el cambio oscuro/claro entre secciones */
+/* Degradado en los bordes para suavizar el cambio oscuro/claro entre secciones.
+   Ampliado 2026-09-04 (220px→320px, más stops) porque el salto oscuro→claro
+   se sentía brusco al entrar a Servicios justo después de la franja de
+   filosofía (fondo --bg casi negro, sin fundido propio) — ver también el
+   fundido simétrico en .philosophy-strip::after más abajo. */
 .section-light::before,
 .section-light::after {
-  content: ""; position: absolute; left: 0; right: 0; height: 220px; pointer-events: none;
+  content: ""; position: absolute; left: 0; right: 0; height: 320px; pointer-events: none;
 }
-.section-light::before { top: 0; background: linear-gradient(to bottom, oklch(12% 0.012 264 / .38), oklch(12% 0.012 264 / .1) 55%, transparent); }
-.section-light::after { bottom: 0; background: linear-gradient(to top, oklch(12% 0.012 264 / .38), oklch(12% 0.012 264 / .1) 55%, transparent); }
+.section-light::before { top: 0; background: linear-gradient(to bottom, oklch(12% 0.03 259 / .55), oklch(12% 0.03 259 / .24) 40%, oklch(12% 0.03 259 / .06) 70%, transparent); }
+.section-light::after { bottom: 0; background: linear-gradient(to top, oklch(12% 0.03 259 / .55), oklch(12% 0.03 259 / .24) 40%, oklch(12% 0.03 259 / .06) 70%, transparent); }
 .section-light .eyebrow { color: var(--accent-2-on-light); }
 .section-light .glass-card:hover { border-color: rgba(10,14,26,0.22); }
 .section-light .field input,
@@ -531,7 +539,16 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
 .stack-logo img { width: 40px; height: 40px; }
 .stack-logo:hover { transform: translateY(-5px) scale(1.08); }
 
-.philosophy-strip { padding: 88px 0; text-align: center; }
+.philosophy-strip { padding: 88px 0; text-align: center; position: relative; }
+/* Fundido hacia el tono claro que viene justo después (#servicios), del lado
+   oscuro del empalme — complementa .section-light::before para que el
+   cambio de fondo se sienta como una transición, no un corte. Única sección
+   que precede a un bloque .section-light en el sitio, así que el ajuste es
+   local a esta franja, no un patrón global. */
+.philosophy-strip::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 140px; pointer-events: none;
+  background: linear-gradient(to bottom, transparent, oklch(95% 0.006 258 / .12) 70%, oklch(95% 0.006 258 / .22));
+}
 .philosophy-text {
   max-width: 46ch; margin: 0 auto; font-size: clamp(23px, 3vw, 30px);
   line-height: 1.55; color: var(--ink); font-weight: 500; font-style: italic; letter-spacing: -0.01em;
@@ -586,45 +603,65 @@ h1, h2, h3, h4 { text-wrap: balance; line-height: 1.08; letter-spacing: -0.02em;
    acento cian ya usado por .svc-card-link — distinto del azul del CTA final. */
 .svc-feature-card .svc-card-link { text-align: center; margin-inline: auto; margin-top: auto; }
 
-/* Servicios (Home) y Servicios incluidos (Desarrollo Web): versión compacta
-   para que el título de sección, las tarjetas y el CTA de cierre quepan en
-   una sola pantalla de escritorio, sin obligar a hacer scroll dentro de la
-   sección. Solo estas dos secciones — el resto de tarjetas del sitio
-   conserva su tamaño. */
-#servicios.section, #servicios-incluidos.section { padding: 44px 0 48px; }
-#servicios .section-head, #servicios-incluidos .section-head { margin-bottom: 22px; }
-#servicios .card-grid, #servicios-incluidos .card-grid { gap: 14px; }
-#servicios .glass-card, #servicios-incluidos .glass-card { padding: 18px 16px; gap: 8px; }
-#servicios .svc-icon, #servicios-incluidos .svc-icon { width: 38px; height: 38px; margin-bottom: 0; }
-#servicios .svc-icon svg, #servicios-incluidos .svc-icon svg { width: 18px; height: 18px; }
-#servicios .svc-card h3, #servicios-incluidos .svc-card h3 { font-size: 15.5px; }
-#servicios .svc-card p, #servicios-incluidos .svc-card p { font-size: 13px; line-height: 1.45; }
-#servicios .svc-card-link, #servicios-incluidos .svc-card-link { font-size: 13px; }
+/* Servicios (Home), Servicios incluidos (Desarrollo Web) y Qué hacemos
+   (Apps móviles, Integraciones/Dashboards, Entidades públicas): versión
+   compacta para que el título de sección, las tarjetas y el CTA de cierre
+   no se vean tan altos/espaciados. Extendida 2026-09-04 a las 3 secciones
+   "Qué hacemos" — tenían grids de 3-5 tarjetas a tamaño completo y se
+   sentían desproporcionadamente altas frente al resto del sitio. */
+#servicios.section, #servicios-incluidos.section, #que-hacemos.section { padding: 44px 0 48px; }
+#servicios .section-head, #servicios-incluidos .section-head, #que-hacemos .section-head { margin-bottom: 22px; }
+#servicios .card-grid, #servicios-incluidos .card-grid, #que-hacemos .card-grid { gap: 14px; }
+#servicios .glass-card, #servicios-incluidos .glass-card, #que-hacemos .glass-card { padding: 18px 16px; gap: 8px; }
+#servicios .svc-icon, #servicios-incluidos .svc-icon, #que-hacemos .svc-icon { width: 38px; height: 38px; margin-bottom: 0; }
+#servicios .svc-icon svg, #servicios-incluidos .svc-icon svg, #que-hacemos .svc-icon svg { width: 18px; height: 18px; }
+#servicios .svc-card h3, #servicios-incluidos .svc-card h3, #que-hacemos .svc-card h3 { font-size: 15.5px; }
+#servicios .svc-card p, #servicios-incluidos .svc-card p, #que-hacemos .svc-card p { font-size: 13px; line-height: 1.45; }
+#servicios .svc-card-link, #servicios-incluidos .svc-card-link, #que-hacemos .svc-card-link { font-size: 13px; }
 /* Cápsula de cierre: texto + botón fundidos en una sola pieza (en vez de una
    línea con borde superior + botón suelto) para que la pregunta funcione
-   como el gancho del botón, no como un párrafo aparte. Degradado de marca
-   puntual (violeta/índigo) — únicamente aquí, no se convierte en un color
-   base de sección (ver CLAUDE.md §4 sobre --accent-3 como acento nunca
-   protagonista: esta cápsula es la excepción deliberada, pedida con estos
-   hex exactos). El hover eleva la cápsula completa, igual que el resto de
-   superficies interactivas del sitio (glass-card, botones): invita al clic
-   sin animación en loop. */
-#servicios .section-inline-cta, #servicios-incluidos .section-inline-cta {
-  margin-top: 20px; padding: 13px 32px; border-top: none;
+   como el gancho del botón, no como un párrafo aparte. Degradado sólido
+   deliberado — el dueño de la marca pidió que este mensaje y su botón
+   destacaran como su propio momento dentro de la sección, no como una
+   línea más. Originalmente en violeta (fuera de la paleta de acentos),
+   revisado 2026-09-04: mismo tratamiento (cápsula sólida que rompe con las
+   glass-cards de alrededor) pero en azul→cian (--accent/--accent-2), los
+   acentos protagonistas reales del sitio — conserva el protagonismo pedido
+   sin introducir un tercer color como base de sección (CLAUDE.md §4:
+   --accent-3 nunca protagonista). El hover eleva la cápsula completa,
+   igual que el resto de superficies interactivas del sitio (glass-card,
+   botones): invita al clic sin animación en loop.
+   Extraída 2026-09-04 a la clase modificadora reutilizable
+   .section-inline-cta-capsule (además de los dos ids originales, por
+   compatibilidad) para poder usar la misma cápsula en Qué hacemos de las
+   3 páginas de servicio sin depender de su id de sección. Selector
+   compuesto ".section-inline-cta.section-inline-cta-capsule" (no la clase
+   sola) a propósito: con la misma especificidad que la regla base
+   .section-inline-cta de más abajo (línea ~730), la que aparece después en
+   el archivo ganaba y pisaba justify-content/padding/fondo — la cápsula se
+   veía como la línea con borde superior, no como pill centrada. */
+#servicios .section-inline-cta, #servicios-incluidos .section-inline-cta, .section-inline-cta.section-inline-cta-capsule {
+  margin-top: 20px; padding: 9px 28px; border-top: none;
   border-radius: 999px; gap: 20px; justify-content: center;
-  background: linear-gradient(135deg, #121037, #23164a, #431865, #5b4b90);
+  background: linear-gradient(135deg, oklch(14% 0.03 262), oklch(24% 0.08 260), var(--accent), var(--accent-2));
   border: 1px solid rgba(255,255,255,0.14);
-  box-shadow: 0 22px 46px -20px rgba(35,22,74,0.55);
+  box-shadow: 0 22px 46px -20px oklch(40% 0.18 258 / 0.5);
   transition: transform .4s var(--ease-soft), box-shadow .4s var(--ease-soft);
 }
-#servicios .section-inline-cta:hover, #servicios-incluidos .section-inline-cta:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -18px rgba(35,22,74,0.7); }
-/* Resalta la pregunta de cierre como el gancho de la cápsula — más grande,
-   con más peso, en blanco sobre el degradado. */
-#servicios .section-inline-cta p, #servicios-incluidos .section-inline-cta p { font-size: 19px; font-weight: 700; color: #fff; }
-#servicios .section-inline-cta .btn-solid, #servicios-incluidos .section-inline-cta .btn-solid {
-  background: #fff; color: #23164a; box-shadow: 0 10px 24px -10px rgba(0,0,0,0.4);
+#servicios .section-inline-cta:hover, #servicios-incluidos .section-inline-cta:hover, .section-inline-cta.section-inline-cta-capsule:hover { transform: translateY(-3px); box-shadow: 0 30px 60px -18px oklch(40% 0.18 258 / 0.65); }
+/* Resalta la pregunta de cierre como el gancho de la cápsula — más peso,
+   en blanco sobre el degradado. Bajado de 19px a 17px 2026-09-04 al reducir
+   el alto de la cápsula, para que el texto siga proporcionado al padding
+   nuevo (9px, antes 13px). */
+#servicios .section-inline-cta p, #servicios-incluidos .section-inline-cta p, .section-inline-cta.section-inline-cta-capsule p { font-size: 17px; font-weight: 700; color: #fff; }
+/* Botón al mismo tamaño que .nav-cta (10px/20px, 14px) — antes usaba el
+   tamaño base de .btn (14px/26px, 15px), desproporcionado dentro de una
+   cápsula ya de por sí compacta. */
+#servicios .section-inline-cta .btn-solid, #servicios-incluidos .section-inline-cta .btn-solid, .section-inline-cta.section-inline-cta-capsule .btn-solid {
+  padding: 10px 20px; font-size: 14px;
+  background: #fff; color: var(--accent-on-light); box-shadow: 0 10px 24px -10px rgba(0,0,0,0.4);
 }
-#servicios .section-inline-cta .btn-solid:hover, #servicios-incluidos .section-inline-cta .btn-solid:hover { background: #f1edff; color: #23164a; }
+#servicios .section-inline-cta .btn-solid:hover, #servicios-incluidos .section-inline-cta .btn-solid:hover, .section-inline-cta.section-inline-cta-capsule .btn-solid:hover { background: #eef4ff; color: var(--accent-on-light); }
 
 /* =============================================================
    11c-bis. Tarjetas de plan (Planes de sitio web / Niveles de plataforma)
@@ -1327,7 +1364,7 @@ html.has-modal-open, html.has-modal-open body { overflow: hidden; }
   .section-inline-cta .btn { width: 100%; }
   /* La cápsula de Servicios pierde el radio 999px en columna — con el botón
      a todo el ancho, una píldora completa se ve rota, no como cápsula. */
-  #servicios .section-inline-cta, #servicios-incluidos .section-inline-cta { border-radius: 28px; padding: 24px; text-align: center; }
+  #servicios .section-inline-cta, #servicios-incluidos .section-inline-cta, .section-inline-cta.section-inline-cta-capsule { border-radius: 28px; padding: 24px; text-align: center; }
   .hero-mark { width: 260px; height: 260px; }
   .floating-chip-corner { left: 0; bottom: -16px; }
   .stack-logo img { width: 26px; height: 26px; }
